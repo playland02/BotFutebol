@@ -1,0 +1,1699 @@
+{
+    "status": "ok",
+    "data": {
+        "id": "19109331",
+        "league_id": "1385",
+        "season_id": "23363",
+        "stage_id": "77470460",
+        "round_id": "336645",
+        "group_id": null,
+        "localteam_id": "146740",
+        "visitorteam_id": "130313",
+        "winner_team_id": null,
+        "starting_time": "2024-05-30 18:00:00",
+        "status": "NS",
+        "updated_at": "0000-00-00 00:00:00",
+        "highlight_team": "-1",
+        "home_score": "0",
+        "away_score": "0",
+        "race_to_goal": "0",
+        "scores": {
+            "localteam_score": 0,
+            "visitorteam_score": 0,
+            "localteam_pen_score": null,
+            "visitorteam_pen_score": null,
+            "ht_score": null,
+            "ft_score": null,
+            "et_score": null,
+            "ps_score": null
+        },
+        "localTeam": {
+            "id": 146740,
+            "legacy_id": null,
+            "name": "Fortaleza U20",
+            "short_code": null,
+            "twitter": null,
+            "country_id": 5,
+            "national_team": false,
+            "founded": null,
+            "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/20\/146740.png",
+            "venue_id": null,
+            "current_season_id": 23363,
+            "is_placeholder": false
+        },
+        "visitorTeam": {
+            "id": 130313,
+            "legacy_id": null,
+            "name": "Fluminense U20",
+            "short_code": null,
+            "twitter": null,
+            "country_id": 5,
+            "national_team": false,
+            "founded": null,
+            "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/9\/130313.png",
+            "venue_id": null,
+            "current_season_id": 23359,
+            "is_placeholder": false
+        },
+        "formations": {
+            "localteam_formation": null,
+            "visitorteam_formation": null
+        },
+        "lineup": [],
+        "events": [],
+        "stats": [],
+        "time": {
+            "status": "NS",
+            "starting_at": {
+                "date_time": "2024-05-30 18:00:00",
+                "date": "2024-05-30",
+                "time": "18:00:00",
+                "timestamp": 1717092000,
+                "timezone": "UTC"
+            },
+            "minute": null,
+            "second": null,
+            "added_time": null,
+            "extra_minute": null,
+            "injury_time": null
+        },
+        "corners": [],
+        "odds": {
+            "full_odd": [
+                {
+                    "title": "1x2 Market",
+                    "markets": [
+                        {
+                            "id": 1,
+                            "data": [
+                                {
+                                    "label": "1",
+                                    "total": null,
+                                    "title": "1 WIN",
+                                    "value": 241
+                                },
+                                {
+                                    "label": "X",
+                                    "total": null,
+                                    "title": "DRAW",
+                                    "value": 320
+                                },
+                                {
+                                    "label": "2",
+                                    "total": null,
+                                    "title": "2 WIN",
+                                    "value": 264
+                                }
+                            ]
+                        },
+                        {
+                            "id": 63,
+                            "data": [
+                                {
+                                    "label": "1X",
+                                    "total": null,
+                                    "title": "1 WIN OR DRAW",
+                                    "value": 138
+                                },
+                                {
+                                    "label": "12",
+                                    "total": null,
+                                    "title": "1 OR 2",
+                                    "value": 127
+                                },
+                                {
+                                    "label": "X2",
+                                    "total": null,
+                                    "title": "2 WIN OR DRAW",
+                                    "value": 145
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Goals Market",
+                    "markets": [
+                        {
+                            "id": 12,
+                            "data": [
+                                {
+                                    "label": "Over",
+                                    "total": 0.5,
+                                    "title": "Over 0.5",
+                                    "value": 0
+                                },
+                                {
+                                    "label": "Under",
+                                    "total": 0.5,
+                                    "title": "Under 0.5",
+                                    "value": 0
+                                }
+                            ]
+                        },
+                        {
+                            "id": 12,
+                            "data": [
+                                {
+                                    "label": "Over",
+                                    "total": 1.5,
+                                    "title": "Over 1.5",
+                                    "value": 0
+                                },
+                                {
+                                    "label": "Under",
+                                    "total": 1.5,
+                                    "title": "Under 1.5",
+                                    "value": 0
+                                }
+                            ]
+                        },
+                        {
+                            "id": 12,
+                            "data": [
+                                {
+                                    "label": "Over",
+                                    "total": 2.5,
+                                    "title": "Over 2.5",
+                                    "value": 0
+                                },
+                                {
+                                    "label": "Under",
+                                    "total": 2.5,
+                                    "title": "Under 2.5",
+                                    "value": 0
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Btts Market",
+                    "markets": [
+                        {
+                            "id": 976105,
+                            "data": [
+                                {
+                                    "label": "Yes",
+                                    "total": null,
+                                    "title": "Yes",
+                                    "value": 176
+                                },
+                                {
+                                    "label": "No",
+                                    "total": null,
+                                    "title": "No",
+                                    "value": 200
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Corner Market",
+                    "markets": [
+                        {
+                            "id": 976384,
+                            "data": [
+                                {
+                                    "label": "Over",
+                                    "total": 10.5,
+                                    "title": "Over 10.5",
+                                    "value": 182
+                                },
+                                {
+                                    "label": "Under",
+                                    "total": 10.5,
+                                    "title": "Under 10.5",
+                                    "value": 198
+                                }
+                            ]
+                        },
+                        {
+                            "id": 976384,
+                            "data": [
+                                {
+                                    "label": "Over",
+                                    "total": 9.5,
+                                    "title": "Over 9.5",
+                                    "value": 0
+                                },
+                                {
+                                    "label": "Under",
+                                    "total": 9.5,
+                                    "title": "Under 9.5",
+                                    "value": 0
+                                }
+                            ]
+                        },
+                        {
+                            "id": 976384,
+                            "data": [
+                                {
+                                    "label": "Over",
+                                    "total": 8.5,
+                                    "title": "Over 8.5",
+                                    "value": 0
+                                },
+                                {
+                                    "label": "Under",
+                                    "total": 8.5,
+                                    "title": "Under 8.5",
+                                    "value": 0
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "half_odd": [
+                {
+                    "title": "1x2 Market",
+                    "markets": [
+                        {
+                            "id": 37,
+                            "data": [
+                                {
+                                    "label": "1",
+                                    "total": null,
+                                    "title": "1 WIN",
+                                    "value": 305
+                                },
+                                {
+                                    "label": "X",
+                                    "total": null,
+                                    "title": "DRAW",
+                                    "value": 204
+                                },
+                                {
+                                    "label": "2",
+                                    "total": null,
+                                    "title": "2 WIN",
+                                    "value": 334
+                                }
+                            ]
+                        },
+                        {
+                            "id": 975926,
+                            "data": [
+                                {
+                                    "label": "1X",
+                                    "total": null,
+                                    "title": "1 WIN OR DRAW",
+                                    "value": 123
+                                },
+                                {
+                                    "label": "12",
+                                    "total": null,
+                                    "title": "1 OR 2",
+                                    "value": 160
+                                },
+                                {
+                                    "label": "X2",
+                                    "total": null,
+                                    "title": "2 WIN OR DRAW",
+                                    "value": 127
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Goals Market",
+                    "markets": [
+                        {
+                            "id": 975903,
+                            "data": [
+                                {
+                                    "label": "Over",
+                                    "total": 0.5,
+                                    "title": "Over 0.5",
+                                    "value": 141
+                                },
+                                {
+                                    "label": "Under",
+                                    "total": 0.5,
+                                    "title": "Under 0.5",
+                                    "value": 269
+                                }
+                            ]
+                        },
+                        {
+                            "id": 975903,
+                            "data": [
+                                {
+                                    "label": "Over",
+                                    "total": 1.5,
+                                    "title": "Over 1.5",
+                                    "value": 290
+                                },
+                                {
+                                    "label": "Under",
+                                    "total": 1.5,
+                                    "title": "Under 1.5",
+                                    "value": 136
+                                }
+                            ]
+                        },
+                        {
+                            "id": 975903,
+                            "data": [
+                                {
+                                    "label": "Over",
+                                    "total": 2.5,
+                                    "title": "Over 2.5",
+                                    "value": 720
+                                },
+                                {
+                                    "label": "Under",
+                                    "total": 2.5,
+                                    "title": "Under 2.5",
+                                    "value": 106
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Btts Market",
+                    "markets": [
+                        {
+                            "id": 976226,
+                            "data": [
+                                {
+                                    "label": "Yes",
+                                    "total": null,
+                                    "title": "Yes",
+                                    "value": 440
+                                },
+                                {
+                                    "label": "No",
+                                    "total": null,
+                                    "title": "No",
+                                    "value": 119
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Corner Market",
+                    "markets": [
+                        {
+                            "id": 136703823,
+                            "data": [
+                                {
+                                    "label": "Over",
+                                    "total": 4.5,
+                                    "title": "Over 4.5",
+                                    "value": 0
+                                },
+                                {
+                                    "label": "Under",
+                                    "total": 4.5,
+                                    "title": "Under 4.5",
+                                    "value": 0
+                                }
+                            ]
+                        },
+                        {
+                            "id": 136703823,
+                            "data": [
+                                {
+                                    "label": "Over",
+                                    "total": 3.5,
+                                    "title": "Over 3.5",
+                                    "value": 0
+                                },
+                                {
+                                    "label": "Under",
+                                    "total": 3.5,
+                                    "title": "Under 3.5",
+                                    "value": 0
+                                }
+                            ]
+                        },
+                        {
+                            "id": 136703823,
+                            "data": [
+                                {
+                                    "label": "Over",
+                                    "total": 2.5,
+                                    "title": "Over 2.5",
+                                    "value": 0
+                                },
+                                {
+                                    "label": "Under",
+                                    "total": 2.5,
+                                    "title": "Under 2.5",
+                                    "value": 0
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "highlights": [],
+        "tvstations": [],
+        "bench": [],
+        "sidelined": [],
+        "country_name": "Brazil",
+        "league_name": "Brasileiro U20",
+        "standing": [
+            {
+                "id": 77470460,
+                "name": "1st Phase",
+                "league_id": 1385,
+                "season_id": 23363,
+                "round_id": 336645,
+                "round_name": 9,
+                "type": "Group Stage",
+                "stage_id": 77470460,
+                "stage_name": "1st Phase",
+                "resource": "stage",
+                "standings": {
+                    "data": [
+                        {
+                            "position": 1,
+                            "team_id": 128708,
+                            "team_name": "Palmeiras U20",
+                            "round_id": 336645,
+                            "round_name": 9,
+                            "group_id": null,
+                            "group_name": null,
+                            "overall": {
+                                "games_played": 9,
+                                "won": 8,
+                                "draw": 0,
+                                "lost": 1,
+                                "goals_scored": 27,
+                                "goals_against": 8,
+                                "points": 24
+                            },
+                            "home": {
+                                "games_played": 4,
+                                "won": 3,
+                                "draw": 0,
+                                "lost": 1,
+                                "goals_scored": 6,
+                                "goals_against": 4,
+                                "points": 9
+                            },
+                            "away": {
+                                "games_played": 5,
+                                "won": 5,
+                                "draw": 0,
+                                "lost": 0,
+                                "goals_scored": 21,
+                                "goals_against": 4,
+                                "points": 15
+                            },
+                            "total": {
+                                "goal_difference": "19",
+                                "points": 24
+                            },
+                            "result": "Quarter-finals",
+                            "points": 24,
+                            "recent_form": "WWLWW",
+                            "status": null,
+                            "team": {
+                                "data": {
+                                    "id": 128708,
+                                    "legacy_id": null,
+                                    "name": "Palmeiras U20",
+                                    "short_code": null,
+                                    "twitter": null,
+                                    "country_id": 5,
+                                    "national_team": false,
+                                    "founded": 0,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/4\/128708.png",
+                                    "venue_id": 338678,
+                                    "current_season_id": 23358,
+                                    "is_placeholder": false
+                                }
+                            }
+                        },
+                        {
+                            "position": 2,
+                            "team_id": 131684,
+                            "team_name": "Flamengo RJ U20",
+                            "round_id": 336645,
+                            "round_name": 9,
+                            "group_id": null,
+                            "group_name": null,
+                            "overall": {
+                                "games_played": 8,
+                                "won": 5,
+                                "draw": 1,
+                                "lost": 2,
+                                "goals_scored": 16,
+                                "goals_against": 10,
+                                "points": 16
+                            },
+                            "home": {
+                                "games_played": 5,
+                                "won": 3,
+                                "draw": 1,
+                                "lost": 1,
+                                "goals_scored": 9,
+                                "goals_against": 5,
+                                "points": 10
+                            },
+                            "away": {
+                                "games_played": 3,
+                                "won": 2,
+                                "draw": 0,
+                                "lost": 1,
+                                "goals_scored": 7,
+                                "goals_against": 5,
+                                "points": 6
+                            },
+                            "total": {
+                                "goal_difference": "6",
+                                "points": 16
+                            },
+                            "result": "Quarter-finals",
+                            "points": 16,
+                            "recent_form": "WDWWW",
+                            "status": null,
+                            "team": {
+                                "data": {
+                                    "id": 131684,
+                                    "legacy_id": null,
+                                    "name": "Flamengo RJ U20",
+                                    "short_code": null,
+                                    "twitter": null,
+                                    "country_id": 5,
+                                    "national_team": false,
+                                    "founded": 0,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/4\/131684.png",
+                                    "venue_id": null,
+                                    "current_season_id": 23359,
+                                    "is_placeholder": false
+                                }
+                            }
+                        },
+                        {
+                            "position": 3,
+                            "team_id": 146695,
+                            "team_name": "Cear\u00e1 U20",
+                            "round_id": 336645,
+                            "round_name": 9,
+                            "group_id": null,
+                            "group_name": null,
+                            "overall": {
+                                "games_played": 9,
+                                "won": 5,
+                                "draw": 1,
+                                "lost": 3,
+                                "goals_scored": 16,
+                                "goals_against": 14,
+                                "points": 16
+                            },
+                            "home": {
+                                "games_played": 4,
+                                "won": 2,
+                                "draw": 0,
+                                "lost": 2,
+                                "goals_scored": 8,
+                                "goals_against": 7,
+                                "points": 6
+                            },
+                            "away": {
+                                "games_played": 5,
+                                "won": 3,
+                                "draw": 1,
+                                "lost": 1,
+                                "goals_scored": 8,
+                                "goals_against": 7,
+                                "points": 10
+                            },
+                            "total": {
+                                "goal_difference": "2",
+                                "points": 16
+                            },
+                            "result": "Quarter-finals",
+                            "points": 16,
+                            "recent_form": "WLWWW",
+                            "status": null,
+                            "team": {
+                                "data": {
+                                    "id": 146695,
+                                    "legacy_id": null,
+                                    "name": "Cear\u00e1 U20",
+                                    "short_code": null,
+                                    "twitter": null,
+                                    "country_id": 5,
+                                    "national_team": false,
+                                    "founded": null,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/7\/146695.png",
+                                    "venue_id": 4769,
+                                    "current_season_id": 23363,
+                                    "is_placeholder": false
+                                }
+                            }
+                        },
+                        {
+                            "position": 4,
+                            "team_id": 146679,
+                            "team_name": "Bahia U20",
+                            "round_id": 336645,
+                            "round_name": 9,
+                            "group_id": null,
+                            "group_name": null,
+                            "overall": {
+                                "games_played": 9,
+                                "won": 5,
+                                "draw": 1,
+                                "lost": 3,
+                                "goals_scored": 13,
+                                "goals_against": 15,
+                                "points": 16
+                            },
+                            "home": {
+                                "games_played": 5,
+                                "won": 2,
+                                "draw": 0,
+                                "lost": 3,
+                                "goals_scored": 5,
+                                "goals_against": 11,
+                                "points": 6
+                            },
+                            "away": {
+                                "games_played": 4,
+                                "won": 3,
+                                "draw": 1,
+                                "lost": 0,
+                                "goals_scored": 8,
+                                "goals_against": 4,
+                                "points": 10
+                            },
+                            "total": {
+                                "goal_difference": "-2",
+                                "points": 16
+                            },
+                            "result": "Quarter-finals",
+                            "points": 16,
+                            "recent_form": "WLDLW",
+                            "status": null,
+                            "team": {
+                                "data": {
+                                    "id": 146679,
+                                    "legacy_id": null,
+                                    "name": "Bahia U20",
+                                    "short_code": null,
+                                    "twitter": null,
+                                    "country_id": 5,
+                                    "national_team": false,
+                                    "founded": null,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/23\/146679.png",
+                                    "venue_id": 141262,
+                                    "current_season_id": 21929,
+                                    "is_placeholder": false
+                                }
+                            }
+                        },
+                        {
+                            "position": 5,
+                            "team_id": 131606,
+                            "team_name": "Gremio U20",
+                            "round_id": 336645,
+                            "round_name": 9,
+                            "group_id": null,
+                            "group_name": null,
+                            "overall": {
+                                "games_played": 5,
+                                "won": 5,
+                                "draw": 0,
+                                "lost": 0,
+                                "goals_scored": 10,
+                                "goals_against": 2,
+                                "points": 15
+                            },
+                            "home": {
+                                "games_played": 2,
+                                "won": 2,
+                                "draw": 0,
+                                "lost": 0,
+                                "goals_scored": 4,
+                                "goals_against": 1,
+                                "points": 6
+                            },
+                            "away": {
+                                "games_played": 3,
+                                "won": 3,
+                                "draw": 0,
+                                "lost": 0,
+                                "goals_scored": 6,
+                                "goals_against": 1,
+                                "points": 9
+                            },
+                            "total": {
+                                "goal_difference": "8",
+                                "points": 15
+                            },
+                            "result": null,
+                            "points": 15,
+                            "recent_form": "WWWWW",
+                            "status": null,
+                            "team": {
+                                "data": {
+                                    "id": 131606,
+                                    "legacy_id": null,
+                                    "name": "Gremio U20",
+                                    "short_code": null,
+                                    "twitter": null,
+                                    "country_id": 5,
+                                    "national_team": false,
+                                    "founded": null,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/22\/131606.png",
+                                    "venue_id": null,
+                                    "current_season_id": 21462,
+                                    "is_placeholder": false
+                                }
+                            }
+                        },
+                        {
+                            "position": 6,
+                            "team_id": 131604,
+                            "team_name": "Atletico-PR U20",
+                            "round_id": 336645,
+                            "round_name": 9,
+                            "group_id": null,
+                            "group_name": null,
+                            "overall": {
+                                "games_played": 8,
+                                "won": 4,
+                                "draw": 3,
+                                "lost": 1,
+                                "goals_scored": 18,
+                                "goals_against": 11,
+                                "points": 15
+                            },
+                            "home": {
+                                "games_played": 5,
+                                "won": 4,
+                                "draw": 1,
+                                "lost": 0,
+                                "goals_scored": 13,
+                                "goals_against": 5,
+                                "points": 13
+                            },
+                            "away": {
+                                "games_played": 3,
+                                "won": 0,
+                                "draw": 2,
+                                "lost": 1,
+                                "goals_scored": 5,
+                                "goals_against": 6,
+                                "points": 2
+                            },
+                            "total": {
+                                "goal_difference": "7",
+                                "points": 15
+                            },
+                            "result": null,
+                            "points": 15,
+                            "recent_form": "WDWWL",
+                            "status": null,
+                            "team": {
+                                "data": {
+                                    "id": 131604,
+                                    "legacy_id": null,
+                                    "name": "Atletico-PR U20",
+                                    "short_code": null,
+                                    "twitter": null,
+                                    "country_id": 5,
+                                    "national_team": false,
+                                    "founded": null,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/20\/131604.png",
+                                    "venue_id": null,
+                                    "current_season_id": 23363,
+                                    "is_placeholder": false
+                                }
+                            }
+                        },
+                        {
+                            "position": 7,
+                            "team_id": 130813,
+                            "team_name": "Santos U20",
+                            "round_id": 336645,
+                            "round_name": 9,
+                            "group_id": null,
+                            "group_name": null,
+                            "overall": {
+                                "games_played": 8,
+                                "won": 4,
+                                "draw": 1,
+                                "lost": 3,
+                                "goals_scored": 16,
+                                "goals_against": 13,
+                                "points": 13
+                            },
+                            "home": {
+                                "games_played": 4,
+                                "won": 2,
+                                "draw": 0,
+                                "lost": 2,
+                                "goals_scored": 10,
+                                "goals_against": 8,
+                                "points": 6
+                            },
+                            "away": {
+                                "games_played": 4,
+                                "won": 2,
+                                "draw": 1,
+                                "lost": 1,
+                                "goals_scored": 6,
+                                "goals_against": 5,
+                                "points": 7
+                            },
+                            "total": {
+                                "goal_difference": "3",
+                                "points": 13
+                            },
+                            "result": null,
+                            "points": 13,
+                            "recent_form": "LLWWL",
+                            "status": null,
+                            "team": {
+                                "data": {
+                                    "id": 130813,
+                                    "legacy_id": null,
+                                    "name": "Santos U20",
+                                    "short_code": null,
+                                    "twitter": null,
+                                    "country_id": 5,
+                                    "national_team": false,
+                                    "founded": null,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/29\/130813.png",
+                                    "venue_id": 338631,
+                                    "current_season_id": 23358,
+                                    "is_placeholder": false
+                                }
+                            }
+                        },
+                        {
+                            "position": 8,
+                            "team_id": 130811,
+                            "team_name": "Cruzeiro U20",
+                            "round_id": 336645,
+                            "round_name": 9,
+                            "group_id": null,
+                            "group_name": null,
+                            "overall": {
+                                "games_played": 7,
+                                "won": 4,
+                                "draw": 1,
+                                "lost": 2,
+                                "goals_scored": 10,
+                                "goals_against": 7,
+                                "points": 13
+                            },
+                            "home": {
+                                "games_played": 2,
+                                "won": 2,
+                                "draw": 0,
+                                "lost": 0,
+                                "goals_scored": 4,
+                                "goals_against": 1,
+                                "points": 6
+                            },
+                            "away": {
+                                "games_played": 5,
+                                "won": 2,
+                                "draw": 1,
+                                "lost": 2,
+                                "goals_scored": 6,
+                                "goals_against": 6,
+                                "points": 7
+                            },
+                            "total": {
+                                "goal_difference": "3",
+                                "points": 13
+                            },
+                            "result": null,
+                            "points": 13,
+                            "recent_form": "WWLWL",
+                            "status": null,
+                            "team": {
+                                "data": {
+                                    "id": 130811,
+                                    "legacy_id": null,
+                                    "name": "Cruzeiro U20",
+                                    "short_code": null,
+                                    "twitter": null,
+                                    "country_id": 5,
+                                    "national_team": false,
+                                    "founded": 0,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/27\/130811.png",
+                                    "venue_id": 338680,
+                                    "current_season_id": 23440,
+                                    "is_placeholder": false
+                                }
+                            }
+                        },
+                        {
+                            "position": 9,
+                            "team_id": 131609,
+                            "team_name": "Atletico-MG U20",
+                            "round_id": 336645,
+                            "round_name": 9,
+                            "group_id": null,
+                            "group_name": null,
+                            "overall": {
+                                "games_played": 9,
+                                "won": 3,
+                                "draw": 4,
+                                "lost": 2,
+                                "goals_scored": 19,
+                                "goals_against": 19,
+                                "points": 13
+                            },
+                            "home": {
+                                "games_played": 5,
+                                "won": 1,
+                                "draw": 2,
+                                "lost": 2,
+                                "goals_scored": 9,
+                                "goals_against": 11,
+                                "points": 5
+                            },
+                            "away": {
+                                "games_played": 4,
+                                "won": 2,
+                                "draw": 2,
+                                "lost": 0,
+                                "goals_scored": 10,
+                                "goals_against": 8,
+                                "points": 8
+                            },
+                            "total": {
+                                "goal_difference": "0",
+                                "points": 13
+                            },
+                            "result": null,
+                            "points": 13,
+                            "recent_form": "WWLDL",
+                            "status": null,
+                            "team": {
+                                "data": {
+                                    "id": 131609,
+                                    "legacy_id": null,
+                                    "name": "Atletico-MG U20",
+                                    "short_code": null,
+                                    "twitter": null,
+                                    "country_id": 5,
+                                    "national_team": false,
+                                    "founded": null,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/25\/131609.png",
+                                    "venue_id": 338680,
+                                    "current_season_id": 23440,
+                                    "is_placeholder": false
+                                }
+                            }
+                        },
+                        {
+                            "position": 10,
+                            "team_id": 232347,
+                            "team_name": "Cuiab\u00e1 U20",
+                            "round_id": 336645,
+                            "round_name": 9,
+                            "group_id": null,
+                            "group_name": null,
+                            "overall": {
+                                "games_played": 8,
+                                "won": 3,
+                                "draw": 3,
+                                "lost": 2,
+                                "goals_scored": 14,
+                                "goals_against": 10,
+                                "points": 12
+                            },
+                            "home": {
+                                "games_played": 4,
+                                "won": 2,
+                                "draw": 2,
+                                "lost": 0,
+                                "goals_scored": 6,
+                                "goals_against": 3,
+                                "points": 8
+                            },
+                            "away": {
+                                "games_played": 4,
+                                "won": 1,
+                                "draw": 1,
+                                "lost": 2,
+                                "goals_scored": 8,
+                                "goals_against": 7,
+                                "points": 4
+                            },
+                            "total": {
+                                "goal_difference": "4",
+                                "points": 12
+                            },
+                            "result": null,
+                            "points": 12,
+                            "recent_form": "DLWWW",
+                            "status": null,
+                            "team": {
+                                "data": {
+                                    "id": 232347,
+                                    "legacy_id": null,
+                                    "name": "Cuiab\u00e1 U20",
+                                    "short_code": null,
+                                    "twitter": null,
+                                    "country_id": 5,
+                                    "national_team": false,
+                                    "founded": null,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/27\/232347.png",
+                                    "venue_id": null,
+                                    "current_season_id": 23363,
+                                    "is_placeholder": false
+                                }
+                            }
+                        },
+                        {
+                            "position": 11,
+                            "team_id": 146682,
+                            "team_name": "Bragantino U20",
+                            "round_id": 336645,
+                            "round_name": 9,
+                            "group_id": null,
+                            "group_name": null,
+                            "overall": {
+                                "games_played": 9,
+                                "won": 2,
+                                "draw": 4,
+                                "lost": 3,
+                                "goals_scored": 13,
+                                "goals_against": 13,
+                                "points": 10
+                            },
+                            "home": {
+                                "games_played": 5,
+                                "won": 1,
+                                "draw": 3,
+                                "lost": 1,
+                                "goals_scored": 10,
+                                "goals_against": 9,
+                                "points": 6
+                            },
+                            "away": {
+                                "games_played": 4,
+                                "won": 1,
+                                "draw": 1,
+                                "lost": 2,
+                                "goals_scored": 3,
+                                "goals_against": 4,
+                                "points": 4
+                            },
+                            "total": {
+                                "goal_difference": "0",
+                                "points": 10
+                            },
+                            "result": null,
+                            "points": 10,
+                            "recent_form": "DWWDL",
+                            "status": null,
+                            "team": {
+                                "data": {
+                                    "id": 146682,
+                                    "legacy_id": null,
+                                    "name": "Bragantino U20",
+                                    "short_code": null,
+                                    "twitter": null,
+                                    "country_id": 5,
+                                    "national_team": false,
+                                    "founded": null,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/26\/146682.png",
+                                    "venue_id": 338627,
+                                    "current_season_id": 23358,
+                                    "is_placeholder": false
+                                }
+                            }
+                        },
+                        {
+                            "position": 12,
+                            "team_id": 146685,
+                            "team_name": "Am\u00e9rica Mineiro U20",
+                            "round_id": 336645,
+                            "round_name": 9,
+                            "group_id": null,
+                            "group_name": null,
+                            "overall": {
+                                "games_played": 9,
+                                "won": 2,
+                                "draw": 3,
+                                "lost": 4,
+                                "goals_scored": 11,
+                                "goals_against": 12,
+                                "points": 9
+                            },
+                            "home": {
+                                "games_played": 4,
+                                "won": 2,
+                                "draw": 1,
+                                "lost": 1,
+                                "goals_scored": 7,
+                                "goals_against": 5,
+                                "points": 7
+                            },
+                            "away": {
+                                "games_played": 5,
+                                "won": 0,
+                                "draw": 2,
+                                "lost": 3,
+                                "goals_scored": 4,
+                                "goals_against": 7,
+                                "points": 2
+                            },
+                            "total": {
+                                "goal_difference": "-1",
+                                "points": 9
+                            },
+                            "result": null,
+                            "points": 9,
+                            "recent_form": "LDWLD",
+                            "status": null,
+                            "team": {
+                                "data": {
+                                    "id": 146685,
+                                    "legacy_id": null,
+                                    "name": "Am\u00e9rica Mineiro U20",
+                                    "short_code": null,
+                                    "twitter": null,
+                                    "country_id": 5,
+                                    "national_team": false,
+                                    "founded": null,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/29\/146685.png",
+                                    "venue_id": 338709,
+                                    "current_season_id": 23440,
+                                    "is_placeholder": false
+                                }
+                            }
+                        },
+                        {
+                            "position": 13,
+                            "team_id": 131607,
+                            "team_name": "Goias U20",
+                            "round_id": 336645,
+                            "round_name": 9,
+                            "group_id": null,
+                            "group_name": null,
+                            "overall": {
+                                "games_played": 8,
+                                "won": 2,
+                                "draw": 3,
+                                "lost": 3,
+                                "goals_scored": 12,
+                                "goals_against": 14,
+                                "points": 9
+                            },
+                            "home": {
+                                "games_played": 4,
+                                "won": 2,
+                                "draw": 1,
+                                "lost": 1,
+                                "goals_scored": 9,
+                                "goals_against": 9,
+                                "points": 7
+                            },
+                            "away": {
+                                "games_played": 4,
+                                "won": 0,
+                                "draw": 2,
+                                "lost": 2,
+                                "goals_scored": 3,
+                                "goals_against": 5,
+                                "points": 2
+                            },
+                            "total": {
+                                "goal_difference": "-2",
+                                "points": 9
+                            },
+                            "result": null,
+                            "points": 9,
+                            "recent_form": "LLDDW",
+                            "status": null,
+                            "team": {
+                                "data": {
+                                    "id": 131607,
+                                    "legacy_id": null,
+                                    "name": "Goias U20",
+                                    "short_code": null,
+                                    "twitter": null,
+                                    "country_id": 5,
+                                    "national_team": false,
+                                    "founded": null,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/23\/131607.png",
+                                    "venue_id": null,
+                                    "current_season_id": 23207,
+                                    "is_placeholder": false
+                                }
+                            }
+                        },
+                        {
+                            "position": 14,
+                            "team_id": 146740,
+                            "team_name": "Fortaleza U20",
+                            "round_id": 336645,
+                            "round_name": 9,
+                            "group_id": null,
+                            "group_name": null,
+                            "overall": {
+                                "games_played": 7,
+                                "won": 2,
+                                "draw": 2,
+                                "lost": 3,
+                                "goals_scored": 5,
+                                "goals_against": 7,
+                                "points": 8
+                            },
+                            "home": {
+                                "games_played": 3,
+                                "won": 1,
+                                "draw": 1,
+                                "lost": 1,
+                                "goals_scored": 3,
+                                "goals_against": 4,
+                                "points": 4
+                            },
+                            "away": {
+                                "games_played": 4,
+                                "won": 1,
+                                "draw": 1,
+                                "lost": 2,
+                                "goals_scored": 2,
+                                "goals_against": 3,
+                                "points": 4
+                            },
+                            "total": {
+                                "goal_difference": "-2",
+                                "points": 8
+                            },
+                            "result": null,
+                            "points": 8,
+                            "recent_form": "DLLLW",
+                            "status": null,
+                            "team": {
+                                "data": {
+                                    "id": 146740,
+                                    "legacy_id": null,
+                                    "name": "Fortaleza U20",
+                                    "short_code": null,
+                                    "twitter": null,
+                                    "country_id": 5,
+                                    "national_team": false,
+                                    "founded": null,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/20\/146740.png",
+                                    "venue_id": null,
+                                    "current_season_id": 23363,
+                                    "is_placeholder": false
+                                }
+                            }
+                        },
+                        {
+                            "position": 15,
+                            "team_id": 130313,
+                            "team_name": "Fluminense U20",
+                            "round_id": 336645,
+                            "round_name": 9,
+                            "group_id": null,
+                            "group_name": null,
+                            "overall": {
+                                "games_played": 8,
+                                "won": 2,
+                                "draw": 2,
+                                "lost": 4,
+                                "goals_scored": 8,
+                                "goals_against": 14,
+                                "points": 8
+                            },
+                            "home": {
+                                "games_played": 4,
+                                "won": 2,
+                                "draw": 1,
+                                "lost": 1,
+                                "goals_scored": 4,
+                                "goals_against": 3,
+                                "points": 7
+                            },
+                            "away": {
+                                "games_played": 4,
+                                "won": 0,
+                                "draw": 1,
+                                "lost": 3,
+                                "goals_scored": 4,
+                                "goals_against": 11,
+                                "points": 1
+                            },
+                            "total": {
+                                "goal_difference": "-6",
+                                "points": 8
+                            },
+                            "result": null,
+                            "points": 8,
+                            "recent_form": "LWDLD",
+                            "status": null,
+                            "team": {
+                                "data": {
+                                    "id": 130313,
+                                    "legacy_id": null,
+                                    "name": "Fluminense U20",
+                                    "short_code": null,
+                                    "twitter": null,
+                                    "country_id": 5,
+                                    "national_team": false,
+                                    "founded": null,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/9\/130313.png",
+                                    "venue_id": null,
+                                    "current_season_id": 23359,
+                                    "is_placeholder": false
+                                }
+                            }
+                        },
+                        {
+                            "position": 16,
+                            "team_id": 131657,
+                            "team_name": "Corinthians U20",
+                            "round_id": 336645,
+                            "round_name": 9,
+                            "group_id": null,
+                            "group_name": null,
+                            "overall": {
+                                "games_played": 8,
+                                "won": 2,
+                                "draw": 2,
+                                "lost": 4,
+                                "goals_scored": 5,
+                                "goals_against": 12,
+                                "points": 8
+                            },
+                            "home": {
+                                "games_played": 5,
+                                "won": 2,
+                                "draw": 1,
+                                "lost": 2,
+                                "goals_scored": 4,
+                                "goals_against": 7,
+                                "points": 7
+                            },
+                            "away": {
+                                "games_played": 3,
+                                "won": 0,
+                                "draw": 1,
+                                "lost": 2,
+                                "goals_scored": 1,
+                                "goals_against": 5,
+                                "points": 1
+                            },
+                            "total": {
+                                "goal_difference": "-7",
+                                "points": 8
+                            },
+                            "result": null,
+                            "points": 8,
+                            "recent_form": "DWLDL",
+                            "status": null,
+                            "team": {
+                                "data": {
+                                    "id": 131657,
+                                    "legacy_id": null,
+                                    "name": "Corinthians U20",
+                                    "short_code": null,
+                                    "twitter": null,
+                                    "country_id": 5,
+                                    "national_team": false,
+                                    "founded": 0,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/9\/131657.png",
+                                    "venue_id": null,
+                                    "current_season_id": 23358,
+                                    "is_placeholder": false
+                                }
+                            }
+                        },
+                        {
+                            "position": 17,
+                            "team_id": 130812,
+                            "team_name": "Botafogo U20",
+                            "round_id": 336645,
+                            "round_name": 9,
+                            "group_id": null,
+                            "group_name": null,
+                            "overall": {
+                                "games_played": 7,
+                                "won": 1,
+                                "draw": 3,
+                                "lost": 3,
+                                "goals_scored": 9,
+                                "goals_against": 10,
+                                "points": 6
+                            },
+                            "home": {
+                                "games_played": 4,
+                                "won": 0,
+                                "draw": 2,
+                                "lost": 2,
+                                "goals_scored": 4,
+                                "goals_against": 6,
+                                "points": 2
+                            },
+                            "away": {
+                                "games_played": 3,
+                                "won": 1,
+                                "draw": 1,
+                                "lost": 1,
+                                "goals_scored": 5,
+                                "goals_against": 4,
+                                "points": 4
+                            },
+                            "total": {
+                                "goal_difference": "-1",
+                                "points": 6
+                            },
+                            "result": null,
+                            "points": 6,
+                            "recent_form": "LDLDW",
+                            "status": null,
+                            "team": {
+                                "data": {
+                                    "id": 130812,
+                                    "legacy_id": null,
+                                    "name": "Botafogo U20",
+                                    "short_code": null,
+                                    "twitter": null,
+                                    "country_id": 5,
+                                    "national_team": false,
+                                    "founded": null,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/28\/130812.png",
+                                    "venue_id": 268563,
+                                    "current_season_id": 23359,
+                                    "is_placeholder": false
+                                }
+                            }
+                        },
+                        {
+                            "position": 18,
+                            "team_id": 146712,
+                            "team_name": "Atl\u00e9tico GO U20",
+                            "round_id": 336645,
+                            "round_name": 9,
+                            "group_id": null,
+                            "group_name": null,
+                            "overall": {
+                                "games_played": 9,
+                                "won": 1,
+                                "draw": 3,
+                                "lost": 5,
+                                "goals_scored": 8,
+                                "goals_against": 18,
+                                "points": 6
+                            },
+                            "home": {
+                                "games_played": 4,
+                                "won": 0,
+                                "draw": 2,
+                                "lost": 2,
+                                "goals_scored": 2,
+                                "goals_against": 8,
+                                "points": 2
+                            },
+                            "away": {
+                                "games_played": 5,
+                                "won": 1,
+                                "draw": 1,
+                                "lost": 3,
+                                "goals_scored": 6,
+                                "goals_against": 10,
+                                "points": 4
+                            },
+                            "total": {
+                                "goal_difference": "-10",
+                                "points": 6
+                            },
+                            "result": null,
+                            "points": 6,
+                            "recent_form": "LLDDL",
+                            "status": null,
+                            "team": {
+                                "data": {
+                                    "id": 146712,
+                                    "legacy_id": null,
+                                    "name": "Atl\u00e9tico GO U20",
+                                    "short_code": null,
+                                    "twitter": null,
+                                    "country_id": 5,
+                                    "national_team": false,
+                                    "founded": null,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/24\/146712.png",
+                                    "venue_id": null,
+                                    "current_season_id": 23207,
+                                    "is_placeholder": false
+                                }
+                            }
+                        },
+                        {
+                            "position": 19,
+                            "team_id": 128611,
+                            "team_name": "Sao Paulo U20",
+                            "round_id": 336645,
+                            "round_name": 9,
+                            "group_id": null,
+                            "group_name": null,
+                            "overall": {
+                                "games_played": 9,
+                                "won": 0,
+                                "draw": 1,
+                                "lost": 8,
+                                "goals_scored": 19,
+                                "goals_against": 33,
+                                "points": 1
+                            },
+                            "home": {
+                                "games_played": 4,
+                                "won": 0,
+                                "draw": 1,
+                                "lost": 3,
+                                "goals_scored": 7,
+                                "goals_against": 14,
+                                "points": 1
+                            },
+                            "away": {
+                                "games_played": 5,
+                                "won": 0,
+                                "draw": 0,
+                                "lost": 5,
+                                "goals_scored": 12,
+                                "goals_against": 19,
+                                "points": 0
+                            },
+                            "total": {
+                                "goal_difference": "-14",
+                                "points": 1
+                            },
+                            "result": null,
+                            "points": 1,
+                            "recent_form": "LLLLL",
+                            "status": null,
+                            "team": {
+                                "data": {
+                                    "id": 128611,
+                                    "legacy_id": null,
+                                    "name": "Sao Paulo U20",
+                                    "short_code": null,
+                                    "twitter": null,
+                                    "country_id": 5,
+                                    "national_team": false,
+                                    "founded": 0,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/3\/128611.png",
+                                    "venue_id": null,
+                                    "current_season_id": 23358,
+                                    "is_placeholder": false
+                                }
+                            }
+                        },
+                        {
+                            "position": 20,
+                            "team_id": 131610,
+                            "team_name": "Internacional U20",
+                            "round_id": 336645,
+                            "round_name": 9,
+                            "group_id": null,
+                            "group_name": null,
+                            "overall": {
+                                "games_played": 4,
+                                "won": 0,
+                                "draw": 0,
+                                "lost": 4,
+                                "goals_scored": 5,
+                                "goals_against": 12,
+                                "points": 0
+                            },
+                            "home": {
+                                "games_played": 2,
+                                "won": 0,
+                                "draw": 0,
+                                "lost": 2,
+                                "goals_scored": 3,
+                                "goals_against": 6,
+                                "points": 0
+                            },
+                            "away": {
+                                "games_played": 2,
+                                "won": 0,
+                                "draw": 0,
+                                "lost": 2,
+                                "goals_scored": 2,
+                                "goals_against": 6,
+                                "points": 0
+                            },
+                            "total": {
+                                "goal_difference": "-7",
+                                "points": 0
+                            },
+                            "result": null,
+                            "points": 0,
+                            "recent_form": "LLLL",
+                            "status": null,
+                            "team": {
+                                "data": {
+                                    "id": 131610,
+                                    "legacy_id": null,
+                                    "name": "Internacional U20",
+                                    "short_code": null,
+                                    "twitter": null,
+                                    "country_id": 5,
+                                    "national_team": false,
+                                    "founded": 0,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/26\/131610.png",
+                                    "venue_id": null,
+                                    "current_season_id": 21462,
+                                    "is_placeholder": false
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        ],
+        "corner": "9",
+        "btts": "60",
+        "home_win": "-1",
+        "away_win": "-1",
+        "over05": "-1",
+        "over15": "-1",
+        "over25": "-1",
+        "colors": null,
+        "prediction": {
+            "corner": "9",
+            "btts": "-1",
+            "home_win": "-1",
+            "away_win": "-1",
+            "over05": "-1",
+            "over15": "-1",
+            "over25": "-1"
+        }
+    }
+}

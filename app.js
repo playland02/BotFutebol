@@ -96,166 +96,200 @@ bot.command('startbots', async (ctx) => {
                     const params = JSON.parse(bot.params)
                     let new_data = []
                     let tips = []
-                    let tips_submit = []
-                    let total_tips = 0
+
 
                     //nova data sem dados nulos
-                    data.data.forEach((game) => {
-                        try {
+                    data.data.forEach(async (game) => {
 
-                            if (game.stats && game.stats.length > 1) {
-                                for (let i = 0; i < params.length; i++) {
+                        if (game.stats && game.stats.length > 1) {
+                            for (let i = 0; i < params.length; i++) {
 
 
-                                    //shots outsidebox
-                                    if (game.stats.length > 1 &&
-                                        Object.values(params[i]).includes('shots_outsidebox') &&
-                                        game.stats[0].shots && game.stats[1].shots &&
-                                        game.stats[0].shots.outsidebox && game.stats[1].shots.outsidebox
-                                    ) {
-                                        new_data.push(game)
-                                        continue
+                                //odd pre live 
+                                if (Object.values(params[i]).includes('over05ht')) {
+
+                                    const data_odd = await fetch(`https://api.sokkerpro.net/fixture/${game.id}/` + createStringRandom(16)).then((res) => {
+                                        return res.json()
+                                    })
+
+                                    if (data_odd.data && data_odd.data.stats && data_odd.data.stats.length > 1 &&
+                                        data_odd.data.odds && data_odd.data.odds.half_odd) {
+
+                                        const game_market = data_odd.data.odds.half_odd.filter((odd) => {
+                                            return odd.title == "Goals Market"
+                                        })[0].markets.filter((odd) => {
+                                            return odd.id = 975903
+                                        })[0].data[0].value / 100
+
+                                        if (params[i].conditional == '>') {
+                                            if (game_market >= parseFloat(params[i].odd_value)) {
+                                                tips.push(data_odd.data)
+                                                continue
+                                            }
+                                        }
+                                        if (params[i].conditional == '<') {
+                                            if (game_market <= parseFloat(params[i].odd_value)) {
+                                                tips.push(data_odd.data)
+                                                continue
+                                            }
+                                        }
+                                        if (params[i].conditional == '=') {
+                                            if (game_market == parseFloat(params[i].odd_value)) {
+                                                tips.push(data_odd.data)
+                                                continue
+                                            }
+                                        }
+
+
                                     }
-
-
-                                    //shots insidebox
-                                    if (game.stats.length > 1 &&
-                                        Object.values(params[i]).includes('shots_insidebox') &&
-                                        game.stats[0].shots && game.stats[1].shots &&
-                                        game.stats[0].shots.insidebox && game.stats[1].shots.insidebox
-                                    ) {
-                                        new_data.push(game)
-                                        continue
-                                    }
-
-                                    //shots blocked
-                                    if (game.stats.length > 1 &&
-                                        Object.values(params[i]).includes('shots_blocked') &&
-                                        game.stats[0].shots && game.stats[1].shots &&
-                                        game.stats[0].shots.blocked && game.stats[1].shots.blocked
-                                    ) {
-                                        new_data.push(game)
-                                        continue
-                                    }
-
-
-                                    //shots offgoal
-                                    if (game.stats.length > 1 &&
-                                        Object.values(params[i]).includes('shots_offgoal') &&
-                                        game.stats[0].shots && game.stats[1].shots &&
-                                        game.stats[0].shots.offgoal && game.stats[1].shots.offgoal
-                                    ) {
-                                        new_data.push(game)
-                                        continue
-                                    }
-
-
-                                    //shots ongoal
-                                    if (game.stats.length > 1 &&
-                                        Object.values(params[i]).includes('shots_ongoal') &&
-                                        game.stats[0].shots && game.stats[1].shots &&
-                                        game.stats[0].shots.ongoal && game.stats[1].shots.ongoal
-                                    ) {
-                                        new_data.push(game)
-                                        continue
-                                    }
-
-                                    //shots total
-                                    if (game.stats.length > 1 &&
-                                        Object.values(params[i]).includes('shots_total') &&
-                                        game.stats[0].shots && game.stats[1].shots &&
-                                        game.stats[0].shots.total && game.stats[1].shots.total
-                                    ) {
-                                        new_data.push(game)
-                                        continue
-                                    }
-
-
-
-                                    //apm
-                                    if (game.stats.length > 1 &&
-                                        Object.values(params[i]).includes('apm') &&
-                                        game.stats[0].attacks && game.stats[1].attacks &&
-                                        game.stats[0].attacks.avg_attacks && game.stats[1].attacks.avg_attacks
-                                    ) {
-                                        new_data.push(game)
-                                        continue
-                                    }
-
-                                    //appm
-                                    if (Object.values(params[i]).includes('appm') &&
-                                        game.stats.length > 1 &&
-                                        game.stats[0].attacks && game.stats[1].attacks &&
-                                        game.stats[0].attacks.avg_dangerous_attacks && game.stats[1].attacks.avg_dangerous_attacks
-                                    ) {
-
-                                        new_data.push(game)
-                                        continue
-                                    }
-
-                                    //attacks
-                                    if (game.stats.length > 1 &&
-                                        Object.values(params[i]).includes('attacks') &&
-                                        game.stats[0].attacks && game.stats[1].attacks &&
-                                        game.stats[0].attacks.attacks && game.stats[1].attacks.attacks
-                                    ) {
-                                        new_data.push(game)
-                                        continue
-                                    }
-
-
-                                    //dangerous_attacks
-                                    if (Object.values(params[i]).includes('dangerous_attacks') &&
-                                        game.stats &&
-                                        game.stats.length > 1 &&
-                                        game.stats[0].attacks && game.stats[1].attacks &&
-                                        game.stats[0].attacks.dangerous_attacks && game.stats[1].attacks.dangerous_attacks
-                                    ) {
-                                        new_data.push(game)
-                                        continue
-                                    }
-
-                                    //corners
-                                    if (game.stats.length > 1 &&
-                                        Object.values(params[i]).includes('corners') &&
-                                        game.stats[0].corners && game.stats[1].corners
-
-                                    ) {
-                                        new_data.push(game)
-                                        continue
-                                    }
-
-
-                                    //ball_possession
-                                    if (game.stats.length > 1 &&
-                                        Object.values(params[i]).includes('ball_possession') &&
-                                        game.stats[0].passes && game.stats[1].passes &&
-                                        game.stats[0].passes.percentage && game.stats[1].passes.percentage
-                                    ) {
-                                        new_data.push(game)
-                                        continue
-                                    }
-                                    //pression
-                                    if (Object.values(params[i]).includes('pression') &&
-                                        game.home_score && game.away_score
-
-                                    ) {
-                                        new_data.push(game)
-                                        continue
-                                    }
-                                    //minutes
-                                    if (Object.values(params[i]).includes('minutes') &&
-                                        game.time && game.time.minute
-
-                                    ) {
-                                        new_data.push(game)
-                                        continue
-                                    }
-
                                 }
+
+                                //shots outsidebox
+                                if (game.stats.length > 1 &&
+                                    Object.values(params[i]).includes('shots_outsidebox') &&
+                                    game.stats[0].shots && game.stats[1].shots &&
+                                    game.stats[0].shots.outsidebox && game.stats[1].shots.outsidebox
+                                ) {
+                                    new_data.push(game)
+                                    continue
+                                }
+
+
+                                //shots insidebox
+                                if (game.stats.length > 1 &&
+                                    Object.values(params[i]).includes('shots_insidebox') &&
+                                    game.stats[0].shots && game.stats[1].shots &&
+                                    game.stats[0].shots.insidebox && game.stats[1].shots.insidebox
+                                ) {
+                                    new_data.push(game)
+                                    continue
+                                }
+
+                                //shots blocked
+                                if (game.stats.length > 1 &&
+                                    Object.values(params[i]).includes('shots_blocked') &&
+                                    game.stats[0].shots && game.stats[1].shots &&
+                                    game.stats[0].shots.blocked && game.stats[1].shots.blocked
+                                ) {
+                                    new_data.push(game)
+                                    continue
+                                }
+
+
+                                //shots offgoal
+                                if (game.stats.length > 1 &&
+                                    Object.values(params[i]).includes('shots_offgoal') &&
+                                    game.stats[0].shots && game.stats[1].shots &&
+                                    game.stats[0].shots.offgoal && game.stats[1].shots.offgoal
+                                ) {
+                                    new_data.push(game)
+                                    continue
+                                }
+
+
+                                //shots ongoal
+                                if (game.stats.length > 1 &&
+                                    Object.values(params[i]).includes('shots_ongoal') &&
+                                    game.stats[0].shots && game.stats[1].shots &&
+                                    game.stats[0].shots.ongoal && game.stats[1].shots.ongoal
+                                ) {
+                                    new_data.push(game)
+                                    continue
+                                }
+
+                                //shots total
+                                if (Object.values(params[i]).includes('shots_total') &&
+                                    game.stats.length > 1 &&
+                                    game.stats[0].shots && game.stats[1].shots &&
+                                    game.stats[0].shots.total && game.stats[1].shots.total
+                                ) {
+                                    new_data.push(game)
+                                    continue
+                                }
+
+
+
+                                //apm
+                                if (game.stats.length > 1 &&
+                                    Object.values(params[i]).includes('apm') &&
+                                    game.stats[0].attacks && game.stats[1].attacks &&
+                                    game.stats[0].attacks.avg_attacks && game.stats[1].attacks.avg_attacks
+                                ) {
+                                    new_data.push(game)
+                                    continue
+                                }
+
+                                //appm
+                                if (Object.values(params[i]).includes('appm') &&
+                                    game.stats.length > 1 &&
+                                    game.stats[0].attacks && game.stats[1].attacks &&
+                                    game.stats[0].attacks.avg_dangerous_attacks && game.stats[1].attacks.avg_dangerous_attacks
+                                ) {
+
+                                    new_data.push(game)
+                                    continue
+                                }
+
+                                //attacks
+                                if (game.stats.length > 1 &&
+                                    Object.values(params[i]).includes('attacks') &&
+                                    game.stats[0].attacks && game.stats[1].attacks &&
+                                    game.stats[0].attacks.attacks && game.stats[1].attacks.attacks
+                                ) {
+                                    new_data.push(game)
+                                    continue
+                                }
+
+
+                                //dangerous_attacks
+                                if (Object.values(params[i]).includes('dangerous_attacks') &&
+                                    game.stats &&
+                                    game.stats.length > 1 &&
+                                    game.stats[0].attacks && game.stats[1].attacks &&
+                                    game.stats[0].attacks.dangerous_attacks && game.stats[1].attacks.dangerous_attacks
+                                ) {
+                                    new_data.push(game)
+                                    continue
+                                }
+
+                                //corners
+                                if (game.stats.length > 1 &&
+                                    Object.values(params[i]).includes('corners') &&
+                                    game.stats[0].corners && game.stats[1].corners
+
+                                ) {
+                                    new_data.push(game)
+                                    continue
+                                }
+
+
+                                //ball_possession
+                                if (game.stats.length > 1 &&
+                                    Object.values(params[i]).includes('ball_possession') &&
+                                    game.stats[0].passes && game.stats[1].passes &&
+                                    game.stats[0].passes.percentage && game.stats[1].passes.percentage
+                                ) {
+                                    new_data.push(game)
+                                    continue
+                                }
+                                //pression
+                                if (Object.values(params[i]).includes('pression') &&
+                                    game.home_score && game.away_score
+
+                                ) {
+                                    new_data.push(game)
+                                    continue
+                                }
+                                //minutes
+                                if (Object.values(params[i]).includes('minutes') &&
+                                    game.time && game.time.minute
+
+                                ) {
+                                    new_data.push(game)
+                                    continue
+                                }
+
                             }
-                        } catch (error) {
-                            console.log(error)
                         }
 
 
@@ -265,17 +299,19 @@ bot.command('startbots', async (ctx) => {
 
 
                         for (let i = 0; i < params.length; i++) {
+
                             //param minutes
                             if ((params[i].property == "minutes")) {
                                 if (tips.length > 0) {
                                     tips = tips.filter((game) => {
-                                        return game.time.minute >= params[i].minute_from && game.time.minute <= params[i].minute_until
+                                        return (game.time.minute >= parseInt(params[i].minute_from)) && (game.time.minute <= parseInt(params[i].minute_until))
                                     })
                                 } else {
                                     tips = new_data.filter((game) => {
-                                        return game.time.minute >= params[i].minute_from && game.time.minute <= params[i].minute_until
+                                        return (game.time.minute >= parseInt(params[i].minute_from)) && (game.time.minute <= parseInt(params[i].minute_until))
                                     })
                                 }
+                                
                                 continue
 
                             }
@@ -287,7 +323,7 @@ bot.command('startbots', async (ctx) => {
                                         tips = tips.filter(game => {
                                             let score_total = parseInt(game.home_score) + parseInt(game.away_score)
                                             let score = Math.round((parseInt(game.home_score) / score_total) * 100)
-                                            return score >= params[i].value
+                                            return score >= parseFloat(params[i].value)
                                         })
 
                                     } else {
@@ -295,7 +331,7 @@ bot.command('startbots', async (ctx) => {
                                             let score_total = parseInt(game.home_score) + parseInt(game.away_score)
                                             let score = Math.round((parseInt(game.home_score) / score_total) * 100)
 
-                                            return score >= params[i].value
+                                            return score >= parseFloat(params[i].value)
                                         })
 
                                     }
@@ -308,7 +344,7 @@ bot.command('startbots', async (ctx) => {
                                         tips = tips.filter(game => {
                                             let score_total = parseInt(game.home_score) + parseInt(game.away_score)
                                             let score = Math.round((parseInt(game.away_score) / score_total) * 100)
-                                            return score >= params[i].value
+                                            return score >= parseFloat(params[i].value)
                                         })
 
                                     } else {
@@ -316,7 +352,7 @@ bot.command('startbots', async (ctx) => {
                                             let score_total = parseInt(game.home_score) + parseInt(game.away_score)
                                             let score = Math.round((parseInt(game.away_score) / score_total) * 100)
 
-                                            return score >= params[i].value
+                                            return score >= parseFloat(params[i].value)
                                         })
 
                                     }
@@ -330,7 +366,7 @@ bot.command('startbots', async (ctx) => {
                                             let score_total = parseInt(game.home_score) + parseInt(game.away_score)
                                             let score = Math.round((parseInt(game.home_score) / score_total) * 100)
                                             let score_2 = Math.round((parseInt(game.away_score) / score_total) * 100)
-                                            return score >= params[i].value || score_2 >= params[i].value
+                                            return score >= parseFloat(params[i].value) || score_2 >= parseFloat(params[i].value)
                                         })
 
                                     } else {
@@ -338,7 +374,8 @@ bot.command('startbots', async (ctx) => {
                                             let score_total = parseInt(game.home_score) + parseInt(game.away_score)
                                             let score = Math.round((parseInt(game.home_score) / score_total) * 100)
                                             let score_2 = Math.round((parseInt(game.away_score) / score_total) * 100)
-                                            return score >= params[i].value || score_2 >= params[i].value
+
+                                            return score >= parseFloat(params[i].value) || score_2 >= parseFloat(params[i].value)
                                         })
 
                                     }
@@ -346,1721 +383,6 @@ bot.command('startbots', async (ctx) => {
 
                                 }
                             }
-
-                            //params Ball possession 
-                            if (params[i].property == "ball_possession") {
-                                if (params[i].target == "home") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].passes.percentage >= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].passes.percentage >= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "away") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return (game.stats[1].passes.percentage != null) && (game.stats[1].passes.percentage >= params[i].value)
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return (game.stats[1].passes.percentage != null) && (game.stats[1].passes.percentage >= params[i].value)
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "home_or_away") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return (game.stats[0].passes.percentage != null) && (game.stats[1].passes.percentage != null) && (game.stats[0].passes.percentage >= params[i].value || game.stats[1].passes.percentage >= params[i].value)
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return (game.stats[0].passes.percentage != null) && (game.stats[1].passes.percentage != null) && (game.stats[0].passes.percentage >= params[i].value || game.stats[1].passes.percentage >= params[i].value)
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                            }
-                            //
-
-                            //params corners
-                            if (params[i].property == "corners") {
-                                if (params[i].target == "home" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].corners >= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].corners >= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[1].corners >= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[1].passes.corners >= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].corners >= params[i].value || game.stats[1].corners >= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].corners >= params[i].value || game.stats[1].corners >= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                //
-                                if (params[i].target == "home" && params[i].conditional == "<") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].corners <= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].corners <= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[1].corners <= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[1].passes.corners <= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].corners <= params[i].value || game.stats[1].corners <= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].corners <= params[i].value || game.stats[1].corners <= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-
-                                //corners == 
-                                if (params[i].target == "home" && params[i].conditional == "=") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].corners == params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].corners == params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[1].corners == params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[1].passes.corners == params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].corners == params[i].value || game.stats[1].corners == params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].corners == params[i].value || game.stats[1].corners == params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                            }
-
-                            //dangerous attacks 
-                            if (params[i].property == "dangerous_attacks") {
-
-                                if (params[i].target == "home" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].attacks.dangerous_attacks >= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].attacks.dangerous_attacks >= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[1].attacks.dangerous_attacks >= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[1].passes.attacks.dangerous_attacks >= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].attacks.dangerous_attacks >= params[i].value || game.stats[1].attacks.dangerous_attacks >= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].attacks.dangerous_attacks >= params[i].value || game.stats[1].attacks.dangerous_attacks >= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                //
-                                if (params[i].target == "home" && params[i].conditional == "<") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].attacks.dangerous_attacks <= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].attacks.dangerous_attacks <= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "away" && params[i].conditional == "<") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[1].attacks.dangerous_attacks <= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[1].passes.attacks.dangerous_attacks <= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "home_or_away" && params[i].conditional == "<") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].attacks.dangerous_attacks <= params[i].value || game.stats[1].attacks.dangerous_attacks <= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].attacks.dangerous_attacks <= params[i].value || game.stats[1].attacks.dangerous_attacks <= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-
-                                //attacks.dangerous_attacks == 
-                                if (params[i].target == "home" && params[i].conditional == "=") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].attacks.dangerous_attacks == params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].attacks.dangerous_attacks == params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "away" && params[i].conditional == "=") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[1].attacks.dangerous_attacks == params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[1].passes.attacks.dangerous_attacks == params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "home_or_away" && params[i].conditional == "=") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].attacks.dangerous_attacks == params[i].value || game.stats[1].attacks.dangerous_attacks == params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].attacks.dangerous_attacks == params[i].value || game.stats[1].attacks.dangerous_attacks == params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                            }
-
-                            //attacks > 
-                            if (params[i].property == "attacks") {
-                                if (params[i].target == "home" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].attacks.attacks >= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].attacks.attacks >= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[1].attacks.attacks >= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[1].passes.attacks.attacks >= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].attacks.attacks >= params[i].value || game.stats[1].attacks.attacks >= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].attacks.attacks >= params[i].value || game.stats[1].attacks.attacks >= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                //
-                                if (params[i].target == "home" && params[i].conditional == "<") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].attacks.attacks <= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].attacks.attacks <= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[1].attacks.attacks <= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[1].passes.attacks.attacks <= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].attacks.attacks <= params[i].value || game.stats[1].attacks.attacks <= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].attacks.attacks <= params[i].value || game.stats[1].attacks.attacks <= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-
-                                //attacks.attacks == 
-                                if (params[i].target == "home" && params[i].conditional == "=") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].attacks.attacks == params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].attacks.attacks == params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[1].attacks.attacks == params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[1].passes.attacks.attacks == params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].attacks.attacks == params[i].value || game.stats[1].attacks.attacks == params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].attacks.attacks == params[i].value || game.stats[1].attacks.attacks == params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                            }
-
-                            //appm 
-                            if (params[i].property == "appm") {
-                                if (params[i].target == "home" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].attacks.avg_dangerous_attacks >= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].attacks.avg_dangerous_attacks >= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[1].attacks.avg_dangerous_attacks >= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[1].passes.attacks.avg_dangerous_attacks >= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].attacks.avg_dangerous_attacks >= params[i].value || game.stats[1].attacks.avg_dangerous_attacks >= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].attacks.avg_dangerous_attacks >= params[i].value || game.stats[1].attacks.avg_dangerous_attacks >= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                //
-                                if (params[i].target == "home" && params[i].conditional == "<") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].attacks.avg_dangerous_attacks <= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].attacks.avg_dangerous_attacks <= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[1].attacks.avg_dangerous_attacks <= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[1].passes.attacks.avg_dangerous_attacks <= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].attacks.avg_dangerous_attacks <= params[i].value || game.stats[1].attacks.avg_dangerous_attacks <= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].attacks.avg_dangerous_attacks <= params[i].value || game.stats[1].attacks.avg_dangerous_attacks <= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-
-                                //attacks.avg_dangerous_attacks == 
-                                if (params[i].target == "home" && params[i].conditional == "=") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].attacks.avg_dangerous_attacks == params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].attacks.avg_dangerous_attacks == params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[1].attacks.avg_dangerous_attacks == params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[1].passes.attacks.avg_dangerous_attacks == params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].attacks.avg_dangerous_attacks == params[i].value || game.stats[1].attacks.avg_dangerous_attacks == params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].attacks.avg_dangerous_attacks == params[i].value || game.stats[1].attacks.avg_dangerous_attacks == params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                            }
-
-
-                            //APM
-                            if (params[i].property == "apm") {
-                                if (params[i].target == "home" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].attacks.avg_attacks >= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].attacks.avg_attacks >= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[1].attacks.avg_attacks >= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[1].passes.attacks.avg_attacks >= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].attacks.avg_attacks >= params[i].value || game.stats[1].attacks.avg_attacks >= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].attacks.avg_attacks >= params[i].value || game.stats[1].attacks.avg_attacks >= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                //
-                                if (params[i].target == "home" && params[i].conditional == "<") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].attacks.avg_attacks <= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].attacks.avg_attacks <= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[1].attacks.avg_attacks <= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[1].passes.attacks.avg_attacks <= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].attacks.avg_attacks <= params[i].value || game.stats[1].attacks.avg_attacks <= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].attacks.avg_attacks <= params[i].value || game.stats[1].attacks.avg_attacks <= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-
-                                //attacks.avg_attacks == 
-                                if (params[i].target == "home" && params[i].conditional == "=") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].attacks.avg_attacks == params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].attacks.avg_attacks == params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[1].attacks.avg_attacks == params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[1].passes.attacks.avg_attacks == params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].attacks.avg_attacks == params[i].value || game.stats[1].attacks.avg_attacks == params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].attacks.avg_attacks == params[i].value || game.stats[1].attacks.avg_attacks == params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                            }
-                            //shots total
-                            if (params[i].property == "shots_total") {
-                                if (params[i].target == "home" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].shots.total >= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].shots.total >= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[1].shots.total >= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[1].passes.shots.total >= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].shots.total >= params[i].value || game.stats[1].shots.total >= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].shots.total >= params[i].value || game.stats[1].shots.total >= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                //
-                                if (params[i].target == "home" && params[i].conditional == "<") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].shots.total <= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].shots.total <= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[1].shots.total <= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[1].passes.shots.total <= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].shots.total <= params[i].value || game.stats[1].shots.total <= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].shots.total <= params[i].value || game.stats[1].shots.total <= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-
-                                //shots.total == 
-                                if (params[i].target == "home" && params[i].conditional == "=") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].shots.total == params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].shots.total == params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[1].shots.total == params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[1].passes.shots.total == params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].shots.total == params[i].value || game.stats[1].shots.total == params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].shots.total == params[i].value || game.stats[1].shots.total == params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                            }
-                            // shots ongoal
-                            if (params[i].property == "shots_ongoal") {
-                                if (params[i].target == "home" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].shots.ongoal >= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].shots.ongoal >= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[1].shots.ongoal >= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[1].passes.shots.ongoal >= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].shots.ongoal >= params[i].value || game.stats[1].shots.ongoal >= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].shots.ongoal >= params[i].value || game.stats[1].shots.ongoal >= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                //
-                                if (params[i].target == "home" && params[i].conditional == "<") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].shots.ongoal <= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].shots.ongoal <= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[1].shots.ongoal <= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[1].passes.shots.ongoal <= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].shots.ongoal <= params[i].value || game.stats[1].shots.ongoal <= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].shots.ongoal <= params[i].value || game.stats[1].shots.ongoal <= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-
-                                //shots.ongoal == 
-                                if (params[i].target == "home" && params[i].conditional == "=") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].shots.ongoal == params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].shots.ongoal == params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[1].shots.ongoal == params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[1].passes.shots.ongoal == params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].shots.ongoal == params[i].value || game.stats[1].shots.ongoal == params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].shots.ongoal == params[i].value || game.stats[1].shots.ongoal == params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                            }
-                            // shots offgoal
-                            if (params[i].property == "shots_offgoal") {
-                                if (params[i].target == "home" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].shots.offgoal >= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].shots.offgoal >= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[1].shots.offgoal >= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[1].passes.shots.offgoal >= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].shots.offgoal >= params[i].value || game.stats[1].shots.offgoal >= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].shots.offgoal >= params[i].value || game.stats[1].shots.offgoal >= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                //
-                                if (params[i].target == "home" && params[i].conditional == "<") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].shots.offgoal <= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].shots.offgoal <= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[1].shots.offgoal <= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[1].passes.shots.offgoal <= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].shots.offgoal <= params[i].value || game.stats[1].shots.offgoal <= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].shots.offgoal <= params[i].value || game.stats[1].shots.offgoal <= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-
-                                //shots.offgoal == 
-                                if (params[i].target == "home" && params[i].conditional == "=") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].shots.offgoal == params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].shots.offgoal == params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[1].shots.offgoal == params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[1].passes.shots.offgoal == params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].shots.offgoal == params[i].value || game.stats[1].shots.offgoal == params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].shots.offgoal == params[i].value || game.stats[1].shots.offgoal == params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                            }
-                            //
-                            // shots blocked
-                            if (params[i].property == "shots_blocked") {
-                                if (params[i].target == "home" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].shots.blocked >= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].shots.blocked >= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[1].shots.blocked >= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[1].passes.shots.blocked >= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].shots.blocked >= params[i].value || game.stats[1].shots.blocked >= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].shots.blocked >= params[i].value || game.stats[1].shots.blocked >= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                //
-                                if (params[i].target == "home" && params[i].conditional == "<") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].shots.blocked <= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].shots.blocked <= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[1].shots.blocked <= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[1].passes.shots.blocked <= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].shots.blocked <= params[i].value || game.stats[1].shots.blocked <= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].shots.blocked <= params[i].value || game.stats[1].shots.blocked <= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-
-                                //shots.blocked == 
-                                if (params[i].target == "home" && params[i].conditional == "=") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].shots.blocked == params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].shots.blocked == params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[1].shots.blocked == params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[1].passes.shots.blocked == params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].shots.blocked == params[i].value || game.stats[1].shots.blocked == params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].shots.blocked == params[i].value || game.stats[1].shots.blocked == params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                            }
-                            //
-                            // shots insidebox
-                            if (params[i].property == "shots_insidebox") {
-                                if (params[i].target == "home" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].shots.insidebox >= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].shots.insidebox >= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[1].shots.insidebox >= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[1].passes.shots.insidebox >= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].shots.insidebox >= params[i].value || game.stats[1].shots.insidebox >= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].shots.insidebox >= params[i].value || game.stats[1].shots.insidebox >= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                //
-                                if (params[i].target == "home" && params[i].conditional == "<") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].shots.insidebox <= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].shots.insidebox <= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[1].shots.insidebox <= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[1].passes.shots.insidebox <= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].shots.insidebox <= params[i].value || game.stats[1].shots.insidebox <= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].shots.insidebox <= params[i].value || game.stats[1].shots.insidebox <= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-
-                                //shots.insidebox == 
-                                if (params[i].target == "home" && params[i].conditional == "=") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].shots.insidebox == params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].shots.insidebox == params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[1].shots.insidebox == params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[1].passes.shots.insidebox == params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].shots.insidebox == params[i].value || game.stats[1].shots.insidebox == params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].shots.insidebox == params[i].value || game.stats[1].shots.insidebox == params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                            }
-                            //
-                            // shots offside
-                            if (params[i].property == "shots_offside") {
-                                if (params[i].target == "home" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].shots.outsidebox >= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].shots.outsidebox >= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[1].shots.outsidebox >= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[1].passes.shots.outsidebox >= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].shots.outsidebox >= params[i].value || game.stats[1].shots.outsidebox >= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].shots.outsidebox >= params[i].value || game.stats[1].shots.outsidebox >= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                //
-                                if (params[i].target == "home" && params[i].conditional == "<") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].shots.outsidebox <= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].shots.outsidebox <= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[1].shots.outsidebox <= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[1].passes.shots.outsidebox <= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].shots.outsidebox <= params[i].value || game.stats[1].shots.outsidebox <= params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].shots.outsidebox <= params[i].value || game.stats[1].shots.outsidebox <= params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-
-                                //shots.outsidebox == 
-                                if (params[i].target == "home" && params[i].conditional == "=") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].shots.outsidebox == params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].shots.outsidebox == params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[1].shots.outsidebox == params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[1].passes.shots.outsidebox == params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
-                                    if (tips.length > 0) {
-
-                                        tips = tips.filter(game => {
-                                            return game.stats[0].shots.outsidebox == params[i].value || game.stats[1].shots.outsidebox == params[i].value
-                                        })
-
-                                    } else {
-                                        tips = new_data.filter(game => {
-                                            return game.stats[0].shots.outsidebox == params[i].value || game.stats[1].shots.outsidebox == params[i].value
-                                        })
-
-                                    }
-                                    continue
-
-                                }
-                            }
-                            //
 
                         }
                     }
@@ -2101,7 +423,8 @@ bot.command('startbots', async (ctx) => {
                         }
 
                     }
-
+                    tips = []
+                    new_data = []
                 })
             }
         }, 30000)

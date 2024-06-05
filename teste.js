@@ -17,6 +17,7 @@ if (data_odd.data && data_odd.data.stats && data_odd.data.stats.length > 1 &&
 }
 
 
+
 function createStringRandom(length) {
     var stringRandom = '';
     var caract = 'abcdefghijklmnopqrstuvwxyz0123456789';

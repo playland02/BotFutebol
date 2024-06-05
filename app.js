@@ -96,6 +96,7 @@ bot.command('startbots', async (ctx) => {
                     const params = JSON.parse(bot.params)
                     let new_data = []
                     let tips = []
+                    let isTip = false
 
 
                     //nova data sem dados nulos
@@ -139,8 +140,6 @@ bot.command('startbots', async (ctx) => {
                                                 continue
                                             }
                                         }
-
-
                                     }
                                 }
 
@@ -294,6 +293,7 @@ bot.command('startbots', async (ctx) => {
 
 
                     })
+
                     //analisa os parametros
                     if (new_data.length > 0) {
 
@@ -303,15 +303,36 @@ bot.command('startbots', async (ctx) => {
                             //param minutes
                             if ((params[i].property == "minutes")) {
                                 if (tips.length > 0) {
-                                    tips = tips.filter((game) => {
-                                        return (game.time.minute >= parseInt(params[i].minute_from)) && (game.time.minute <= parseInt(params[i].minute_until))
+
+                                    let isFound = tips.filter((game) => {
+                                        return parseInt(params[i].minute_from) <= game.time.minute && game.time.minute <= parseInt(params[i].minute_until)
                                     })
+
+                                    if (isFound.length > 0) {
+                                        tips = isFound
+                                    } else {
+
+                                        tips = []
+                                        break
+                                    }
+
+
                                 } else {
-                                    tips = new_data.filter((game) => {
-                                        return (game.time.minute >= parseInt(params[i].minute_from)) && (game.time.minute <= parseInt(params[i].minute_until))
+                                    let isFound = new_data.filter((game) => {
+                                        40
+                                        return parseInt(params[i].minute_from) <= game.time.minute && game.time.minute <= parseInt(params[i].minute_until)
                                     })
+
+                                    if (isFound.length > 0) {
+                                        tips = isFound
+                                    } else {
+
+                                        tips = []
+                                        break
+                                    }
+
                                 }
-                                
+
                                 continue
 
                             }
@@ -320,19 +341,35 @@ bot.command('startbots', async (ctx) => {
                                 if (params[i].target == "home") {
                                     if (tips.length > 0) {
 
-                                        tips = tips.filter(game => {
+                                        let isFound = tips.filter(game => {
                                             let score_total = parseInt(game.home_score) + parseInt(game.away_score)
                                             let score = Math.round((parseInt(game.home_score) / score_total) * 100)
                                             return score >= parseFloat(params[i].value)
                                         })
+
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
 
                                     } else {
-                                        tips = new_data.filter(game => {
+                                        let isFound = new_data.filter(game => {
                                             let score_total = parseInt(game.home_score) + parseInt(game.away_score)
                                             let score = Math.round((parseInt(game.home_score) / score_total) * 100)
-
                                             return score >= parseFloat(params[i].value)
                                         })
+
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
 
                                     }
                                     continue
@@ -341,19 +378,34 @@ bot.command('startbots', async (ctx) => {
                                 if (params[i].target == "away") {
                                     if (tips.length > 0) {
 
-                                        tips = tips.filter(game => {
+                                        let isFound = tips.filter(game => {
                                             let score_total = parseInt(game.home_score) + parseInt(game.away_score)
                                             let score = Math.round((parseInt(game.away_score) / score_total) * 100)
                                             return score >= parseFloat(params[i].value)
                                         })
+
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
 
                                     } else {
-                                        tips = new_data.filter(game => {
+                                        let isFound = new_data.filter(game => {
                                             let score_total = parseInt(game.home_score) + parseInt(game.away_score)
                                             let score = Math.round((parseInt(game.away_score) / score_total) * 100)
 
                                             return score >= parseFloat(params[i].value)
                                         })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
 
                                     }
                                     continue
@@ -362,21 +414,3071 @@ bot.command('startbots', async (ctx) => {
                                 if (params[i].target == "home_or_away") {
                                     if (tips.length > 0) {
 
-                                        tips = tips.filter(game => {
+                                        let isFound = tips.filter(game => {
                                             let score_total = parseInt(game.home_score) + parseInt(game.away_score)
                                             let score = Math.round((parseInt(game.home_score) / score_total) * 100)
                                             let score_2 = Math.round((parseInt(game.away_score) / score_total) * 100)
                                             return score >= parseFloat(params[i].value) || score_2 >= parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            let score_total = parseInt(game.home_score) + parseInt(game.away_score)
+                                            let score = Math.round((parseInt(game.home_score) / score_total) * 100)
+                                            let score_2 = Math.round((parseInt(game.away_score) / score_total) * 100)
+
+                                            return score >= parseFloat(params[i].value) || score_2 >= parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                            }
+                            ////params corners
+                            if (params[i].property == "corners") {
+                                if (params[i].target == "home" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].corners >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].corners >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[1].corners >= parseInt(params[i].value)
+                                        })
+
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[1].passes.corners >= parseInt(params[i].value)
+                                        })
+
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].corners >= parseInt(params[i].value) || game.stats[1].corners >= parseInt(params[i].value)
+                                        })
+
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].corners >= parseInt(params[i].value) || game.stats[1].corners >= parseInt(params[i].value)
+                                        })
+
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                //
+                                if (params[i].target == "home" && params[i].conditional == "<") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].corners <= parseInt(params[i].value)
+                                        })
+
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].corners <= parseInt(params[i].value)
+                                        })
+
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[1].corners <= parseInt(params[i].value)
+                                        })
+
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[1].passes.corners <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].corners <= parseInt(params[i].value) || game.stats[1].corners <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].corners <= parseInt(params[i].value) || game.stats[1].corners <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+
+                                //corners == 
+                                if (params[i].target == "home" && params[i].conditional == "=") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].corners == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].corners == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[1].corners == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[1].passes.corners == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].corners == parseInt(params[i].value) || game.stats[1].corners == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].corners == parseInt(params[i].value) || game.stats[1].corners == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                            }
+                            //dangerous attacks
+                            if (params[i].property == "dangerous_attacks") {
+
+                                if (params[i].target == "home" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].attacks.dangerous_attacks >= parseInt(params[i].value)
+                                        })
+
+
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].attacks.dangerous_attacks >= parseInt(params[i].value)
+                                        })
+
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[1].attacks.dangerous_attacks >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[1].passes.attacks.dangerous_attacks >= parseInt(params[i].value)
+                                        })
+
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].attacks.dangerous_attacks >= parseInt(params[i].value) || game.stats[1].attacks.dangerous_attacks >= parseInt(params[i].value)
+                                        })
+
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].attacks.dangerous_attacks >= parseInt(params[i].value) || game.stats[1].attacks.dangerous_attacks >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                //
+                                if (params[i].target == "home" && params[i].conditional == "<") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].attacks.dangerous_attacks <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].attacks.dangerous_attacks <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "away" && params[i].conditional == "<") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[1].attacks.dangerous_attacks <= parseInt(params[i].value)
+                                        })
+
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[1].passes.attacks.dangerous_attacks <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "home_or_away" && params[i].conditional == "<") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].attacks.dangerous_attacks <= parseInt(params[i].value) || game.stats[1].attacks.dangerous_attacks <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].attacks.dangerous_attacks <= parseInt(params[i].value) || game.stats[1].attacks.dangerous_attacks <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+
+                                //attacks.dangerous_attacks == 
+                                if (params[i].target == "home" && params[i].conditional == "=") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].attacks.dangerous_attacks == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].attacks.dangerous_attacks == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "away" && params[i].conditional == "=") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[1].attacks.dangerous_attacks == parseInt(params[i].value)
                                         })
 
                                     } else {
-                                        tips = new_data.filter(game => {
-                                            let score_total = parseInt(game.home_score) + parseInt(game.away_score)
-                                            let score = Math.round((parseInt(game.home_score) / score_total) * 100)
-                                            let score_2 = Math.round((parseInt(game.away_score) / score_total) * 100)
-
-                                            return score >= parseFloat(params[i].value) || score_2 >= parseFloat(params[i].value)
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[1].passes.attacks.dangerous_attacks == parseInt(params[i].value)
                                         })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "home_or_away" && params[i].conditional == "=") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].attacks.dangerous_attacks == parseInt(params[i].value) || game.stats[1].attacks.dangerous_attacks == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].attacks.dangerous_attacks == parseInt(params[i].value) || game.stats[1].attacks.dangerous_attacks == parseInt(params[i].value)
+                                        })
+
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                            }
+                            //attacks > 
+                            if (params[i].property == "attacks") {
+                                if (params[i].target == "home" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].attacks.attacks >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].attacks.attacks >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[1].attacks.attacks >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[1].passes.attacks.attacks >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].attacks.attacks >= parseInt(params[i].value) || game.stats[1].attacks.attacks >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].attacks.attacks >= parseInt(params[i].value) || game.stats[1].attacks.attacks >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                //
+                                if (params[i].target == "home" && params[i].conditional == "<") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].attacks.attacks <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].attacks.attacks <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[1].attacks.attacks <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[1].passes.attacks.attacks <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].attacks.attacks <= parseInt(params[i].value) || game.stats[1].attacks.attacks <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].attacks.attacks <= parseInt(params[i].value) || game.stats[1].attacks.attacks <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+
+                                //attacks.attacks == 
+                                if (params[i].target == "home" && params[i].conditional == "=") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].attacks.attacks == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].attacks.attacks == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[1].attacks.attacks == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[1].passes.attacks.attacks == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].attacks.attacks == parseInt(params[i].value) || game.stats[1].attacks.attacks == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].attacks.attacks == parseInt(params[i].value) || game.stats[1].attacks.attacks == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                            }
+                            ////appm 
+                            if (params[i].property == "appm") {
+                                if (params[i].target == "home" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].attacks.avg_dangerous_attacks >= parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].attacks.avg_dangerous_attacks >= parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[1].attacks.avg_dangerous_attacks >= parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[1].passes.attacks.avg_dangerous_attacks >= parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].attacks.avg_dangerous_attacks >= parseFloat(params[i].value) || game.stats[1].attacks.avg_dangerous_attacks >= parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].attacks.avg_dangerous_attacks >= parseFloat(params[i].value) || game.stats[1].attacks.avg_dangerous_attacks >= parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+
+                                    }
+                                    continue
+
+                                }
+                                //
+                                if (params[i].target == "home" && params[i].conditional == "<") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].attacks.avg_dangerous_attacks <= parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].attacks.avg_dangerous_attacks <= parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "away" && params[i].conditional == "<") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[1].attacks.avg_dangerous_attacks <= parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[1].passes.attacks.avg_dangerous_attacks <= parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "home_or_away" && params[i].conditional == "<") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].attacks.avg_dangerous_attacks <= parseFloat(params[i].value) || game.stats[1].attacks.avg_dangerous_attacks <= parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].attacks.avg_dangerous_attacks <= parseFloat(params[i].value) || game.stats[1].attacks.avg_dangerous_attacks <= parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+
+                                    }
+                                    continue
+
+                                }
+
+                                //attacks.avg_dangerous_attacks == 
+                                if (params[i].target == "home" && params[i].conditional == "=") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].attacks.avg_dangerous_attacks == parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].attacks.avg_dangerous_attacks == parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "away" && params[i].conditional == "=") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[1].attacks.avg_dangerous_attacks == parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[1].passes.attacks.avg_dangerous_attacks == parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "home_or_away" && params[i].conditional == "=") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].attacks.avg_dangerous_attacks == parseFloat(params[i].value) || game.stats[1].attacks.avg_dangerous_attacks == parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].attacks.avg_dangerous_attacks == parseFloat(params[i].value) || game.stats[1].attacks.avg_dangerous_attacks == parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+
+                                    }
+                                    continue
+
+                                }
+                            }
+                            //APM
+                            if (params[i].property == "apm") {
+                                if (params[i].target == "home" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].attacks.avg_attacks >= parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].attacks.avg_attacks >= parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[1].attacks.avg_attacks >= parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[1].passes.attacks.avg_attacks >= parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].attacks.avg_attacks >= parseFloat(params[i].value) || game.stats[1].attacks.avg_attacks >= parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].attacks.avg_attacks >= parseFloat(params[i].value) || game.stats[1].attacks.avg_attacks >= parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                //
+                                if (params[i].target == "home" && params[i].conditional == "<") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].attacks.avg_attacks <= parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].attacks.avg_attacks <= parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[1].attacks.avg_attacks <= parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[1].passes.attacks.avg_attacks <= parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].attacks.avg_attacks <= parseFloat(params[i].value) || game.stats[1].attacks.avg_attacks <= parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].attacks.avg_attacks <= parseFloat(params[i].value) || game.stats[1].attacks.avg_attacks <= parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+
+                                //attacks.avg_attacks == 
+                                if (params[i].target == "home" && params[i].conditional == "=") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].attacks.avg_attacks == parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].attacks.avg_attacks == parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[1].attacks.avg_attacks == parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[1].passes.attacks.avg_attacks == parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].attacks.avg_attacks == parseFloat(params[i].value) || game.stats[1].attacks.avg_attacks == parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].attacks.avg_attacks == parseFloat(params[i].value) || game.stats[1].attacks.avg_attacks == parseFloat(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                            }
+                            //shots total
+                            if (params[i].property == "shots_total") {
+                                if (params[i].target == "home" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].shots.total >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].shots.total >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[1].shots.total >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[1].passes.shots.total >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].shots.total >= parseInt(params[i].value) || game.stats[1].shots.total >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].shots.total >= parseInt(params[i].value) || game.stats[1].shots.total >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                //
+                                if (params[i].target == "home" && params[i].conditional == "<") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].shots.total <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].shots.total <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[1].shots.total <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[1].passes.shots.total <= parseInt(params[i].value)
+                                        })
+
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].shots.total <= parseInt(params[i].value) || game.stats[1].shots.total <= parseInt(params[i].value)
+                                        })
+
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].shots.total <= parseInt(params[i].value) || game.stats[1].shots.total <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+
+                                //shots.total == 
+                                if (params[i].target == "home" && params[i].conditional == "=") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].shots.total == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].shots.total == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[1].shots.total == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[1].passes.shots.total == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].shots.total == parseInt(params[i].value) || game.stats[1].shots.total == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].shots.total == parseInt(params[i].value) || game.stats[1].shots.total == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                            }
+                            // shots ongoal
+                            if (params[i].property == "shots_ongoal") {
+                                if (params[i].target == "home" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].shots.ongoal >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].shots.ongoal >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[1].shots.ongoal >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[1].passes.shots.ongoal >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].shots.ongoal >= parseInt(params[i].value) || game.stats[1].shots.ongoal >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].shots.ongoal >= parseInt(params[i].value) || game.stats[1].shots.ongoal >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                //
+                                if (params[i].target == "home" && params[i].conditional == "<") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].shots.ongoal <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].shots.ongoal <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[1].shots.ongoal <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[1].passes.shots.ongoal <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].shots.ongoal <= parseInt(params[i].value) || game.stats[1].shots.ongoal <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].shots.ongoal <= parseInt(params[i].value) || game.stats[1].shots.ongoal <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+
+                                //shots.ongoal == 
+                                if (params[i].target == "home" && params[i].conditional == "=") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].shots.ongoal == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].shots.ongoal == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[1].shots.ongoal == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[1].passes.shots.ongoal == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].shots.ongoal == parseInt(params[i].value) || game.stats[1].shots.ongoal == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].shots.ongoal == parseInt(params[i].value) || game.stats[1].shots.ongoal == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+                                    }
+                                    continue
+
+                                }
+                            }
+                            // shots offgoal
+                            if (params[i].property == "shots_offgoal") {
+                                if (params[i].target == "home" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].shots.offgoal >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].shots.offgoal >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[1].shots.offgoal >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[1].passes.shots.offgoal >= parseInt(params[i].value)
+                                        })
+
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].shots.offgoal >= parseInt(params[i].value) || game.stats[1].shots.offgoal >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].shots.offgoal >= parseInt(params[i].value) || game.stats[1].shots.offgoal >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                //
+                                if (params[i].target == "home" && params[i].conditional == "<") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].shots.offgoal <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].shots.offgoal <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[1].shots.offgoal <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[1].passes.shots.offgoal <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].shots.offgoal <= parseInt(params[i].value) || game.stats[1].shots.offgoal <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].shots.offgoal <= parseInt(params[i].value) || game.stats[1].shots.offgoal <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+
+                                //shots.offgoal == 
+                                if (params[i].target == "home" && params[i].conditional == "=") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].shots.offgoal == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].shots.offgoal == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[1].shots.offgoal == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[1].passes.shots.offgoal == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].shots.offgoal == parseInt(params[i].value) || game.stats[1].shots.offgoal == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].shots.offgoal == parseInt(params[i].value) || game.stats[1].shots.offgoal == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                            }
+                            // shots blocked
+                            if (params[i].property == "shots_blocked") {
+                                if (params[i].target == "home" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].shots.blocked >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].shots.blocked >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[1].shots.blocked >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[1].passes.shots.blocked >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].shots.blocked >= parseInt(params[i].value) || game.stats[1].shots.blocked >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].shots.blocked >= parseInt(params[i].value) || game.stats[1].shots.blocked >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                //
+                                if (params[i].target == "home" && params[i].conditional == "<") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].shots.blocked <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].shots.blocked <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[1].shots.blocked <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[1].passes.shots.blocked <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].shots.blocked <= parseInt(params[i].value) || game.stats[1].shots.blocked <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].shots.blocked <= parseInt(params[i].value) || game.stats[1].shots.blocked <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+
+                                //shots.blocked == 
+                                if (params[i].target == "home" && params[i].conditional == "=") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].shots.blocked == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].shots.blocked == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[1].shots.blocked == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[1].passes.shots.blocked == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].shots.blocked == parseInt(params[i].value) || game.stats[1].shots.blocked == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].shots.blocked == parseInt(params[i].value) || game.stats[1].shots.blocked == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                            }
+
+                            // shots insidebox
+                            if (params[i].property == "shots_insidebox") {
+                                if (params[i].target == "home" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].shots.insidebox >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].shots.insidebox >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[1].shots.insidebox >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[1].passes.shots.insidebox >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].shots.insidebox >= parseInt(params[i].value) || game.stats[1].shots.insidebox >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].shots.insidebox >= parseInt(params[i].value) || game.stats[1].shots.insidebox >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+                                    }
+                                    continue
+
+                                }
+                                //
+                                if (params[i].target == "home" && params[i].conditional == "<") {
+                                    if (tips.length > 0) {
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].shots.insidebox <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].shots.insidebox <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[1].shots.insidebox <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[1].passes.shots.insidebox <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].shots.insidebox <= parseInt(params[i].value) || game.stats[1].shots.insidebox <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].shots.insidebox <= parseInt(params[i].value) || game.stats[1].shots.insidebox <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+                                    }
+                                    continue
+
+                                }
+
+                                //shots.insidebox == 
+                                if (params[i].target == "home" && params[i].conditional == "=") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].shots.insidebox == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].shots.insidebox == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[1].shots.insidebox == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[1].passes.shots.insidebox == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].shots.insidebox == parseInt(params[i].value) || game.stats[1].shots.insidebox == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].shots.insidebox == parseInt(params[i].value) || game.stats[1].shots.insidebox == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+                                    }
+                                    continue
+
+                                }
+                            }
+                            //// shots offside
+                            if (params[i].property == "shots_offside") {
+                                if (params[i].target == "home" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].shots.outsidebox >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].shots.outsidebox >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[1].shots.outsidebox >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[1].passes.shots.outsidebox >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+                                    }
+                                    continue
+                                }
+                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].shots.outsidebox >= parseInt(params[i].value) || game.stats[1].shots.outsidebox >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].shots.outsidebox >= parseInt(params[i].value) || game.stats[1].shots.outsidebox >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+                                    }
+                                    continue
+                                }
+                                //
+                                if (params[i].target == "home" && params[i].conditional == "<") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].shots.outsidebox <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].shots.outsidebox <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[1].shots.outsidebox <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[1].passes.shots.outsidebox <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].shots.outsidebox <= parseInt(params[i].value) || game.stats[1].shots.outsidebox <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].shots.outsidebox <= parseInt(params[i].value) || game.stats[1].shots.outsidebox <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+
+                                //shots.outsidebox == 
+                                if (params[i].target == "home" && params[i].conditional == "=") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].shots.outsidebox == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].shots.outsidebox == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[1].shots.outsidebox == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[1].passes.shots.outsidebox == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.stats[0].shots.outsidebox == parseInt(params[i].value) || game.stats[1].shots.outsidebox == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.stats[0].shots.outsidebox == parseInt(params[i].value) || game.stats[1].shots.outsidebox == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
 
                                     }
                                     continue
@@ -386,9 +3488,10 @@ bot.command('startbots', async (ctx) => {
 
                         }
                     }
+
                     //verifica se é uma entrada nova e manda 
                     if (tips.length > 0) {
-                        console.log(tips.length)
+
                         for (let i = 0; i < tips.length; i++) {
 
                             const config = {

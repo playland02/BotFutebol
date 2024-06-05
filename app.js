@@ -115,13 +115,12 @@ bot.command('startbots', async (ctx) => {
                                     })
 
                                     if (data_odd.data && data_odd.data.stats && data_odd.data.stats.length > 1 &&
-                                        data_odd.data.odds && data_odd.data.odds.half_odd) {
+                                        data_odd.data.odds && data_odd.data.odds.half_odd && data_odd.data.odds.half_odd[1].markets &&
+                                        data_odd.data.odds.half_odd[1].markets[0].data  && data_odd.data.odds.half_odd[1].markets[0].data[0].value &&
+                                        data_odd.data.odds.half_odd[1].markets[0].data[0].value != 0
+                                        ) {
 
-                                        const game_market = data_odd.data.odds.half_odd.filter((odd) => {
-                                            return odd.title == "Goals Market"
-                                        })[0].markets.filter((odd) => {
-                                            return odd.id = 975903
-                                        })[0].data[0].value / 100
+                                        const game_market = data_odd.data.odds.half_odd[1].markets[0].data[0].value
 
                                         if (params[i].conditional == '>') {
                                             if (game_market >= parseFloat(params[i].odd_value)) {
@@ -154,25 +153,25 @@ bot.command('startbots', async (ctx) => {
                                         })
 
                                         if (data_odd.data && data_odd.data.stats && data_odd.data.stats.length > 1 &&
-                                            data_odd.data.odds && data_odd.data.odds.full_odd) {
+                                            data_odd.data.odds && data_odd.data.odds.full_odd && data_odd.data.odds.full_odd[0] &&
+                                            data_odd.data.odds.full_odd[0].markets && data_odd.data.odds.full_odd[0].markets[0].data[0] &&
+                                            data_odd.data.odds.full_odd[0].markets[0].data[2] && data_odd.data.odds.full_odd[0].markets[0].data[0].value &&
+                                            data_odd.data.odds.full_odd[0].markets[0].data[2].value ) {
 
-                                            const home_favorite = data_odd.data.odds.half_odd.filter((odd) => {
+                                            const home_favorite = data_odd.data.odds.full_odd.filter((odd) => {
                                                 return odd.title == "1x2 Market"
-                                            })[0].markets.filter((odd)=>{
-                                                return odd.id == 1
-                                            })[0].data[0].value /100
+                                            })[0].markets[0].data[0].value
 
-                                            const away_favorite = data_odd.data.odds.half_odd.filter((odd) => {
+
+                                            const away_favorite = data_odd.data.odds.full_odd.filter((odd) => {
                                                 return odd.title == "1x2 Market"
-                                            })[0].markets.filter((odd)=>{
-                                                return odd.id == 1
-                                            })[0].data[0].value /100
+                                            })[0].markets[0].data[2].value
 
 
-                                            if(home_favorite <= 1.50 || away_favorite <= 1.50){
+                                            if ((home_favorite <= 1.50 && home_favorite >= 1.01) || (away_favorite <= 1.50 && away_favorite >= 1.01)) {
                                                 tips.push(game)
                                                 continue
-                                            }else{
+                                            } else {
                                                 continue
                                             }
                                         }
@@ -388,7 +387,7 @@ bot.command('startbots', async (ctx) => {
 
                                     } else {
                                         let isFound = new_data.filter(game => {
-                                            return  game.scores.visitorteam_score >= parseInt(params[i].value)
+                                            return game.scores.visitorteam_score >= parseInt(params[i].value)
                                         })
 
                                         if (isFound.length > 0) {
@@ -407,7 +406,7 @@ bot.command('startbots', async (ctx) => {
                                     if (tips.length > 0) {
 
                                         let isFound = tips.filter(game => {
-                                            return (game.scores.localteam_score + game.scores.visitorteam_score) >= parseInt(params[i].value) 
+                                            return (game.scores.localteam_score + game.scores.visitorteam_score) >= parseInt(params[i].value)
                                         })
 
                                         if (isFound.length > 0) {
@@ -642,7 +641,7 @@ bot.command('startbots', async (ctx) => {
 
                                 } else {
                                     let isFound = new_data.filter((game) => {
-                                        
+
                                         return parseInt(params[i].minute_from) <= game.time.minute && game.time.minute <= parseInt(params[i].minute_until)
                                     })
 

@@ -24,6 +24,7 @@ function createStringRandom(length) {
 }
 
 bot.command('start', async (ctx) => {
+
     ctx.reply("Olá como posso te ajudar?")
 })
 
@@ -130,6 +131,7 @@ bot.command('startbots', async (ctx) => {
                                         }
                                         if (params[i].conditional == '<') {
                                             if (game_market <= parseFloat(params[i].odd_value)) {
+                                                console.log(game_market)
                                                 tips.push(data_odd.data)
                                                 continue
                                             }
@@ -142,6 +144,43 @@ bot.command('startbots', async (ctx) => {
                                         }
                                     }
                                 }
+                                // goals
+                                if (Object.values(params[i]).includes('goals') &&
+                                    game.scores && game.scores.localteam_score && game.scores.visitorteam_score
+                                ) {
+                                    if (params[i].target == 'favorite') {
+                                        const data_odd = await fetch(`https://api.sokkerpro.net/fixture/${game.id}/` + createStringRandom(16)).then((res) => {
+                                            return res.json()
+                                        })
+
+                                        if (data_odd.data && data_odd.data.stats && data_odd.data.stats.length > 1 &&
+                                            data_odd.data.odds && data_odd.data.odds.full_odd) {
+
+                                            const home_favorite = data_odd.data.odds.half_odd.filter((odd) => {
+                                                return odd.title == "1x2 Market"
+                                            })[0].markets.filter((odd)=>{
+                                                return odd.id == 1
+                                            })[0].data[0].value /100
+
+                                            const away_favorite = data_odd.data.odds.half_odd.filter((odd) => {
+                                                return odd.title == "1x2 Market"
+                                            })[0].markets.filter((odd)=>{
+                                                return odd.id == 1
+                                            })[0].data[0].value /100
+
+
+                                            if(home_favorite <= 1.50 || away_favorite <= 1.50){
+                                                tips.push(game)
+                                                continue
+                                            }else{
+                                                continue
+                                            }
+                                        }
+                                    } else {
+                                        continue
+                                    }
+                                }
+
 
                                 //shots outsidebox
                                 if (game.stats.length > 1 &&
@@ -300,6 +339,290 @@ bot.command('startbots', async (ctx) => {
 
                         for (let i = 0; i < params.length; i++) {
 
+                            //goals params
+                            if (params[i].property == "goals") {
+                                if (params[i].target == "home" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.scores.localteam_score >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.scores.localteam_score >= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.scores.visitorteam_score >= parseInt(params[i].value)
+                                        })
+
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return  game.scores.visitorteam_score >= parseInt(params[i].value)
+                                        })
+
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "game" && params[i].conditional == ">") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return (game.scores.localteam_score + game.scores.visitorteam_score) >= parseInt(params[i].value) 
+                                        })
+
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return (game.scores.localteam_score + game.scores.visitorteam_score) >= parseInt(params[i].value)
+                                        })
+
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                //
+                                if (params[i].target == "home" && params[i].conditional == "<") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.scores.localteam_score <= parseInt(params[i].value)
+                                        })
+
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.scores.localteam_score <= parseInt(params[i].value)
+                                        })
+
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "away" && params[i].conditional == "<") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.scores.visitorteam_score <= parseInt(params[i].value)
+                                        })
+
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.scores.visitorteam_score <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "game" && params[i].conditional == "<") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return (game.scores.localteam_score + game.scores.visitorteam_score) <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return (game.scores.localteam_score + game.scores.visitorteam_score) <= parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+
+                                //corners == 
+                                if (params[i].target == "home" && params[i].conditional == "=") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.scores.localteam_score == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.scores.localteam_score == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "away" && params[i].conditional == "=") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return game.scores.visitorteam_score == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return game.scores.visitorteam_score == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                                if (params[i].target == "game" && params[i].conditional == "=") {
+                                    if (tips.length > 0) {
+
+                                        let isFound = tips.filter(game => {
+                                            return (game.scores.localteam_score + game.scores.visitorteam_score) == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    } else {
+                                        let isFound = new_data.filter(game => {
+                                            return (game.scores.localteam_score + game.scores.visitorteam_score) == parseInt(params[i].value)
+                                        })
+                                        if (isFound.length > 0) {
+                                            tips = isFound
+                                        } else {
+
+                                            tips = []
+                                            break
+                                        }
+
+                                    }
+                                    continue
+
+                                }
+                            }
+
                             //param minutes
                             if ((params[i].property == "minutes")) {
                                 if (tips.length > 0) {
@@ -319,7 +642,7 @@ bot.command('startbots', async (ctx) => {
 
                                 } else {
                                     let isFound = new_data.filter((game) => {
-                                        40
+                                        
                                         return parseInt(params[i].minute_from) <= game.time.minute && game.time.minute <= parseInt(params[i].minute_until)
                                     })
 
@@ -578,7 +901,7 @@ bot.command('startbots', async (ctx) => {
                                     continue
 
                                 }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                if (params[i].target == "away" && params[i].conditional == "<") {
                                     if (tips.length > 0) {
 
                                         let isFound = tips.filter(game => {
@@ -609,7 +932,7 @@ bot.command('startbots', async (ctx) => {
                                     continue
 
                                 }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                if (params[i].target == "home_or_away" && params[i].conditional == "<") {
                                     if (tips.length > 0) {
 
                                         let isFound = tips.filter(game => {
@@ -671,7 +994,7 @@ bot.command('startbots', async (ctx) => {
                                     continue
 
                                 }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                if (params[i].target == "away" && params[i].conditional == "=") {
                                     if (tips.length > 0) {
 
                                         let isFound = tips.filter(game => {
@@ -701,7 +1024,7 @@ bot.command('startbots', async (ctx) => {
                                     continue
 
                                 }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                if (params[i].target == "home_or_away" && params[i].conditional == "=") {
                                     if (tips.length > 0) {
 
                                         let isFound = tips.filter(game => {

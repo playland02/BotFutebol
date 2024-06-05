@@ -121,7 +121,7 @@ bot.command('startbots', async (ctx) => {
                                         ) {
 
                                         const game_market = data_odd.data.odds.half_odd[1].markets[0].data[0].value
-
+                                        console.log(`odd 0.5 HT: ${game_market}`)
                                         if (params[i].conditional == '>') {
                                             if (game_market >= parseFloat(params[i].odd_value)) {
                                                 tips.push(data_odd.data)
@@ -156,7 +156,7 @@ bot.command('startbots', async (ctx) => {
                                             data_odd.data.odds && data_odd.data.odds.full_odd && data_odd.data.odds.full_odd[0] &&
                                             data_odd.data.odds.full_odd[0].markets && data_odd.data.odds.full_odd[0].markets[0].data[0] &&
                                             data_odd.data.odds.full_odd[0].markets[0].data[2] && data_odd.data.odds.full_odd[0].markets[0].data[0].value &&
-                                            data_odd.data.odds.full_odd[0].markets[0].data[2].value ) {
+                                            data_odd.data.odds.full_odd[0].markets[0].data[2].value &&  data_odd.data.odds.full_odd[0].markets[0].data[2].value != 0) {
 
                                             const home_favorite = data_odd.data.odds.full_odd.filter((odd) => {
                                                 return odd.title == "1x2 Market"
@@ -169,6 +169,7 @@ bot.command('startbots', async (ctx) => {
 
 
                                             if ((home_favorite <= 1.50 && home_favorite >= 1.01) || (away_favorite <= 1.50 && away_favorite >= 1.01)) {
+                                                console.log(`Casa f  ${home_favorite} x ${away_favorite} Fora f`)
                                                 tips.push(game)
                                                 continue
                                             } else {

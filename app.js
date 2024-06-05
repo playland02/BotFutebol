@@ -120,7 +120,7 @@ bot.command('startbots', async (ctx) => {
                                         data_odd.data.odds.half_odd[1].markets[0].data[0].value != 0
                                         ) {
 
-                                        const game_market = data_odd.data.odds.half_odd[1].markets[0].data[0].value
+                                        const game_market = data_odd.data.odds.half_odd[1].markets[0].data[0].value / 100
                                         console.log(`odd 0.5 HT: ${game_market}`)
                                         if (params[i].conditional == '>') {
                                             if (game_market >= parseFloat(params[i].odd_value)) {

@@ -15,7 +15,7 @@ if (data_odd.data && data_odd.data.stats && data_odd.data.stats.length > 1 &&
         return odd.id == 1
     })[0].data[0].value /100*/
 
-    console.log(away_favorite)
+    console.log(data_odd.data.id)
 }
 
 

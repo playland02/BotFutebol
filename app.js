@@ -110,37 +110,43 @@ bot.command('startbots', async (ctx) => {
                                 //odd pre live 
                                 if (Object.values(params[i]).includes('over05ht')) {
 
-                                    const data_odd = await fetch(`https://api.sokkerpro.net/fixture/${game.id}/` + createStringRandom(16)).then((res) => {
-                                        return res.json()
-                                    })
+                                    try {
+                                        const data_odd = await fetch(`https://api.sokkerpro.net/fixture/${game.id}/` + createStringRandom(16)).then((res) => {
+                                            return res.json()
+                                        })
 
-                                    if (data_odd.data && data_odd.data.stats && data_odd.data.stats.length > 1 &&
-                                        data_odd.data.odds && data_odd.data.odds.half_odd && data_odd.data.odds.half_odd[1].markets &&
-                                        data_odd.data.odds.half_odd[1].markets[0].data  && data_odd.data.odds.half_odd[1].markets[0].data[0].value &&
-                                        data_odd.data.odds.half_odd[1].markets[0].data[0].value != 0
+
+
+                                        if (data_odd.data && data_odd.data.stats && data_odd.data.stats.length > 1 &&
+                                            data_odd.data.odds && data_odd.data.odds.half_odd && data_odd.data.odds.half_odd[1].markets &&
+                                            data_odd.data.odds.half_odd[1].markets[0].data && data_odd.data.odds.half_odd[1].markets[0].data[0].value &&
+                                            data_odd.data.odds.half_odd[1].markets[0].data[0].value != 0
                                         ) {
 
-                                        const game_market = data_odd.data.odds.half_odd[1].markets[0].data[0].value / 100
-                                        console.log(`odd 0.5 HT: ${game_market}`)
-                                        if (params[i].conditional == '>') {
-                                            if (game_market >= parseFloat(params[i].odd_value)) {
-                                                tips.push(data_odd.data)
-                                                continue
+                                            const game_market = data_odd.data.odds.half_odd[1].markets[0].data[0].value / 100
+                                            console.log(`odd 0.5 HT: ${game_market}`)
+                                            if (params[i].conditional == '>') {
+                                                if (game_market >= parseFloat(params[i].odd_value)) {
+                                                    tips.push(data_odd.data)
+                                                    continue
+                                                }
+                                            }
+                                            if (params[i].conditional == '<') {
+                                                if (game_market <= parseFloat(params[i].odd_value)) {
+                                                    console.log(game_market)
+                                                    tips.push(data_odd.data)
+                                                    continue
+                                                }
+                                            }
+                                            if (params[i].conditional == '=') {
+                                                if (game_market == parseFloat(params[i].odd_value)) {
+                                                    tips.push(data_odd.data)
+                                                    continue
+                                                }
                                             }
                                         }
-                                        if (params[i].conditional == '<') {
-                                            if (game_market <= parseFloat(params[i].odd_value)) {
-                                                console.log(game_market)
-                                                tips.push(data_odd.data)
-                                                continue
-                                            }
-                                        }
-                                        if (params[i].conditional == '=') {
-                                            if (game_market == parseFloat(params[i].odd_value)) {
-                                                tips.push(data_odd.data)
-                                                continue
-                                            }
-                                        }
+                                    } catch (error) {
+                                        console.log(error)
                                     }
                                 }
                                 // goals
@@ -148,33 +154,40 @@ bot.command('startbots', async (ctx) => {
                                     game.scores && game.scores.localteam_score && game.scores.visitorteam_score
                                 ) {
                                     if (params[i].target == 'favorite') {
-                                        const data_odd = await fetch(`https://api.sokkerpro.net/fixture/${game.id}/` + createStringRandom(16)).then((res) => {
-                                            return res.json()
-                                        })
-
-                                        if (data_odd.data && data_odd.data.stats && data_odd.data.stats.length > 1 &&
-                                            data_odd.data.odds && data_odd.data.odds.full_odd && data_odd.data.odds.full_odd[0] &&
-                                            data_odd.data.odds.full_odd[0].markets && data_odd.data.odds.full_odd[0].markets[0].data[0] &&
-                                            data_odd.data.odds.full_odd[0].markets[0].data[2] && data_odd.data.odds.full_odd[0].markets[0].data[0].value &&
-                                            data_odd.data.odds.full_odd[0].markets[0].data[2].value &&  data_odd.data.odds.full_odd[0].markets[0].data[2].value != 0) {
-
-                                            const home_favorite = data_odd.data.odds.full_odd.filter((odd) => {
-                                                return odd.title == "1x2 Market"
-                                            })[0].markets[0].data[0].value
+                                        try {
 
 
-                                            const away_favorite = data_odd.data.odds.full_odd.filter((odd) => {
-                                                return odd.title == "1x2 Market"
-                                            })[0].markets[0].data[2].value
+                                            const data_odd = await fetch(`https://api.sokkerpro.net/fixture/${game.id}/` + createStringRandom(16)).then((res) => {
+                                                return res.json()
+                                            })
+
+                                            if (data_odd.data && data_odd.data.stats && data_odd.data.stats.length > 1 &&
+                                                data_odd.data.odds && data_odd.data.odds.full_odd && data_odd.data.odds.full_odd[0] &&
+                                                data_odd.data.odds.full_odd[0].markets && data_odd.data.odds.full_odd[0].markets[0].data[0] &&
+                                                data_odd.data.odds.full_odd[0].markets[0].data[2] && data_odd.data.odds.full_odd[0].markets[0].data[0].value &&
+                                                data_odd.data.odds.full_odd[0].markets[0].data[2].value && data_odd.data.odds.full_odd[0].markets[0].data[2].value != 0) {
+
+                                                const home_favorite = data_odd.data.odds.full_odd.filter((odd) => {
+                                                    return odd.title == "1x2 Market"
+                                                })[0].markets[0].data[0].value
 
 
-                                            if ((home_favorite <= 1.50 && home_favorite >= 1.01) || (away_favorite <= 1.50 && away_favorite >= 1.01)) {
-                                                console.log(`Casa f  ${home_favorite} x ${away_favorite} Fora f`)
-                                                tips.push(game)
-                                                continue
-                                            } else {
-                                                continue
+                                                const away_favorite = data_odd.data.odds.full_odd.filter((odd) => {
+                                                    return odd.title == "1x2 Market"
+                                                })[0].markets[0].data[2].value
+
+
+                                                if ((home_favorite <= 1.50 && home_favorite >= 1.01) || (away_favorite <= 1.50 && away_favorite >= 1.01)) {
+                                                    console.log(`Casa f  ${home_favorite} x ${away_favorite} Fora f`)
+                                                    tips.push(game)
+                                                    continue
+                                                } else {
+                                                    continue
+                                                }
                                             }
+
+                                        } catch (error) {
+
                                         }
                                     } else {
                                         continue

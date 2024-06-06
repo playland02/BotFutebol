@@ -30,7 +30,7 @@ bot.command('start', async (ctx) => {
 
 bot.command('token', async (ctx) => {
 
-    const req = await fetch('http://191.252.195.184:8080/users').then((res) => {
+    const req = await fetch('https://horizonte-rp.online/users').then((res) => {
         return res.json()
     })
 
@@ -60,7 +60,7 @@ bot.command('token', async (ctx) => {
 
         }
 
-        await fetch(`http://191.252.195.184:8080/user/${user[0]._id}`, config)
+        await fetch(`https://horizonte-rp.online/user/${user[0]._id}`, config)
 
         await ctx.reply("Sua conta foi vinculada com sucesso , agora voce receberá todos alertas de seus bots !")
 
@@ -75,7 +75,7 @@ bot.command('startbots', async (ctx) => {
         await ctx.telegram.sendMessage(id_master, `Todos bots foram ativado  !`)
 
         setInterval(async () => {
-            const bots = await fetch('http://191.252.195.184:8080/bots').then((res) => {
+            const bots = await fetch('https://horizonte-rp.online/bots').then((res) => {
                 return res.json()
             })
             const data = await fetch("https://api.sokkerpro.net/liveApi/" + createStringRandom(16)).then((res) => {
@@ -3797,7 +3797,7 @@ bot.command('startbots', async (ctx) => {
 
                             }
 
-                            const filter_games = await fetch('http://191.252.195.184:3000/tip', config).then(async (res) => {
+                            const filter_games = await fetch('https://horizonte-rp.online/tip', config).then(async (res) => {
                                 return res.json()
                             })
 

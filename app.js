@@ -30,7 +30,7 @@ bot.command('start', async (ctx) => {
 
 bot.command('token', async (ctx) => {
 
-    const req = await fetch('http://191.252.195.184:3000/users').then((res) => {
+    const req = await fetch('http://191.252.195.184:8080/users').then((res) => {
         return res.json()
     })
 
@@ -60,7 +60,7 @@ bot.command('token', async (ctx) => {
 
         }
 
-        await fetch(`http://191.252.195.184:3000/user/${user[0]._id}`, config)
+        await fetch(`http://191.252.195.184:8080/user/${user[0]._id}`, config)
 
         await ctx.reply("Sua conta foi vinculada com sucesso , agora voce receberá todos alertas de seus bots !")
 
@@ -69,21 +69,13 @@ bot.command('token', async (ctx) => {
 })
 
 
-/*
-
-    await ctx.telegram.sendMessage(id_master,`Bot foi ativado !`)
-
-    await ctx.telegram.sendMessage(chatbotgolFT,`Bot de gols FT iniciado ! `)
-
-    await ctx.telegram.sendMessage(chatbotgolHT,`Bot de gols HT iniciado ...`)
-    */
 
 bot.command('startbots', async (ctx) => {
     if (ctx.chat.id == id_master && ctx.from.id == id_master) {
         await ctx.telegram.sendMessage(id_master, `Todos bots foram ativado  !`)
 
         setInterval(async () => {
-            const bots = await fetch('http://191.252.195.184:3000/bots').then((res) => {
+            const bots = await fetch('http://191.252.195.184:8080/bots').then((res) => {
                 return res.json()
             })
             const data = await fetch("https://api.sokkerpro.net/liveApi/" + createStringRandom(16)).then((res) => {
@@ -97,7 +89,7 @@ bot.command('startbots', async (ctx) => {
                     const params = JSON.parse(bot.params)
                     let new_data = []
                     let tips = []
-                    let isTip = false
+                 
 
 
                     //nova data sem dados nulos
@@ -107,48 +99,7 @@ bot.command('startbots', async (ctx) => {
                             for (let i = 0; i < params.length; i++) {
 
 
-                                //odd pre live 
-                                if (Object.values(params[i]).includes('over05ht')) {
-
-                                    try {
-                                        const data_odd = await fetch(`https://api.sokkerpro.net/fixture/${game.id}/` + createStringRandom(16)).then((res) => {
-                                            return res.json()
-                                        })
-
-
-
-                                        if (data_odd.data && data_odd.data.stats && data_odd.data.stats.length > 1 &&
-                                            data_odd.data.odds && data_odd.data.odds.half_odd && data_odd.data.odds.half_odd[1].markets &&
-                                            data_odd.data.odds.half_odd[1].markets[0].data && data_odd.data.odds.half_odd[1].markets[0].data[0].value &&
-                                            data_odd.data.odds.half_odd[1].markets[0].data[0].value != 0
-                                        ) {
-
-                                            const game_market = data_odd.data.odds.half_odd[1].markets[0].data[0].value / 100
-                                            console.log(`odd 0.5 HT: ${game_market}`)
-                                            if (params[i].conditional == '>') {
-                                                if (game_market >= parseFloat(params[i].odd_value)) {
-                                                    tips.push(data_odd.data)
-                                                    continue
-                                                }
-                                            }
-                                            if (params[i].conditional == '<') {
-                                                if (game_market <= parseFloat(params[i].odd_value)) {
-                                                    console.log(game_market)
-                                                    tips.push(data_odd.data)
-                                                    continue
-                                                }
-                                            }
-                                            if (params[i].conditional == '=') {
-                                                if (game_market == parseFloat(params[i].odd_value)) {
-                                                    tips.push(data_odd.data)
-                                                    continue
-                                                }
-                                            }
-                                        }
-                                    } catch (error) {
-                                        console.log(error)
-                                    }
-                                }
+                               
                                 // goals
                                 if (Object.values(params[i]).includes('goals') &&
                                     game.scores && game.scores.localteam_score && game.scores.visitorteam_score
@@ -178,7 +129,7 @@ bot.command('startbots', async (ctx) => {
 
 
                                                 if ((home_favorite <= 1.50 && home_favorite >= 1.01) || (away_favorite <= 1.50 && away_favorite >= 1.01)) {
-                                                    console.log(`Casa f  ${home_favorite} x ${away_favorite} Fora f`)
+                                                   
                                                     tips.push(game)
                                                     continue
                                                 } else {
@@ -351,6 +302,7 @@ bot.command('startbots', async (ctx) => {
 
 
                         for (let i = 0; i < params.length; i++) {
+                           
 
                             //goals params
                             if (params[i].property == "goals") {
@@ -543,7 +495,7 @@ bot.command('startbots', async (ctx) => {
 
                                 }
 
-                                //corners == 
+                                //goals == 
                                 if (params[i].target == "home" && params[i].conditional == "=") {
                                     if (tips.length > 0) {
 
@@ -3827,7 +3779,7 @@ bot.command('startbots', async (ctx) => {
 
                     //verifica se é uma entrada nova e manda 
                     if (tips.length > 0) {
-
+                        console.log(tips)
                         for (let i = 0; i < tips.length; i++) {
 
                             const config = {

@@ -30,7 +30,7 @@ bot.command('start', async (ctx) => {
 
 bot.command('token', async (ctx) => {
 
-    const req = await fetch('http://horizonte-rp.online/users').then((res) => {
+    const req = await fetch('https://horizonte-rp.online/users').then((res) => {
         return res.json()
     })
 
@@ -60,7 +60,7 @@ bot.command('token', async (ctx) => {
 
         }
 
-        await fetch(`http://horizonte-rp.online/user/${user[0]._id}`, config)
+        await fetch(`https://horizonte-rp.online/user/${user[0]._id}`, config)
 
         await ctx.reply("Sua conta foi vinculada com sucesso , agora voce receberá todos alertas de seus bots !")
 
@@ -3798,7 +3798,7 @@ bot.command('startbots', async (ctx) => {
 
                             }
 
-                            const filter_games = await fetch('http://horizonte-rp.online/tip', config).then(async (res) => {
+                            const filter_games = await fetch('https://horizonte-rp.online/tip', config).then(async (res) => {
                                 return res.json()
                             })
 

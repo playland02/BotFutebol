@@ -75,12 +75,13 @@ bot.command('startbots', async (ctx) => {
         await ctx.telegram.sendMessage(id_master, `Todos bots foram ativado  !`)
 
         setInterval(async () => {
-            const bots = await fetch('http://horizonte-rp.online/bots').then((res) => {
+            const bots = await fetch('https://horizonte-rp.online/bots').then((res) => {
                 return res.json()
-            })
+            }).catch((error)=>console.log(error))
+          
             const data = await fetch("https://api.sokkerpro.net/liveApi/" + createStringRandom(16)).then((res) => {
                 return res.json()
-            })
+            }).catch((error)=>console.log(error))
 
 
             if (bots && data) {
@@ -3779,7 +3780,7 @@ bot.command('startbots', async (ctx) => {
 
                     //verifica se é uma entrada nova e manda 
                     if (tips.length > 0) {
-                        console.log(tips)
+                        
                         for (let i = 0; i < tips.length; i++) {
 
                             const config = {
@@ -3799,7 +3800,7 @@ bot.command('startbots', async (ctx) => {
 
                             const filter_games = await fetch('http://horizonte-rp.online/tip', config).then(async (res) => {
                                 return res.json()
-                            })
+                            }).catch(error=>console.log(error))
 
                             if (!filter_games.error) {
                                 await ctx.telegram.sendMessage(bot.chat_id, `${bot.name}\n

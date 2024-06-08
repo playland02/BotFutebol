@@ -3800,7 +3800,7 @@ bot.command('startbots', async (ctx) => {
 
                             const filter_games = await fetch('http://horizonte-rp.online/tip', config).then(async (res) => {
                                 return res.json()
-                            }).catch(error=>console.log(error))
+                            })
 
                             if (!filter_games.error) {
                                 await ctx.telegram.sendMessage(bot.chat_id, `${bot.name}\n

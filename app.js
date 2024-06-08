@@ -79,7 +79,7 @@ bot.command('startbots', async (ctx) => {
                 return res.json()
             }).catch((error)=>console.log(error))
           
-            const data = await fetch("https://api.sokkerpro.net/liveApi/" + createStringRandom(16)).then((res) => {
+            const data = await fetch("https://api.sokkerpro.net/liveApi/web_" + createStringRandom(16)).then((res) => {
                 return res.json()
             }).catch((error)=>console.log(error))
 

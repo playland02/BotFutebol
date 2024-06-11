@@ -28,11 +28,11 @@ bot.command('start', async (ctx) => {
     ctx.reply("Olá como posso te ajudar?")
 })
 bot.command('teste', async (ctx) => {
-    const bots = await fetch('https://horizonte-rp.online/bots', options).then((res) => {
+    const bots = await fetch('https://horizonte-rp.online/bots').then((res) => {
         return res.json()
     }).catch((error) => console.log(error))
 
-    const data = await fetch(`https://api.sokkerpro.net/liveApi/web_${createStringRandom(16)}`, options).then((res) => {
+    const data = await fetch(`https://api.sokkerpro.net/liveApi/web_${createStringRandom(16)}`).then((res) => {
         return res.json()
     }).catch((error) => console.log(error))
 

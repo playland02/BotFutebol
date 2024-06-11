@@ -28,17 +28,34 @@ bot.command('start', async (ctx) => {
     ctx.reply("Olá como posso te ajudar?")
 })
 bot.command('testarapi', async (ctx) => {
-   
+    const bots = await fetch('https://horizonte-rp.online/bots').then((res) => {
+        if (!res.ok) {
+
+            throw new Error('Erro na requisição');
+        } else {
+
+            return res.json()
+        }
+    })
 
     const data = await fetch(`https://api.sokkerpro.net/liveApi/web_${createStringRandom(16)}`).then((res) => {
-        return res.json()
+        if (!res.ok) {
+
+            throw new Error('Erro na requisição');
+        } else {
+
+            return res.json()
+        }
     })
 
     if (data) {
         await ctx.reply("API SOKKER PRO OK")
         console.log(data)
     }
-   
+    if (bots) {
+        await ctx.reply("API SOKKER WIN OK ")
+        console.log(bots)
+    }
 
 })
 
@@ -97,11 +114,23 @@ bot.command('startbots', async (ctx) => {
                 }
             }
             const bots = await fetch('https://horizonte-rp.online/bots', options).then((res) => {
-                return res.json()
+                if (!res.ok) {
+
+                    throw new Error('Erro na requisição');
+                } else {
+        
+                    return res.json()
+                }
             }).catch((error) => console.log(error))
 
             const data = await fetch(`https://api.sokkerpro.net/liveApi/web_${createStringRandom(16)}`, options).then((res) => {
-                return res.json()
+                if (!res.ok) {
+
+                    throw new Error('Erro na requisição');
+                } else {
+        
+                    return res.json()
+                }
             }).catch((error) => console.log(error))
 
 
@@ -3840,7 +3869,7 @@ bot.command('startbots', async (ctx) => {
                     new_data = []
                 })
             }
-        }, 30000)
+        }, 60000)
     }
 })
 

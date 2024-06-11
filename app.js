@@ -32,14 +32,14 @@ bot.command('testarapi', async (ctx) => {
         return res.json()
     })
 
-    const data = await fetch(`https://api.sokkerpro.net/liveApi/web_${createStringRandom(16)}`).then((res) => {
+   /* const data = await fetch(`https://api.sokkerpro.net/liveApi/web_${createStringRandom(16)}`).then((res) => {
         return res.json()
     })
 
     if(data   ){
         await ctx.reply("API SOKKER PRO OK")
         console.log(data)
-    }
+    }*/
     if(bots){
         await ctx.reply("API SOKKER WIN OK ")
         console.log(bots)

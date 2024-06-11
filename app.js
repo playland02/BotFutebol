@@ -134,7 +134,7 @@ bot.command('startbots', async (ctx) => {
             }).catch((error) => console.log(error))
 
 
-            if (data && data.data) {
+            if (data && data.data && bots && bots.length > 0) {
                 await bots.forEach(async (bot) => {
 
                     const params = JSON.parse(bot.params)

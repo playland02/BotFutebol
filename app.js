@@ -36,11 +36,13 @@ bot.command('testarapi', async (ctx) => {
         return res.json()
     })
 
-    if(data ){
+    if(data   ){
         await ctx.reply("API SOKKER PRO OK")
+        console.log(data)
     }
     if(bots){
         await ctx.reply("API SOKKER WIN OK ")
+        console.log(bots)
     }
     
 })

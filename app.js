@@ -1,5 +1,5 @@
 import { Telegraf } from "telegraf"
-import  {HttpsProxyAgent}  from "https-proxy-agent"
+import { HttpsProxyAgent } from "https-proxy-agent"
 
 const token = '7012699522:AAG1EgPUxaLFjcSdsirvjhZ3FZfIQC_9BpM'
 const bot = new Telegraf(token)
@@ -26,6 +26,23 @@ function createStringRandom(length) {
 bot.command('start', async (ctx) => {
 
     ctx.reply("Olá como posso te ajudar?")
+})
+bot.command('teste', async (ctx) => {
+    const bots = await fetch('https://horizonte-rp.online/bots', options).then((res) => {
+        return res.json()
+    }).catch((error) => console.log(error))
+
+    const data = await fetch(`https://api.sokkerpro.net/liveApi/web_${createStringRandom(16)}`, options).then((res) => {
+        return res.json()
+    }).catch((error) => console.log(error))
+
+    if(data.data ){
+        await ctx.reply("API SOKKER PRO OK")
+    }
+    if(bots.length > 0 ){
+        await ctx.reply("API SOKKER WIN OK ")
+    }
+    
 })
 
 bot.command('token', async (ctx) => {
@@ -78,8 +95,8 @@ bot.command('startbots', async (ctx) => {
             const options = {
                 agent: new HttpsProxyAgent({
                     host: '20.206.106.192',
-                    port : 8123
-                }) ,
+                    port: 8123
+                }),
                 method: 'GET',
                 headers: {
                     'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:120.0) Gecko/20100101 Firefox/120.0'

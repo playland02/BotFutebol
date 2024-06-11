@@ -28,23 +28,18 @@ bot.command('start', async (ctx) => {
     ctx.reply("Olá como posso te ajudar?")
 })
 bot.command('testarapi', async (ctx) => {
-    const bots = await fetch('https://horizonte-rp.online/bots').then((res) => {
+   
+
+    const data = await fetch(`https://api.sokkerpro.net/liveApi/web_${createStringRandom(16)}`).then((res) => {
         return res.json()
     })
 
-   /* const data = await fetch(`https://api.sokkerpro.net/liveApi/web_${createStringRandom(16)}`).then((res) => {
-        return res.json()
-    })
-
-    if(data   ){
+    if (data) {
         await ctx.reply("API SOKKER PRO OK")
         console.log(data)
-    }*/
-    if(bots){
-        await ctx.reply("API SOKKER WIN OK ")
-        console.log(bots)
     }
-    
+   
+
 })
 
 bot.command('token', async (ctx) => {
@@ -95,7 +90,7 @@ bot.command('startbots', async (ctx) => {
 
         setInterval(async () => {
             const options = {
-         
+
                 method: 'GET',
                 headers: {
                     'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:120.0) Gecko/20100101 Firefox/120.0'
@@ -110,7 +105,7 @@ bot.command('startbots', async (ctx) => {
             }).catch((error) => console.log(error))
 
 
-            if ( data && data.data) {
+            if (data && data.data) {
                 await bots.forEach(async (bot) => {
 
                     const params = JSON.parse(bot.params)

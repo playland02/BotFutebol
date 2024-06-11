@@ -1,5 +1,5 @@
 import { Telegraf } from "telegraf"
-
+import  {HttpsProxyAgent}  from "https-proxy-agent"
 
 const token = '7012699522:AAG1EgPUxaLFjcSdsirvjhZ3FZfIQC_9BpM'
 const bot = new Telegraf(token)
@@ -76,6 +76,10 @@ bot.command('startbots', async (ctx) => {
 
         setInterval(async () => {
             const options = {
+                agent: new HttpsProxyAgent({
+                    host: '20.206.106.192',
+                    port : 8123
+                }) ,
                 method: 'GET',
                 headers: {
                     'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:120.0) Gecko/20100101 Firefox/120.0'

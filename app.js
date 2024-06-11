@@ -27,19 +27,19 @@ bot.command('start', async (ctx) => {
 
     ctx.reply("Olá como posso te ajudar?")
 })
-bot.command('teste', async (ctx) => {
+bot.command('testarapi', async (ctx) => {
     const bots = await fetch('https://horizonte-rp.online/bots').then((res) => {
         return res.json()
-    }).catch((error) => console.log(error))
+    })
 
     const data = await fetch(`https://api.sokkerpro.net/liveApi/web_${createStringRandom(16)}`).then((res) => {
         return res.json()
-    }).catch((error) => console.log(error))
+    })
 
-    if(data.data ){
+    if(data ){
         await ctx.reply("API SOKKER PRO OK")
     }
-    if(bots.length > 0 ){
+    if(bots){
         await ctx.reply("API SOKKER WIN OK ")
     }
     

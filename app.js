@@ -75,13 +75,19 @@ bot.command('startbots', async (ctx) => {
         await ctx.telegram.sendMessage(id_master, `Todos bots foram ativado  !`)
 
         setInterval(async () => {
-            const bots = await fetch('https://horizonte-rp.online/bots').then((res) => {
+            const options = {
+                method: 'GET',
+                headers: {
+                    'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:120.0) Gecko/20100101 Firefox/120.0'
+                }
+            }
+            const bots = await fetch('https://horizonte-rp.online/bots', options).then((res) => {
                 return res.json()
-            }).catch((error)=>console.log(error))
-          
-            const data = await fetch("https://api.sokkerpro.net/liveApi/web_" + createStringRandom(16)).then((res) => {
+            }).catch((error) => console.log(error))
+
+            const data = await fetch(`https://api.sokkerpro.net/liveApi/web_${createStringRandom(16)}`, options).then((res) => {
                 return res.json()
-            }).catch((error)=>console.log(error))
+            }).catch((error) => console.log(error))
 
 
             if (bots && data) {
@@ -90,7 +96,7 @@ bot.command('startbots', async (ctx) => {
                     const params = JSON.parse(bot.params)
                     let new_data = []
                     let tips = []
-                 
+
 
 
                     //nova data sem dados nulos
@@ -100,7 +106,7 @@ bot.command('startbots', async (ctx) => {
                             for (let i = 0; i < params.length; i++) {
 
 
-                               
+
                                 // goals
                                 if (Object.values(params[i]).includes('goals') &&
                                     game.scores && game.scores.localteam_score && game.scores.visitorteam_score
@@ -130,7 +136,7 @@ bot.command('startbots', async (ctx) => {
 
 
                                                 if ((home_favorite <= 1.50 && home_favorite >= 1.01) || (away_favorite <= 1.50 && away_favorite >= 1.01)) {
-                                                   
+
                                                     tips.push(game)
                                                     continue
                                                 } else {
@@ -303,7 +309,7 @@ bot.command('startbots', async (ctx) => {
 
 
                         for (let i = 0; i < params.length; i++) {
-                           
+
 
                             //goals params
                             if (params[i].property == "goals") {
@@ -3780,7 +3786,7 @@ bot.command('startbots', async (ctx) => {
 
                     //verifica se é uma entrada nova e manda 
                     if (tips.length > 0) {
-                        
+
                         for (let i = 0; i < tips.length; i++) {
 
                             const config = {

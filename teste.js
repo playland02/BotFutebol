@@ -1,29 +1,17 @@
 
 
-const data = await fetch("https://api.sokkerpro.net/liveApi/" + createStringRandom(16)).then((res) => {
+const bots = await fetch('https://horizonte-rp.online/bots').then((res) => {
     return res.json()
-})
+}).catch((error)=>console.log(error))
 
-data.data.forEach(async (game) => {
-    const data_odd = await fetch(`https://api.sokkerpro.net/fixture/${game.id}/${createStringRandom(16)}`).then((res) => {
-        return res.json()
-    })
+const data = await fetch("https://api.sokkerpro.net/liveApi/web_" + createStringRandom(16)).then((res) => {
+    return res.json()
+}).catch((error)=>console.log(error))
 
-    if (data_odd.data && data_odd.data.stats && data_odd.data.stats.length > 1 &&
-        data_odd.data.odds && data_odd.data.odds.half_odd && data_odd.data.odds.half_odd[1].markets &&
-        data_odd.data.odds.half_odd[1].markets[0].data && data_odd.data.odds.half_odd[1].markets[0].data[0].value &&
-        data_odd.data.odds.half_odd[1].markets[0].data[0].value != 0
-    ) {
-
-        
-
-        if(game_market <= 1.35 ){
-            console.log(`tip: ${game_market}`)
-        }
-    }
-
-
-})
+   
+if(data && bots){
+    console.log('ok')
+}
 
 
 

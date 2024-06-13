@@ -118,7 +118,7 @@ bot.command('startbots', async (ctx) => {
 
                     throw new Error('Erro na requisição');
                 } else {
-        
+
                     return res.json()
                 }
             }).catch((error) => console.log(error))
@@ -128,7 +128,7 @@ bot.command('startbots', async (ctx) => {
 
                     throw new Error('Erro na requisição');
                 } else {
-        
+
                     return res.json()
                 }
             }).catch((error) => console.log(error))
@@ -3829,42 +3829,44 @@ bot.command('startbots', async (ctx) => {
                     }
 
                     //verifica se é uma entrada nova e manda 
-                    if (tips.length > 0) {
+                    try {
+                        if (tips.length > 0) {
 
-                        for (let i = 0; i < tips.length; i++) {
+                            for (let i = 0; i < tips.length; i++) {
 
-                            const config = {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                    'Accept': '*/*'
-                                },
-                                body: JSON.stringify({
-                                    id_bot: bot._id,
-                                    id_game: tips[i].id,
-                                    result: "NR"
+                                const config = {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'Accept': '*/*'
+                                    },
+                                    body: JSON.stringify({
+                                        id_bot: bot._id,
+                                        id_game: tips[i].id,
+                                        result: "NR"
 
+                                    })
+
+                                }
+
+                                const filter_games = await fetch('https://horizonte-rp.online/tip', config).then(async (res) => {
+                                    return res.json()
                                 })
 
-                            }
-
-                            const filter_games = await fetch('https://horizonte-rp.online/tip', config).then(async (res) => {
-                                return res.json()
-                            })
-
-                            if (!filter_games.error) {
-                                await ctx.telegram.sendMessage(bot.chat_id, `${bot.name}\n
+                                if (!filter_games.error) {
+                                    await ctx.telegram.sendMessage(bot.chat_id, `${bot.name}\n
                                     \nCountry: ${tips[i].country_name}
                                     \nLeague: ${tips[i].league_name}
                                     \nMatch: ${tips[i].localTeam.name} x ${tips[i].visitorTeam.name}
                                     \nScores: ${tips[i].scores.localteam_score} x ${tips[i].scores.visitorteam_score}`)
-                                break;
+                                    break;
+                                }
                             }
-
-
                         }
-
+                    } catch (error) {
+                        console.log(error)
                     }
+                    
                     tips = []
                     new_data = []
                 })

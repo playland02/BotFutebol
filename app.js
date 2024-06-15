@@ -27,37 +27,7 @@ bot.command('start', async (ctx) => {
 
     ctx.reply("Olá como posso te ajudar?")
 })
-bot.command('testarapi', async (ctx) => {
-    const bots = await fetch('https://horizonte-rp.online/bots').then((res) => {
-        if (!res.ok) {
 
-            throw new Error('Erro na requisição');
-        } else {
-
-            return res.json()
-        }
-    })
-
-    const data = await fetch(`https://api.sokkerpro.net/liveApi/web_${createStringRandom(16)}`).then((res) => {
-        if (!res.ok) {
-
-            throw new Error('Erro na requisição');
-        } else {
-
-            return res.json()
-        }
-    })
-
-    if (data) {
-        await ctx.reply("API SOKKER PRO OK")
-        console.log(data)
-    }
-    if (bots) {
-        await ctx.reply("API SOKKER WIN OK ")
-        console.log(bots)
-    }
-
-})
 
 bot.command('token', async (ctx) => {
 
@@ -68,7 +38,9 @@ bot.command('token', async (ctx) => {
     let user = req.filter((data) => {
         return data.token === ctx.payload
     })
-
+    let isChatId = req.filter((data)=>{
+        return data.chat_id == ctx.from.chat_id
+    })
 
     if (user.length == 0) {
         await ctx.reply('Token invalido. Tente novamente !')
@@ -78,7 +50,7 @@ bot.command('token', async (ctx) => {
         await ctx.reply('Eu ja estou vinculado a sua conta !. Se esta mensagem for um engano, contate meu criador.')
     }
 
-    if (user.length > 0 && user[0].chat_id == 0) {
+    if (user.length > 0 && user[0].chat_id == 0 && isChatId.length < 1) {
         const config = {
             method: 'PUT',
             headers: {
@@ -86,7 +58,7 @@ bot.command('token', async (ctx) => {
                 'Accept': '*/*'
             },
             body: JSON.stringify({
-                chat_id: ctx.from.id
+                chat_id: ctx.from.chat_id
             })
 
         }

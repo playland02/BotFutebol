@@ -148,9 +148,6 @@ bot.command('startbots', async (ctx) => {
 
                         if (game.stats && game.stats.length > 1) {
                             for (let i = 0; i < params.length; i++) {
-
-
-
                                 // goals
                                 if (Object.values(params[i]).includes('goals') &&
                                     game.scores && game.scores.localteam_score && game.scores.visitorteam_score
@@ -837,7 +834,7 @@ bot.command('startbots', async (ctx) => {
 
                                     } else {
                                         let isFound = new_data.filter(game => {
-                                            return game.stats[1].passes.corners >= parseInt(params[i].value)
+                                            return game.stats[1].corners >= parseInt(params[i].value)
                                         })
 
                                         if (isFound.length > 0) {
@@ -934,7 +931,7 @@ bot.command('startbots', async (ctx) => {
 
                                     } else {
                                         let isFound = new_data.filter(game => {
-                                            return game.stats[1].passes.corners <= parseInt(params[i].value)
+                                            return game.stats[1].corners <= parseInt(params[i].value)
                                         })
                                         if (isFound.length > 0) {
                                             tips = isFound
@@ -1026,7 +1023,7 @@ bot.command('startbots', async (ctx) => {
 
                                     } else {
                                         let isFound = new_data.filter(game => {
-                                            return game.stats[1].passes.corners == parseInt(params[i].value)
+                                            return game.stats[1].corners == parseInt(params[i].value)
                                         })
                                         if (isFound.length > 0) {
                                             tips = isFound
@@ -1674,7 +1671,7 @@ bot.command('startbots', async (ctx) => {
 
                                     } else {
                                         let isFound = new_data.filter(game => {
-                                            return game.stats[1].passes.attacks.avg_dangerous_attacks >= parseFloat(params[i].value)
+                                            return game.stats[1].attacks.avg_dangerous_attacks >= parseFloat(params[i].value)
                                         })
                                         if (isFound.length > 0) {
                                             tips = isFound
@@ -1769,7 +1766,7 @@ bot.command('startbots', async (ctx) => {
 
                                     } else {
                                         let isFound = new_data.filter(game => {
-                                            return game.stats[1].passes.attacks.avg_dangerous_attacks <= parseFloat(params[i].value)
+                                            return game.stats[1].attacks.avg_dangerous_attacks <= parseFloat(params[i].value)
                                         })
                                         if (isFound.length > 0) {
                                             tips = isFound
@@ -1867,7 +1864,7 @@ bot.command('startbots', async (ctx) => {
 
                                     } else {
                                         let isFound = new_data.filter(game => {
-                                            return game.stats[1].passes.attacks.avg_dangerous_attacks == parseFloat(params[i].value)
+                                            return game.stats[1].attacks.avg_dangerous_attacks == parseFloat(params[i].value)
                                         })
                                         if (isFound.length > 0) {
                                             tips = isFound
@@ -1963,7 +1960,7 @@ bot.command('startbots', async (ctx) => {
 
                                     } else {
                                         let isFound = new_data.filter(game => {
-                                            return game.stats[1].passes.attacks.avg_attacks >= parseFloat(params[i].value)
+                                            return game.stats[1].attacks.avg_attacks >= parseFloat(params[i].value)
                                         })
                                         if (isFound.length > 0) {
                                             tips = isFound
@@ -2038,7 +2035,7 @@ bot.command('startbots', async (ctx) => {
                                     continue
 
                                 }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                if (params[i].target == "away" && params[i].conditional == "<") {
                                     if (tips.length > 0) {
 
                                         let isFound = tips.filter(game => {
@@ -2054,7 +2051,7 @@ bot.command('startbots', async (ctx) => {
 
                                     } else {
                                         let isFound = new_data.filter(game => {
-                                            return game.stats[1].passes.attacks.avg_attacks <= parseFloat(params[i].value)
+                                            return game.stats[1].attacks.avg_attacks <= parseFloat(params[i].value)
                                         })
                                         if (isFound.length > 0) {
                                             tips = isFound
@@ -2068,7 +2065,7 @@ bot.command('startbots', async (ctx) => {
                                     continue
 
                                 }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                if (params[i].target == "home_or_away" && params[i].conditional == "<") {
                                     if (tips.length > 0) {
 
                                         let isFound = tips.filter(game => {
@@ -2130,7 +2127,7 @@ bot.command('startbots', async (ctx) => {
                                     continue
 
                                 }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                if (params[i].target == "away" && params[i].conditional == "=") {
                                     if (tips.length > 0) {
 
                                         let isFound = tips.filter(game => {
@@ -2146,7 +2143,7 @@ bot.command('startbots', async (ctx) => {
 
                                     } else {
                                         let isFound = new_data.filter(game => {
-                                            return game.stats[1].passes.attacks.avg_attacks == parseFloat(params[i].value)
+                                            return game.stats[1].attacks.avg_attacks == parseFloat(params[i].value)
                                         })
                                         if (isFound.length > 0) {
                                             tips = isFound
@@ -2160,7 +2157,7 @@ bot.command('startbots', async (ctx) => {
                                     continue
 
                                 }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                if (params[i].target == "home_or_away" && params[i].conditional == "=") {
                                     if (tips.length > 0) {
 
                                         let isFound = tips.filter(game => {
@@ -2239,7 +2236,7 @@ bot.command('startbots', async (ctx) => {
 
                                     } else {
                                         let isFound = new_data.filter(game => {
-                                            return game.stats[1].passes.shots.total >= parseInt(params[i].value)
+                                            return game.stats[1].shots.total >= parseInt(params[i].value)
                                         })
                                         if (isFound.length > 0) {
                                             tips = isFound
@@ -2314,7 +2311,7 @@ bot.command('startbots', async (ctx) => {
                                     continue
 
                                 }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                if (params[i].target == "away" && params[i].conditional == "<") {
                                     if (tips.length > 0) {
 
                                         let isFound = tips.filter(game => {
@@ -2330,7 +2327,7 @@ bot.command('startbots', async (ctx) => {
 
                                     } else {
                                         let isFound = new_data.filter(game => {
-                                            return game.stats[1].passes.shots.total <= parseInt(params[i].value)
+                                            return game.stats[1].shots.total <= parseInt(params[i].value)
                                         })
 
                                         if (isFound.length > 0) {
@@ -2345,7 +2342,7 @@ bot.command('startbots', async (ctx) => {
                                     continue
 
                                 }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                if (params[i].target == "home_or_away" && params[i].conditional == "<") {
                                     if (tips.length > 0) {
 
                                         let isFound = tips.filter(game => {
@@ -2408,7 +2405,7 @@ bot.command('startbots', async (ctx) => {
                                     continue
 
                                 }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                if (params[i].target == "away" && params[i].conditional == "=") {
                                     if (tips.length > 0) {
 
                                         let isFound = tips.filter(game => {
@@ -2424,7 +2421,7 @@ bot.command('startbots', async (ctx) => {
 
                                     } else {
                                         let isFound = new_data.filter(game => {
-                                            return game.stats[1].passes.shots.total == parseInt(params[i].value)
+                                            return game.stats[1].shots.total == parseInt(params[i].value)
                                         })
                                         if (isFound.length > 0) {
                                             tips = isFound
@@ -2438,7 +2435,7 @@ bot.command('startbots', async (ctx) => {
                                     continue
 
                                 }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                if (params[i].target == "home_or_away" && params[i].conditional == "=") {
                                     if (tips.length > 0) {
 
                                         let isFound = tips.filter(game => {
@@ -2517,7 +2514,7 @@ bot.command('startbots', async (ctx) => {
 
                                     } else {
                                         let isFound = new_data.filter(game => {
-                                            return game.stats[1].passes.shots.ongoal >= parseInt(params[i].value)
+                                            return game.stats[1].shots.ongoal >= parseInt(params[i].value)
                                         })
                                         if (isFound.length > 0) {
                                             tips = isFound
@@ -2592,7 +2589,7 @@ bot.command('startbots', async (ctx) => {
                                     continue
 
                                 }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                if (params[i].target == "away" && params[i].conditional == "<") {
                                     if (tips.length > 0) {
 
                                         let isFound = tips.filter(game => {
@@ -2608,7 +2605,7 @@ bot.command('startbots', async (ctx) => {
 
                                     } else {
                                         let isFound = new_data.filter(game => {
-                                            return game.stats[1].passes.shots.ongoal <= parseInt(params[i].value)
+                                            return game.stats[1].shots.ongoal <= parseInt(params[i].value)
                                         })
                                         if (isFound.length > 0) {
                                             tips = isFound
@@ -2622,7 +2619,7 @@ bot.command('startbots', async (ctx) => {
                                     continue
 
                                 }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                if (params[i].target == "home_or_away" && params[i].conditional == "<") {
                                     if (tips.length > 0) {
 
                                         let isFound = tips.filter(game => {
@@ -2684,7 +2681,7 @@ bot.command('startbots', async (ctx) => {
                                     continue
 
                                 }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                if (params[i].target == "away" && params[i].conditional == "=") {
                                     if (tips.length > 0) {
 
                                         let isFound = tips.filter(game => {
@@ -2700,7 +2697,7 @@ bot.command('startbots', async (ctx) => {
 
                                     } else {
                                         let isFound = new_data.filter(game => {
-                                            return game.stats[1].passes.shots.ongoal == parseInt(params[i].value)
+                                            return game.stats[1].shots.ongoal == parseInt(params[i].value)
                                         })
                                         if (isFound.length > 0) {
                                             tips = isFound
@@ -2714,7 +2711,7 @@ bot.command('startbots', async (ctx) => {
                                     continue
 
                                 }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                if (params[i].target == "home_or_away" && params[i].conditional == "=") {
                                     if (tips.length > 0) {
 
                                         let isFound = tips.filter(game => {
@@ -2792,7 +2789,7 @@ bot.command('startbots', async (ctx) => {
 
                                     } else {
                                         let isFound = new_data.filter(game => {
-                                            return game.stats[1].passes.shots.offgoal >= parseInt(params[i].value)
+                                            return game.stats[1].shots.offgoal >= parseInt(params[i].value)
                                         })
 
                                         if (isFound.length > 0) {
@@ -2869,7 +2866,7 @@ bot.command('startbots', async (ctx) => {
                                     continue
 
                                 }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                if (params[i].target == "away" && params[i].conditional == "<") {
                                     if (tips.length > 0) {
 
                                         let isFound = tips.filter(game => {
@@ -2885,7 +2882,7 @@ bot.command('startbots', async (ctx) => {
 
                                     } else {
                                         let isFound = new_data.filter(game => {
-                                            return game.stats[1].passes.shots.offgoal <= parseInt(params[i].value)
+                                            return game.stats[1].shots.offgoal <= parseInt(params[i].value)
                                         })
                                         if (isFound.length > 0) {
                                             tips = isFound
@@ -2899,7 +2896,7 @@ bot.command('startbots', async (ctx) => {
                                     continue
 
                                 }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                if (params[i].target == "home_or_away" && params[i].conditional == "<") {
                                     if (tips.length > 0) {
 
                                         let isFound = tips.filter(game => {
@@ -2961,7 +2958,7 @@ bot.command('startbots', async (ctx) => {
                                     continue
 
                                 }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                if (params[i].target == "away" && params[i].conditional == "=") {
                                     if (tips.length > 0) {
 
                                         let isFound = tips.filter(game => {
@@ -2977,7 +2974,7 @@ bot.command('startbots', async (ctx) => {
 
                                     } else {
                                         let isFound = new_data.filter(game => {
-                                            return game.stats[1].passes.shots.offgoal == parseInt(params[i].value)
+                                            return game.stats[1].shots.offgoal == parseInt(params[i].value)
                                         })
                                         if (isFound.length > 0) {
                                             tips = isFound
@@ -2991,7 +2988,7 @@ bot.command('startbots', async (ctx) => {
                                     continue
 
                                 }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                if (params[i].target == "home_or_away" && params[i].conditional == "=") {
                                     if (tips.length > 0) {
 
                                         let isFound = tips.filter(game => {
@@ -3070,7 +3067,7 @@ bot.command('startbots', async (ctx) => {
 
                                     } else {
                                         let isFound = new_data.filter(game => {
-                                            return game.stats[1].passes.shots.blocked >= parseInt(params[i].value)
+                                            return game.stats[1].shots.blocked >= parseInt(params[i].value)
                                         })
                                         if (isFound.length > 0) {
                                             tips = isFound
@@ -3145,7 +3142,7 @@ bot.command('startbots', async (ctx) => {
                                     continue
 
                                 }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                if (params[i].target == "away" && params[i].conditional == "<") {
                                     if (tips.length > 0) {
 
                                         let isFound = tips.filter(game => {
@@ -3161,7 +3158,7 @@ bot.command('startbots', async (ctx) => {
 
                                     } else {
                                         let isFound = new_data.filter(game => {
-                                            return game.stats[1].passes.shots.blocked <= parseInt(params[i].value)
+                                            return game.stats[1].shots.blocked <= parseInt(params[i].value)
                                         })
                                         if (isFound.length > 0) {
                                             tips = isFound
@@ -3175,7 +3172,7 @@ bot.command('startbots', async (ctx) => {
                                     continue
 
                                 }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                if (params[i].target == "home_or_away" && params[i].conditional == "<") {
                                     if (tips.length > 0) {
 
                                         let isFound = tips.filter(game => {
@@ -3237,7 +3234,7 @@ bot.command('startbots', async (ctx) => {
                                     continue
 
                                 }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                if (params[i].target == "away" && params[i].conditional == "=") {
                                     if (tips.length > 0) {
 
                                         let isFound = tips.filter(game => {
@@ -3253,7 +3250,7 @@ bot.command('startbots', async (ctx) => {
 
                                     } else {
                                         let isFound = new_data.filter(game => {
-                                            return game.stats[1].passes.shots.blocked == parseInt(params[i].value)
+                                            return game.stats[1].shots.blocked == parseInt(params[i].value)
                                         })
                                         if (isFound.length > 0) {
                                             tips = isFound
@@ -3267,7 +3264,7 @@ bot.command('startbots', async (ctx) => {
                                     continue
 
                                 }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                if (params[i].target == "home_or_away" && params[i].conditional == "=") {
                                     if (tips.length > 0) {
 
                                         let isFound = tips.filter(game => {
@@ -3350,7 +3347,7 @@ bot.command('startbots', async (ctx) => {
 
                                     } else {
                                         let isFound = new_data.filter(game => {
-                                            return game.stats[1].passes.shots.insidebox >= parseInt(params[i].value)
+                                            return game.stats[1].shots.insidebox >= parseInt(params[i].value)
                                         })
                                         if (isFound.length > 0) {
                                             tips = isFound
@@ -3418,7 +3415,7 @@ bot.command('startbots', async (ctx) => {
                                     continue
 
                                 }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                if (params[i].target == "away" && params[i].conditional == "<") {
                                     if (tips.length > 0) {
                                         let isFound = tips.filter(game => {
                                             return game.stats[1].shots.insidebox <= parseInt(params[i].value)
@@ -3432,7 +3429,7 @@ bot.command('startbots', async (ctx) => {
                                         }
                                     } else {
                                         let isFound = new_data.filter(game => {
-                                            return game.stats[1].passes.shots.insidebox <= parseInt(params[i].value)
+                                            return game.stats[1].shots.insidebox <= parseInt(params[i].value)
                                         })
                                         if (isFound.length > 0) {
                                             tips = isFound
@@ -3445,7 +3442,7 @@ bot.command('startbots', async (ctx) => {
                                     continue
 
                                 }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                if (params[i].target == "home_or_away" && params[i].conditional == "<") {
                                     if (tips.length > 0) {
 
                                         let isFound = tips.filter(game => {
@@ -3503,7 +3500,7 @@ bot.command('startbots', async (ctx) => {
                                     continue
 
                                 }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                if (params[i].target == "away" && params[i].conditional == "=") {
                                     if (tips.length > 0) {
 
                                         let isFound = tips.filter(game => {
@@ -3518,7 +3515,7 @@ bot.command('startbots', async (ctx) => {
                                         }
                                     } else {
                                         let isFound = new_data.filter(game => {
-                                            return game.stats[1].passes.shots.insidebox == parseInt(params[i].value)
+                                            return game.stats[1].shots.insidebox == parseInt(params[i].value)
                                         })
                                         if (isFound.length > 0) {
                                             tips = isFound
@@ -3531,7 +3528,7 @@ bot.command('startbots', async (ctx) => {
                                     continue
 
                                 }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                if (params[i].target == "home_or_away" && params[i].conditional == "=") {
                                     if (tips.length > 0) {
 
                                         let isFound = tips.filter(game => {
@@ -3606,7 +3603,7 @@ bot.command('startbots', async (ctx) => {
                                         }
                                     } else {
                                         let isFound = new_data.filter(game => {
-                                            return game.stats[1].passes.shots.outsidebox >= parseInt(params[i].value)
+                                            return game.stats[1].shots.outsidebox >= parseInt(params[i].value)
                                         })
                                         if (isFound.length > 0) {
                                             tips = isFound
@@ -3675,7 +3672,7 @@ bot.command('startbots', async (ctx) => {
                                     continue
 
                                 }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                if (params[i].target == "away" && params[i].conditional == "<") {
                                     if (tips.length > 0) {
 
                                         let isFound = tips.filter(game => {
@@ -3691,7 +3688,7 @@ bot.command('startbots', async (ctx) => {
 
                                     } else {
                                         let isFound = new_data.filter(game => {
-                                            return game.stats[1].passes.shots.outsidebox <= parseInt(params[i].value)
+                                            return game.stats[1].shots.outsidebox <= parseInt(params[i].value)
                                         })
                                         if (isFound.length > 0) {
                                             tips = isFound
@@ -3704,7 +3701,7 @@ bot.command('startbots', async (ctx) => {
                                     continue
 
                                 }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                if (params[i].target == "home_or_away" && params[i].conditional == "<") {
                                     if (tips.length > 0) {
 
                                         let isFound = tips.filter(game => {
@@ -3765,7 +3762,7 @@ bot.command('startbots', async (ctx) => {
                                     continue
 
                                 }
-                                if (params[i].target == "away" && params[i].conditional == ">") {
+                                if (params[i].target == "away" && params[i].conditional == "=") {
                                     if (tips.length > 0) {
 
                                         let isFound = tips.filter(game => {
@@ -3780,7 +3777,7 @@ bot.command('startbots', async (ctx) => {
                                         }
                                     } else {
                                         let isFound = new_data.filter(game => {
-                                            return game.stats[1].passes.shots.outsidebox == parseInt(params[i].value)
+                                            return game.stats[1].shots.outsidebox == parseInt(params[i].value)
                                         })
                                         if (isFound.length > 0) {
                                             tips = isFound
@@ -3793,7 +3790,7 @@ bot.command('startbots', async (ctx) => {
                                     continue
 
                                 }
-                                if (params[i].target == "home_or_away" && params[i].conditional == ">") {
+                                if (params[i].target == "home_or_away" && params[i].conditional == "=") {
                                     if (tips.length > 0) {
 
                                         let isFound = tips.filter(game => {
@@ -3824,7 +3821,6 @@ bot.command('startbots', async (ctx) => {
 
                                 }
                             }
-
                         }
                     }
 

@@ -24,7 +24,7 @@ function createStringRandom(length) {
 }
 
 bot.command('start', async (ctx) => {
-    console.log(ctx)
+    
     ctx.reply("Olá como posso te ajudar?")
 })
 
@@ -115,6 +115,7 @@ bot.command('startbots', async (ctx) => {
                     try {
 
                         if (bot.on) {
+                            console.log(bot.name)
                             const params = JSON.parse(bot.params)
                             let new_data = []
                             let tips = []
@@ -3818,6 +3819,11 @@ bot.command('startbots', async (ctx) => {
                                             body: JSON.stringify({
                                                 id_bot: bot._id,
                                                 id_game: tips[i].id,
+                                                country_name:tips[i].country_name,
+                                                league_name:tips[i].league_name,
+                                                home_name:tips[i].localTeam.name,
+                                                away_name:tips[i].visitorTeam.name,
+                                                created_in: Date.now(),
                                                 result: "NR"
 
                                             })
@@ -3860,9 +3866,59 @@ function messageTip(tip, bot) {
     \nMinutes: ${tip.time.minute}
     \n\nLIVE STATISTIC\n
     `
+    if (tip.stats[0].corners && tip.stats[1].corners){
+        string += `\nCorners: ${tip.stats[0].corners} x ${tip.stats[1].corners}`
+    }
     if (tip.stats[0].shots.total && tip.stats[1].shots.total){
         string += `\nShots total: ${tip.stats[0].shots.total} x ${tip.stats[1].shots.total}`
     }
+    if (tip.stats[0].shots.ongoal && tip.stats[1].shots.ongoal){
+        string += `\nShots ongoal: ${tip.stats[0].shots.ongoal} x ${tip.stats[1].shots.ongoal}`
+    }
+    if (tip.stats[0].shots.offgoal && tip.stats[1].shots.offgoal){
+        string += `\nShots offgoal: ${tip.stats[0].shots.offgoal} x ${tip.stats[1].shots.offgoal}`
+    }
+    if (tip.stats[0].attacks.avg_attacks && tip.stats[1].atttacks.avg_attacks){
+        string += `\nAPM: ${tip.stats[0].atttacks.avg_attacks} x ${tip.stats[1].atttacks.avg_attacks}`
+    }
+    if (tip.stats[0].attacks.avg_dangerous_attacks && tip.stats[1].atttacks.avg_dangerous_attacks){
+        string += `\nAPPM: ${tip.stats[0].atttacks.avg_dangerous_attacks} x ${tip.stats[1].atttacks.avg_dangerous_attacks}`
+    }
+    if (tip.stats[0].yellowcards && tip.stats[1].yellowcards){
+        string += `\nYellow cards: ${tip.stats[0].yellowcards} x ${tip.stats[1].yellowcards}`
+    }
+    if (tip.stats[0].redcards && tip.stats[1].redcards){
+        string += `\nRed cards: ${tip.stats[0].redcards} x ${tip.stats[1].redcards}`
+    }
+
+    string += '\n\nPRE - LIVE\n'
+
+    if (tip.goals05ht && tip.goals05ht ){
+        string += `\nOVER 0.5 HT: ${tip.goals05ht }% x ${tip.goals05ht }%`
+    }
+    if (tip.goals15ht && tip.goals15ht ){
+        string += `\nOVER 1.5 HT: ${tip.goals15ht }% x ${tip.goals15ht }%`
+    }
+    if (tip.goals15ft && tip.goals15ft ){
+        string += `\nOVER 1.5 FT: ${tip.goals15ft }% x ${tip.goals15ft }%`
+    }
+    if (tip.goals25ft && tip.goals25ft ){
+        string += `\nOVER 2.5 FT: ${tip.goals25ft }% x ${tip.goals25ft }%`
+    }
+    if (tip.goals35ft && tip.goals35ft ){
+        string += `\nOVER 3.5 FT: ${tip.goals35ft }% x ${tip.goals35ft }%`
+    }
+
+    if (tip.cornerprediction && tip.cornerprediction ){
+        string += `\nCorners predict: ${tip.cornerprediction } x ${tip.cornerprediction }`
+    }
+
+    if (tip.bttsvalue && tip.bttsvalue ){
+        string += `\nBTTS: ${tip.bttsvalue }% x ${tip.bttsvalue }%`
+    }
+
+
+
     return string
 }
 

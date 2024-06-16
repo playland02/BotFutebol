@@ -24,7 +24,7 @@ function createStringRandom(length) {
 }
 
 bot.command('start', async (ctx) => {
-    
+
     ctx.reply("Olá como posso te ajudar?")
 })
 
@@ -3819,10 +3819,10 @@ bot.command('startbots', async (ctx) => {
                                             body: JSON.stringify({
                                                 id_bot: bot._id,
                                                 id_game: tips[i].id,
-                                                country_name:tips[i].country_name,
-                                                league_name:tips[i].league_name,
-                                                home_name:tips[i].localTeam.name,
-                                                away_name:tips[i].visitorTeam.name,
+                                                country_name: tips[i].country_name,
+                                                league_name: tips[i].league_name,
+                                                home_name: tips[i].localTeam.name,
+                                                away_name: tips[i].visitorTeam.name,
                                                 created_in: Date.now(),
                                                 result: "NR"
 
@@ -3866,56 +3866,58 @@ function messageTip(tip, bot) {
     \nMinutes: ${tip.time.minute}
     \n\nLIVE STATISTIC\n
     `
-    if (tip.stats[0].corners && tip.stats[1].corners){
-        string += `\nCorners: ${tip.stats[0].corners} x ${tip.stats[1].corners}`
-    }
-    if (tip.stats[0].shots.total && tip.stats[1].shots.total){
-        string += `\nShots total: ${tip.stats[0].shots.total} x ${tip.stats[1].shots.total}`
-    }
-    if (tip.stats[0].shots.ongoal && tip.stats[1].shots.ongoal){
-        string += `\nShots ongoal: ${tip.stats[0].shots.ongoal} x ${tip.stats[1].shots.ongoal}`
-    }
-    if (tip.stats[0].shots.offgoal && tip.stats[1].shots.offgoal){
-        string += `\nShots offgoal: ${tip.stats[0].shots.offgoal} x ${tip.stats[1].shots.offgoal}`
-    }
-    if (tip.stats[0].attacks.avg_attacks && tip.stats[1].atttacks.avg_attacks){
-        string += `\nAPM: ${tip.stats[0].atttacks.avg_attacks} x ${tip.stats[1].atttacks.avg_attacks}`
-    }
-    if (tip.stats[0].attacks.avg_dangerous_attacks && tip.stats[1].atttacks.avg_dangerous_attacks){
-        string += `\nAPPM: ${tip.stats[0].atttacks.avg_dangerous_attacks} x ${tip.stats[1].atttacks.avg_dangerous_attacks}`
-    }
-    if (tip.stats[0].yellowcards && tip.stats[1].yellowcards){
-        string += `\nYellow cards: ${tip.stats[0].yellowcards} x ${tip.stats[1].yellowcards}`
-    }
-    if (tip.stats[0].redcards && tip.stats[1].redcards){
-        string += `\nRed cards: ${tip.stats[0].redcards} x ${tip.stats[1].redcards}`
-    }
+
+
+
+    string += `\nCorners: ${tip?.stats[0]?.corners ? (tip.stats[0].corners) : ('0')} x ${tip?.stats[1]?.corners ? (tip.stats[1].corners) : ('0')}`
+
+
+    string += `\nShots total: ${tip?.stats[0]?.shots?.total ? (tip?.stats[0]?.shots?.total) : ('0')} x ${tip?.stats[1]?.shots?.total ? (tip?.stats[1]?.shots?.total) : ('0')}`
+
+
+    string += `\nShots ongoal: ${tip?.stats[0]?.shots?.ongoal ? (tip?.stats[0]?.shots?.ongoal) : ('0')} x ${tip?.stats[1]?.shots?.ongoal ? (tip?.stats[1]?.shots?.ongoal) : ('0')}`
+
+
+    string += `\nShots offgoal: ${tip?.stats[0]?.shots?.offgoal ? (tip?.stats[0]?.shots?.offgoal) : ('0')} x ${tip?.stats[1]?.shots?.offgoal ? (tip?.stats[1]?.shots?.offgoal) : ('0')}`
+
+
+    string += `\nAPM: ${tip?.stats[0]?.atttacks?.avg_attacks ? (tip.stats[0].atttacks.avg_attacks) : ('0')} x ${tip?.stats[1]?.atttacks?.avg_attacks ? (tip.stats[1].atttacks.avg_attacks) : ('0')}`
+
+
+    string += `\nAPPM: ${tip?.stats[0]?.atttacks?.avg_dangerous_attacks ? (tip.stats[0].atttacks.avg_dangerous_attacks) : ('0')} x ${tip?.stats[1]?.atttacks?.avg_dangerous_attacks ? (tip.stats[1].atttacks.avg_dangerous_attacks) : ('0')}`
+
+
+    string += `\nYellow cards: ${tip?.stats[0]?.yellowcards ? (tip?.stats[0]?.yellowcards) : ('0')} x ${tip?.stats[1]?.yellowcards ? (tip?.stats[1]?.yellowcards) : ('0')}`
+
+
+    string += `\nRed cards: ${tip?.stats[0]?.redcards ? (tip?.stats[0]?.redcards) : ('0')} x ${tip?.stats[1]?.redcards ? (tip?.stats[1]?.redcards) : ('0')}`
+
+
 
     string += '\n\nPRE - LIVE\n'
 
-    if (tip.goals05ht && tip.goals05ht ){
-        string += `\nOVER 0.5 HT: ${tip.goals05ht }% x ${tip.goals05ht }%`
-    }
-    if (tip.goals15ht && tip.goals15ht ){
-        string += `\nOVER 1.5 HT: ${tip.goals15ht }% x ${tip.goals15ht }%`
-    }
-    if (tip.goals15ft && tip.goals15ft ){
-        string += `\nOVER 1.5 FT: ${tip.goals15ft }% x ${tip.goals15ft }%`
-    }
-    if (tip.goals25ft && tip.goals25ft ){
-        string += `\nOVER 2.5 FT: ${tip.goals25ft }% x ${tip.goals25ft }%`
-    }
-    if (tip.goals35ft && tip.goals35ft ){
-        string += `\nOVER 3.5 FT: ${tip.goals35ft }% x ${tip.goals35ft }%`
-    }
 
-    if (tip.cornerprediction && tip.cornerprediction ){
-        string += `\nCorners predict: ${tip.cornerprediction } x ${tip.cornerprediction }`
-    }
+    string += `\nOVER 0.5 HT: ${tip?.goals05ht ? (tip.goals05ht) : ('0')}% x ${tip?.goals05ht ? (tip.goals05ht) : ('0')}%`
 
-    if (tip.bttsvalue && tip.bttsvalue ){
-        string += `\nBTTS: ${tip.bttsvalue }% x ${tip.bttsvalue }%`
-    }
+
+    string += `\nOVER 1.5 HT: ${tip?.goals15ht ? (tip.goals15ht) : ('0')}% x ${tip?.goals15ht ? (tip.goals15ht) : ('0')}%`
+
+
+    string += `\nOVER 1.5 FT: ${tip?.goals15ft ? (tip.goals15ft) : ('0')}% x ${tip?.goals15ft ? (tip.goals15ft) : ('0')}%`
+
+
+    string += `\nOVER 2.5 FT: ${tip?.goals25ft ? (tip.goals25ft) : ('0')}% x ${tip?.goals25ft ? (tip.goals25ft) : ('0')}%`
+
+
+    string += `\nOVER 3.5 FT: ${tip?.goals35ft ? (tip.goals35ft) : ('0')}% x ${tip?.goals35ft ? (tip.goals35ft) : ('0')}%`
+
+
+
+    string += `\nCorners predict: ${tip?.cornerprediction ? (tip.cornerprediction) : ('0')} x ${tip?.cornerprediction ? (tip.cornerprediction) : ('0')}`
+
+
+
+    string += `\nBTTS: ${tip?.bttsvalue ? (tip.bttsvalue) : ('0')}% x ${tip?.bttsvalue ? (tip.bttsvalue) : ('0')}%`
 
 
 

@@ -3897,27 +3897,27 @@ function messageTip(tip, bot) {
     string += '\n\nPRE - LIVE\n'
 
 
-    string += `\nOVER 0.5 HT: ${tip?.goals05ht ? (tip.goals05ht) : ('0')}% x ${tip?.goals05ht ? (tip.goals05ht) : ('0')}%`
+    string += `\nOVER 0.5 HT: ${tip?.goals05ht ? (tip.goals05ht) : ('0')}% `
 
 
-    string += `\nOVER 1.5 HT: ${tip?.goals15ht ? (tip.goals15ht) : ('0')}% x ${tip?.goals15ht ? (tip.goals15ht) : ('0')}%`
+    string += `\nOVER 1.5 HT: ${tip?.goals15ht ? (tip.goals15ht) : ('0')}% `
 
 
-    string += `\nOVER 1.5 FT: ${tip?.goals15ft ? (tip.goals15ft) : ('0')}% x ${tip?.goals15ft ? (tip.goals15ft) : ('0')}%`
+    string += `\nOVER 1.5 FT: ${tip?.goals15ft ? (tip.goals15ft) : ('0')}% `
 
 
-    string += `\nOVER 2.5 FT: ${tip?.goals25ft ? (tip.goals25ft) : ('0')}% x ${tip?.goals25ft ? (tip.goals25ft) : ('0')}%`
+    string += `\nOVER 2.5 FT: ${tip?.goals25ft ? (tip.goals25ft) : ('0')}% `
 
 
-    string += `\nOVER 3.5 FT: ${tip?.goals35ft ? (tip.goals35ft) : ('0')}% x ${tip?.goals35ft ? (tip.goals35ft) : ('0')}%`
-
-
-
-    string += `\nCorners predict: ${tip?.cornerprediction ? (tip.cornerprediction) : ('0')} x ${tip?.cornerprediction ? (tip.cornerprediction) : ('0')}`
+    string += `\nOVER 3.5 FT: ${tip?.goals35ft ? (tip.goals35ft) : ('0')}% `
 
 
 
-    string += `\nBTTS: ${tip?.bttsvalue ? (tip.bttsvalue) : ('0')}% x ${tip?.bttsvalue ? (tip.bttsvalue) : ('0')}%`
+    string += `\nCorners predict: ${tip?.cornerprediction ? (tip.cornerprediction) : ('0')}`
+
+
+
+    string += `\nBTTS: ${tip?.bttsvalue ? (tip.bttsvalue) : ('0')}% `
 
 
 

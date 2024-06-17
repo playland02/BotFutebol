@@ -81,11 +81,31 @@ bot.command('startbots', async (ctx) => {
         await ctx.telegram.sendMessage(id_master, `Todos bots foram ativado  !`)
 
         setInterval(async () => {
+
+            /* GET /eventApi/2024-06-17/-180/web_2cr7xbxpeth8nkef HTTP/2
+ Host: api.sokkerpro.net
+ User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:120.0) Gecko/20100101 Firefox/120.0
+ 
+ 
+ Connection: keep-alivez
+ Sec-Fetch-Dest: empty
+ Sec-Fetch-Mode: cors
+ Sec-Fetch-Site: cross-site
+ TE: trailers*/
+
+
+
             const options = {
 
                 method: 'GET',
                 headers: {
-                    'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:120.0) Gecko/20100101 Firefox/120.0'
+                    'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:120.0) Gecko/20100101 Firefox/120.0',
+                    'Origin': 'https://sokkerpro.com',
+                    'Accept': '*/*',
+                    'Accept-Language': 'pt-BR,pt;q=0.8,en-US;q=0.5,en;q=0.3',
+                    'Accept-Encoding': 'gzip, deflate, br',
+                    'Referer': 'https://sokkerpro.com/'
+
                 }
             }
             const bots = await fetch('https://horizonte-rp.online/bots', options).then((res) => {
@@ -123,7 +143,7 @@ bot.command('startbots', async (ctx) => {
 
 
                             //nova data sem dados nulos
-                            data.data.forEach(async (game) => {
+                            await data.data.forEach(async (game) => {
 
                                 if (game.stats && game.stats.length > 1) {
                                     for (let i = 0; i < params.length; i++) {

@@ -1,5 +1,6 @@
 import { Telegraf } from "telegraf"
 import { HttpsProxyAgent } from "https-proxy-agent"
+import { json } from "sequelize"
 
 const token = '7012699522:AAG1EgPUxaLFjcSdsirvjhZ3FZfIQC_9BpM'
 const bot = new Telegraf(token)
@@ -74,6 +75,99 @@ bot.command('token', async (ctx) => {
 
 })
 
+bot.command('salvarOdds', async (ctx) => {
+    if (ctx.chat.id == id_master && ctx.from.id == id_master) {
+        ctx.reply('O bot esta salvando as odds das partidas ')
+        let url = `https://api.sokkerpro.net/eventApi/2024-06-18/-180/web_${createStringRandom(16)}`
+
+        let options = {
+
+            method: 'GET',
+            headers: {
+                'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:120.0) Gecko/20100101 Firefox/120.0',
+                'Content-Type': 'application/json'
+
+
+            }
+        }
+
+        const data = await fetch(url, options)
+            .then((res) => {
+                if (!res.ok) {
+
+                    throw new Error('Erro na requisição');
+                } else {
+
+                    return res.json()
+                }
+            }).catch((Error) => {
+                console.log(Error)
+            })
+
+
+        let count = 0
+        if (data?.data !== null || data?.data !== undefined) {
+            
+            data.data.forEach(async (game) => {
+                url = `https://api.sokkerpro.net/fixture/${game.id}/web_${createStringRandom(16)}`
+
+                const fixture = await fetch(url, options)
+                    .then((res) => {
+                        if (!res.ok) {
+
+                            throw new Error('Erro na requisição');
+                        } else {
+
+                            return res.json()
+                        }
+                    }).catch((Error) => {
+                        console.log(Error)
+                    })
+
+                if (fixture?.data?.odds !== null && fixture?.data?.odds !== undefined) {
+                    url = `https://horizonte-rp.online/odd`
+
+                    options = {
+
+                        method: 'POST',
+                        headers: {
+                            'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:120.0) Gecko/20100101 Firefox/120.0',
+                            'Content-Type': 'application/json',
+                            'Accept':"*/*"
+                        },
+                        body: JSON.stringify({
+                            id_game: game.id,
+                            odds: JSON.stringify(fixture.data.odds)
+                        })
+
+                    }
+
+                    const odd = await fetch(url, options)
+                        .then((res) => {
+                            if (!res.ok) {
+
+                                throw new Error('Erro na requisição');
+                            } else {
+                                count += 1
+                                return res.json()
+                            }
+                        }).catch((Error) => {
+                            console.log(Error)
+                        })
+                    
+                        
+                    
+                }
+
+            })
+
+            await ctx.reply(` ${count} matches were added with odds added or updated database.`)
+
+        }else{
+            await ctx.reply(` Games not found ! `)
+        }
+    }
+})
 
 
 bot.command('startbots', async (ctx) => {
@@ -100,11 +194,11 @@ bot.command('startbots', async (ctx) => {
                 method: 'GET',
                 headers: {
                     'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:120.0) Gecko/20100101 Firefox/120.0',
-                    'Origin': 'https://sokkerpro.com',
+
                     'Accept': '*/*',
                     'Accept-Language': 'pt-BR,pt;q=0.8,en-US;q=0.5,en;q=0.3',
-                    'Accept-Encoding': 'gzip, deflate, br',
-                    'Referer': 'https://sokkerpro.com/'
+                    'Accept-Encoding': 'gzip, deflate, br'
+
 
                 }
             }

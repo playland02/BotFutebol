@@ -1,24 +1,8 @@
 
 
-const bots = await fetch('https://horizonte-rp.online/bots').then((res) => {
-    if (!res.ok) {
-
-        throw new Error('Erro na requisição');
-    } else {
-
-        return res.json()
-    }
-}).catch((Error) => {
-    console.log(Error)
-})
 
 
-const data = await fetch("https://api.sokkerpro.net/liveApi/web_" + createStringRandom(16),{
-    signal: AbortSignal.any([
-        controller.signal,
-        AbortSignal.timeout(3000),
-       ]),
-} ).then((res) => {
+const data = await fetch("https://api.sokkerpro.net/liveApi/web_" + createStringRandom(16),).then((res) => {
     if (!res.ok) {
 
         throw new Error('Erro na requisição');
@@ -32,7 +16,7 @@ const data = await fetch("https://api.sokkerpro.net/liveApi/web_" + createString
 
 
 
-if ( data?.data !== null && data?.data !== undefined  ) {
+if (data?.data !== null && data?.data !== undefined) {
     console.log('ok')
 }
 

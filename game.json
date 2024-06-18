@@ -1,16 +1,16 @@
 {
     "status": "ok",
     "data": {
-        "id": "19109331",
-        "league_id": "1385",
-        "season_id": "23363",
-        "stage_id": "77470460",
-        "round_id": "336645",
+        "id": "19098821",
+        "league_id": "651",
+        "season_id": "23291",
+        "stage_id": "77470221",
+        "round_id": "335342",
         "group_id": null,
-        "localteam_id": "146740",
-        "visitorteam_id": "130313",
+        "localteam_id": "3672",
+        "visitorteam_id": "13292",
         "winner_team_id": null,
-        "starting_time": "2024-05-30 18:00:00",
+        "starting_time": "2024-06-18 22:00:00",
         "status": "NS",
         "updated_at": "0000-00-00 00:00:00",
         "highlight_team": "-1",
@@ -28,31 +28,31 @@
             "ps_score": null
         },
         "localTeam": {
-            "id": 146740,
-            "legacy_id": null,
-            "name": "Fortaleza U20",
-            "short_code": null,
+            "id": 3672,
+            "legacy_id": 1654,
+            "name": "Guarani",
+            "short_code": "GUA",
             "twitter": null,
             "country_id": 5,
             "national_team": false,
-            "founded": null,
-            "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/20\/146740.png",
-            "venue_id": null,
-            "current_season_id": 23363,
+            "founded": 1911,
+            "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/24\/3672.png",
+            "venue_id": 2150,
+            "current_season_id": 23291,
             "is_placeholder": false
         },
         "visitorTeam": {
-            "id": 130313,
-            "legacy_id": null,
-            "name": "Fluminense U20",
+            "id": 13292,
+            "legacy_id": 788,
+            "name": "Ituano",
             "short_code": null,
             "twitter": null,
             "country_id": 5,
             "national_team": false,
-            "founded": null,
-            "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/9\/130313.png",
-            "venue_id": null,
-            "current_season_id": 23359,
+            "founded": 1947,
+            "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/12\/13292.png",
+            "venue_id": 9202,
+            "current_season_id": 23291,
             "is_placeholder": false
         },
         "formations": {
@@ -65,10 +65,10 @@
         "time": {
             "status": "NS",
             "starting_at": {
-                "date_time": "2024-05-30 18:00:00",
-                "date": "2024-05-30",
-                "time": "18:00:00",
-                "timestamp": 1717092000,
+                "date_time": "2024-06-18 22:00:00",
+                "date": "2024-06-18",
+                "time": "22:00:00",
+                "timestamp": 1718748000,
                 "timezone": "UTC"
             },
             "minute": null,
@@ -90,19 +90,19 @@
                                     "label": "1",
                                     "total": null,
                                     "title": "1 WIN",
-                                    "value": 241
+                                    "value": 187
                                 },
                                 {
                                     "label": "X",
                                     "total": null,
                                     "title": "DRAW",
-                                    "value": 320
+                                    "value": 332
                                 },
                                 {
                                     "label": "2",
                                     "total": null,
                                     "title": "2 WIN",
-                                    "value": 264
+                                    "value": 437
                                 }
                             ]
                         },
@@ -113,19 +113,19 @@
                                     "label": "1X",
                                     "total": null,
                                     "title": "1 WIN OR DRAW",
-                                    "value": 138
+                                    "value": 119
                                 },
                                 {
                                     "label": "12",
                                     "total": null,
                                     "title": "1 OR 2",
-                                    "value": 127
+                                    "value": 131
                                 },
                                 {
                                     "label": "X2",
                                     "total": null,
                                     "title": "2 WIN OR DRAW",
-                                    "value": 145
+                                    "value": 190
                                 }
                             ]
                         }
@@ -197,13 +197,13 @@
                                     "label": "Yes",
                                     "total": null,
                                     "title": "Yes",
-                                    "value": 176
+                                    "value": 212
                                 },
                                 {
                                     "label": "No",
                                     "total": null,
                                     "title": "No",
-                                    "value": 200
+                                    "value": 168
                                 }
                             ]
                         }
@@ -219,13 +219,13 @@
                                     "label": "Over",
                                     "total": 10.5,
                                     "title": "Over 10.5",
-                                    "value": 182
+                                    "value": 210
                                 },
                                 {
                                     "label": "Under",
                                     "total": 10.5,
                                     "title": "Under 10.5",
-                                    "value": 198
+                                    "value": 167
                                 }
                             ]
                         },
@@ -236,13 +236,13 @@
                                     "label": "Over",
                                     "total": 9.5,
                                     "title": "Over 9.5",
-                                    "value": 0
+                                    "value": 170
                                 },
                                 {
                                     "label": "Under",
                                     "total": 9.5,
                                     "title": "Under 9.5",
-                                    "value": 0
+                                    "value": 210
                                 }
                             ]
                         },
@@ -253,13 +253,13 @@
                                     "label": "Over",
                                     "total": 8.5,
                                     "title": "Over 8.5",
-                                    "value": 0
+                                    "value": 142
                                 },
                                 {
                                     "label": "Under",
                                     "total": 8.5,
                                     "title": "Under 8.5",
-                                    "value": 0
+                                    "value": 270
                                 }
                             ]
                         }
@@ -277,19 +277,19 @@
                                     "label": "1",
                                     "total": null,
                                     "title": "1 WIN",
-                                    "value": 305
+                                    "value": 250
                                 },
                                 {
                                     "label": "X",
                                     "total": null,
                                     "title": "DRAW",
-                                    "value": 204
+                                    "value": 197
                                 },
                                 {
                                     "label": "2",
                                     "total": null,
                                     "title": "2 WIN",
-                                    "value": 334
+                                    "value": 533
                                 }
                             ]
                         },
@@ -300,19 +300,19 @@
                                     "label": "1X",
                                     "total": null,
                                     "title": "1 WIN OR DRAW",
-                                    "value": 123
+                                    "value": 110
                                 },
                                 {
                                     "label": "12",
                                     "total": null,
                                     "title": "1 OR 2",
-                                    "value": 160
+                                    "value": 168
                                 },
                                 {
                                     "label": "X2",
                                     "total": null,
                                     "title": "2 WIN OR DRAW",
-                                    "value": 127
+                                    "value": 143
                                 }
                             ]
                         }
@@ -328,13 +328,13 @@
                                     "label": "Over",
                                     "total": 0.5,
                                     "title": "Over 0.5",
-                                    "value": 141
+                                    "value": 152
                                 },
                                 {
                                     "label": "Under",
                                     "total": 0.5,
                                     "title": "Under 0.5",
-                                    "value": 269
+                                    "value": 243
                                 }
                             ]
                         },
@@ -345,13 +345,13 @@
                                     "label": "Over",
                                     "total": 1.5,
                                     "title": "Over 1.5",
-                                    "value": 290
+                                    "value": 344
                                 },
                                 {
                                     "label": "Under",
                                     "total": 1.5,
                                     "title": "Under 1.5",
-                                    "value": 136
+                                    "value": 128
                                 }
                             ]
                         },
@@ -362,13 +362,13 @@
                                     "label": "Over",
                                     "total": 2.5,
                                     "title": "Over 2.5",
-                                    "value": 720
+                                    "value": 930
                                 },
                                 {
                                     "label": "Under",
                                     "total": 2.5,
                                     "title": "Under 2.5",
-                                    "value": 106
+                                    "value": 104
                                 }
                             ]
                         }
@@ -384,13 +384,13 @@
                                     "label": "Yes",
                                     "total": null,
                                     "title": "Yes",
-                                    "value": 440
+                                    "value": 560
                                 },
                                 {
                                     "label": "No",
                                     "total": null,
                                     "title": "No",
-                                    "value": 119
+                                    "value": 112
                                 }
                             ]
                         }
@@ -455,631 +455,1269 @@
             ]
         },
         "highlights": [],
-        "tvstations": [],
+        "tvstations": [
+            {
+                "fixture_id": 19098821,
+                "tvstation": "Claro TV+ (Bra)"
+            },
+            {
+                "fixture_id": 19098821,
+                "tvstation": "Sky+ (Bra)"
+            },
+            {
+                "fixture_id": 19098821,
+                "tvstation": "Zapping"
+            },
+            {
+                "fixture_id": 19098821,
+                "tvstation": "Amazon Prime Video"
+            },
+            {
+                "fixture_id": 19098821,
+                "tvstation": "Premiere (Bra)"
+            },
+            {
+                "fixture_id": 19098821,
+                "tvstation": "SporTV (Bra)"
+            },
+            {
+                "fixture_id": 19098821,
+                "tvstation": "Canais Globo (Bra)"
+            },
+            {
+                "fixture_id": 19098821,
+                "tvstation": "Chance"
+            },
+            {
+                "fixture_id": 19098821,
+                "tvstation": "Tipsport"
+            },
+            {
+                "fixture_id": 19098821,
+                "tvstation": "Tipsport SK"
+            },
+            {
+                "fixture_id": 19098821,
+                "tvstation": "Vivo Play (Bra)"
+            },
+            {
+                "fixture_id": 19098821,
+                "tvstation": "bet365"
+            },
+            {
+                "fixture_id": 19098821,
+                "tvstation": "bet365.nj"
+            },
+            {
+                "fixture_id": 19098821,
+                "tvstation": "Zapping (Bra)"
+            }
+        ],
         "bench": [],
-        "sidelined": [],
+        "sidelined": [
+            {
+                "team_id": 3672,
+                "fixture_id": 19098821,
+                "player_id": 223575,
+                "player_name": "J. da Silva",
+                "reason": "Muscle Injury",
+                "position": "D",
+                "player": {
+                    "data": {
+                        "player_id": 223575,
+                        "team_id": 3672,
+                        "country_id": 5,
+                        "position_id": 2,
+                        "common_name": "J. da Silva",
+                        "display_name": "Jefferson",
+                        "fullname": "Jefferson Junio Ant\u00f4nio da Silva",
+                        "firstname": "Jefferson Junio Ant\u00f4nio",
+                        "lastname": "da Silva",
+                        "nationality": "Brazil",
+                        "birthdate": "03\/01\/1997",
+                        "birthcountry": "Brazil",
+                        "birthplace": "Jaragu\u00e1",
+                        "height": "176 cm",
+                        "weight": "69 kg",
+                        "image_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/players\/23\/223575.png"
+                    }
+                }
+            },
+            {
+                "team_id": 3672,
+                "fixture_id": 19098821,
+                "player_id": 205520,
+                "player_name": "D. Silva Bacelar",
+                "reason": "Ankle Injury",
+                "position": "D",
+                "player": {
+                    "data": {
+                        "player_id": 205520,
+                        "team_id": 3672,
+                        "country_id": 5,
+                        "position_id": 2,
+                        "common_name": "D. Silva Bacelar",
+                        "display_name": "Douglas",
+                        "fullname": "Douglas Silva Bacelar",
+                        "firstname": "Douglas",
+                        "lastname": "Silva Bacelar",
+                        "nationality": "Brazil",
+                        "birthdate": "04\/04\/1990",
+                        "birthcountry": "Brazil",
+                        "birthplace": "S\u00e3o Paulo",
+                        "height": "190 cm",
+                        "weight": "84 kg",
+                        "image_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/players\/16\/205520.png"
+                    }
+                }
+            },
+            {
+                "team_id": 3672,
+                "fixture_id": 19098821,
+                "player_id": 37567166,
+                "player_name": "V. Ribeiro Ferreira",
+                "reason": "Thigh Injury",
+                "position": "D",
+                "player": {
+                    "data": {
+                        "player_id": 37567166,
+                        "team_id": 3672,
+                        "country_id": 5,
+                        "position_id": 2,
+                        "common_name": "V. Ribeiro Ferreira",
+                        "display_name": "Vinicius Kaue Ribeiro Ferreira",
+                        "fullname": "Vinicius Kaue Ribeiro Ferreira",
+                        "firstname": "Vinicius Kaue",
+                        "lastname": "Ribeiro Ferreira",
+                        "nationality": "Brazil",
+                        "birthdate": "01\/03\/2003",
+                        "birthcountry": "Brazil",
+                        "birthplace": null,
+                        "height": "188 cm",
+                        "weight": "77 kg",
+                        "image_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/players\/30\/37567166.png"
+                    }
+                }
+            },
+            {
+                "team_id": 3672,
+                "fixture_id": 19098821,
+                "player_id": 222382,
+                "player_name": "J. Guidolin Pegorari",
+                "reason": "Broken Leg",
+                "position": "G",
+                "player": {
+                    "data": {
+                        "player_id": 222382,
+                        "team_id": 3672,
+                        "country_id": 5,
+                        "position_id": 1,
+                        "common_name": "J. Guidolin Pegorari",
+                        "display_name": "Pegorari",
+                        "fullname": "Jos\u00e9 Guilherme Guidolin Pegorari",
+                        "firstname": "Jos\u00e9 Guilherme",
+                        "lastname": "Guidolin Pegorari",
+                        "nationality": "Brazil",
+                        "birthdate": "12\/07\/1991",
+                        "birthcountry": "Brazil",
+                        "birthplace": "Americana",
+                        "height": "191 cm",
+                        "weight": "88 kg",
+                        "image_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/players\/14\/222382.png"
+                    }
+                }
+            },
+            {
+                "team_id": 3672,
+                "fixture_id": 19098821,
+                "player_id": 160685,
+                "player_name": "B. Pereira Mendes",
+                "reason": "Achilles Tendon Rupture",
+                "position": "A",
+                "player": {
+                    "data": {
+                        "player_id": 160685,
+                        "team_id": 3672,
+                        "country_id": 5,
+                        "position_id": 4,
+                        "common_name": "B. Pereira Mendes",
+                        "display_name": "Bruno Mendes",
+                        "fullname": "Bruno Pereira Mendes",
+                        "firstname": "Bruno",
+                        "lastname": "Pereira Mendes",
+                        "nationality": "Brazil",
+                        "birthdate": "02\/08\/1994",
+                        "birthcountry": "Brazil",
+                        "birthplace": "Cruzeiro",
+                        "height": "184 cm",
+                        "weight": "77 kg",
+                        "image_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/placeholder.png"
+                    }
+                }
+            },
+            {
+                "team_id": 3672,
+                "fixture_id": 19098821,
+                "player_id": 37560533,
+                "player_name": "M. Leite da Silva",
+                "reason": "ACL Knee Injury",
+                "position": "D",
+                "player": {
+                    "data": {
+                        "player_id": 37560533,
+                        "team_id": 3672,
+                        "country_id": 5,
+                        "position_id": 2,
+                        "common_name": "M. Leite da Silva",
+                        "display_name": "Marcio Gleyson Leite da Silva",
+                        "fullname": "Marcio Gleyson Leite da Silva",
+                        "firstname": "Marcio Gleyson",
+                        "lastname": "Leite da Silva",
+                        "nationality": "Brazil",
+                        "birthdate": "07\/07\/2001",
+                        "birthcountry": "Brazil",
+                        "birthplace": null,
+                        "height": null,
+                        "weight": null,
+                        "image_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/players\/21\/37560533.png"
+                    }
+                }
+            },
+            {
+                "team_id": 13292,
+                "fixture_id": 19098821,
+                "player_id": 37751452,
+                "player_name": "L. Soares Brand\u00e3o",
+                "reason": "Unknown",
+                "position": null,
+                "player": {
+                    "data": {
+                        "player_id": 37751452,
+                        "team_id": null,
+                        "country_id": 5,
+                        "position_id": null,
+                        "common_name": "L. Soares Brand\u00e3o",
+                        "display_name": "Luiz Felipe Soares Brand\u00e3o",
+                        "fullname": "Luiz Felipe Soares Brand\u00e3o",
+                        "firstname": "Luiz Felipe",
+                        "lastname": "Soares Brand\u00e3o",
+                        "nationality": "Brazil",
+                        "birthdate": "20\/03\/2004",
+                        "birthcountry": "Brazil",
+                        "birthplace": null,
+                        "height": "179 cm",
+                        "weight": "72 kg",
+                        "image_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/placeholder.png"
+                    }
+                }
+            },
+            {
+                "team_id": 13292,
+                "fixture_id": 19098821,
+                "player_id": 217170,
+                "player_name": "S. Santos Salles",
+                "reason": "Knee Injury",
+                "position": "A",
+                "player": {
+                    "data": {
+                        "player_id": 217170,
+                        "team_id": 13292,
+                        "country_id": 5,
+                        "position_id": 4,
+                        "common_name": "S. Santos Salles",
+                        "display_name": "Neto Berola",
+                        "fullname": "Sosthenes Jos\u00e9 Santos Salles",
+                        "firstname": "Sosthenes Jos\u00e9",
+                        "lastname": "Santos Salles",
+                        "nationality": "Brazil",
+                        "birthdate": "18\/11\/1987",
+                        "birthcountry": "Brazil",
+                        "birthplace": "Itabuna",
+                        "height": "171 cm",
+                        "weight": "66 kg",
+                        "image_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/players\/18\/217170.png"
+                    }
+                }
+            },
+            {
+                "team_id": 13292,
+                "fixture_id": 19098821,
+                "player_id": 37618278,
+                "player_name": "J. de Oliveira",
+                "reason": "Knee Injury",
+                "position": "A",
+                "player": {
+                    "data": {
+                        "player_id": 37618278,
+                        "team_id": 13292,
+                        "country_id": 5,
+                        "position_id": 4,
+                        "common_name": "J. de Oliveira",
+                        "display_name": "Jos\u00e9 Carlos de Oliveira",
+                        "fullname": "Jos\u00e9 Carlos de Oliveira",
+                        "firstname": "Jos\u00e9 Carlos",
+                        "lastname": "de Oliveira",
+                        "nationality": "Brazil",
+                        "birthdate": "09\/01\/2004",
+                        "birthcountry": "Brazil",
+                        "birthplace": null,
+                        "height": null,
+                        "weight": null,
+                        "image_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/placeholder.png"
+                    }
+                }
+            },
+            {
+                "team_id": 13292,
+                "fixture_id": 19098821,
+                "player_id": 217487,
+                "player_name": "P. Lopes de Lima",
+                "reason": "Knee Injury",
+                "position": "A",
+                "player": {
+                    "data": {
+                        "player_id": 217487,
+                        "team_id": 13292,
+                        "country_id": 5,
+                        "position_id": 4,
+                        "common_name": "P. Lopes de Lima",
+                        "display_name": "Pablo",
+                        "fullname": "Pablo Diogo Lopes de Lima",
+                        "firstname": "Pablo Diogo",
+                        "lastname": "Lopes de Lima",
+                        "nationality": "Brazil",
+                        "birthdate": "18\/12\/1992",
+                        "birthcountry": "Brazil",
+                        "birthplace": "Campinas",
+                        "height": "175 cm",
+                        "weight": "67 kg",
+                        "image_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/placeholder.png"
+                    }
+                }
+            }
+        ],
         "country_name": "Brazil",
-        "league_name": "Brasileiro U20",
+        "league_name": "Serie B",
         "standing": [
             {
-                "id": 77470460,
-                "name": "1st Phase",
-                "league_id": 1385,
-                "season_id": 23363,
-                "round_id": 336645,
-                "round_name": 9,
+                "id": 77470221,
+                "name": "Regular Season",
+                "league_id": 651,
+                "season_id": 23291,
+                "round_id": 335342,
+                "round_name": 11,
                 "type": "Group Stage",
-                "stage_id": 77470460,
-                "stage_name": "1st Phase",
+                "stage_id": 77470221,
+                "stage_name": "Regular Season",
                 "resource": "stage",
                 "standings": {
                     "data": [
                         {
                             "position": 1,
-                            "team_id": 128708,
-                            "team_name": "Palmeiras U20",
-                            "round_id": 336645,
-                            "round_name": 9,
+                            "team_id": 6325,
+                            "team_name": "Am\u00e9rica Mineiro",
+                            "round_id": 335342,
+                            "round_name": 11,
                             "group_id": null,
                             "group_name": null,
                             "overall": {
-                                "games_played": 9,
-                                "won": 8,
-                                "draw": 0,
+                                "games_played": 10,
+                                "won": 6,
+                                "draw": 3,
                                 "lost": 1,
-                                "goals_scored": 27,
-                                "goals_against": 8,
-                                "points": 24
+                                "goals_scored": 16,
+                                "goals_against": 9,
+                                "points": 21
                             },
                             "home": {
-                                "games_played": 4,
-                                "won": 3,
-                                "draw": 0,
-                                "lost": 1,
-                                "goals_scored": 6,
-                                "goals_against": 4,
-                                "points": 9
+                                "games_played": 6,
+                                "won": 5,
+                                "draw": 1,
+                                "lost": 0,
+                                "goals_scored": 11,
+                                "goals_against": 3,
+                                "points": 16
                             },
                             "away": {
-                                "games_played": 5,
-                                "won": 5,
-                                "draw": 0,
-                                "lost": 0,
-                                "goals_scored": 21,
-                                "goals_against": 4,
-                                "points": 15
+                                "games_played": 4,
+                                "won": 1,
+                                "draw": 2,
+                                "lost": 1,
+                                "goals_scored": 5,
+                                "goals_against": 6,
+                                "points": 5
                             },
                             "total": {
-                                "goal_difference": "19",
-                                "points": 24
+                                "goal_difference": "7",
+                                "points": 21
                             },
-                            "result": "Quarter-finals",
-                            "points": 24,
+                            "result": "Promotion",
+                            "points": 21,
                             "recent_form": "WWLWW",
                             "status": null,
                             "team": {
                                 "data": {
-                                    "id": 128708,
-                                    "legacy_id": null,
-                                    "name": "Palmeiras U20",
-                                    "short_code": null,
+                                    "id": 6325,
+                                    "legacy_id": 1152,
+                                    "name": "Am\u00e9rica Mineiro",
+                                    "short_code": "AMM",
                                     "twitter": null,
                                     "country_id": 5,
                                     "national_team": false,
-                                    "founded": 0,
-                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/4\/128708.png",
-                                    "venue_id": 338678,
-                                    "current_season_id": 23358,
+                                    "founded": 1912,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/21\/6325.png",
+                                    "venue_id": 1999,
+                                    "current_season_id": 23291,
                                     "is_placeholder": false
                                 }
                             }
                         },
                         {
                             "position": 2,
-                            "team_id": 131684,
-                            "team_name": "Flamengo RJ U20",
-                            "round_id": 336645,
-                            "round_name": 9,
+                            "team_id": 14710,
+                            "team_name": "Oper\u00e1rio PR",
+                            "round_id": 335342,
+                            "round_name": 11,
                             "group_id": null,
                             "group_name": null,
                             "overall": {
-                                "games_played": 8,
-                                "won": 5,
-                                "draw": 1,
+                                "games_played": 11,
+                                "won": 6,
+                                "draw": 3,
                                 "lost": 2,
-                                "goals_scored": 16,
-                                "goals_against": 10,
-                                "points": 16
+                                "goals_scored": 8,
+                                "goals_against": 5,
+                                "points": 21
                             },
                             "home": {
                                 "games_played": 5,
                                 "won": 3,
-                                "draw": 1,
-                                "lost": 1,
-                                "goals_scored": 9,
-                                "goals_against": 5,
-                                "points": 10
+                                "draw": 2,
+                                "lost": 0,
+                                "goals_scored": 4,
+                                "goals_against": 1,
+                                "points": 11
                             },
                             "away": {
-                                "games_played": 3,
-                                "won": 2,
-                                "draw": 0,
-                                "lost": 1,
-                                "goals_scored": 7,
-                                "goals_against": 5,
-                                "points": 6
+                                "games_played": 6,
+                                "won": 3,
+                                "draw": 1,
+                                "lost": 2,
+                                "goals_scored": 4,
+                                "goals_against": 4,
+                                "points": 10
                             },
                             "total": {
-                                "goal_difference": "6",
-                                "points": 16
+                                "goal_difference": "3",
+                                "points": 21
                             },
-                            "result": "Quarter-finals",
-                            "points": 16,
-                            "recent_form": "WDWWW",
+                            "result": "Promotion",
+                            "points": 21,
+                            "recent_form": "WWWWL",
                             "status": null,
                             "team": {
                                 "data": {
-                                    "id": 131684,
-                                    "legacy_id": null,
-                                    "name": "Flamengo RJ U20",
-                                    "short_code": null,
+                                    "id": 14710,
+                                    "legacy_id": 1975,
+                                    "name": "Oper\u00e1rio PR",
+                                    "short_code": "OPR",
                                     "twitter": null,
                                     "country_id": 5,
                                     "national_team": false,
-                                    "founded": 0,
-                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/4\/131684.png",
-                                    "venue_id": null,
-                                    "current_season_id": 23359,
+                                    "founded": 1912,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/22\/14710.png",
+                                    "venue_id": 10422,
+                                    "current_season_id": 23291,
                                     "is_placeholder": false
                                 }
                             }
                         },
                         {
                             "position": 3,
-                            "team_id": 146695,
-                            "team_name": "Cear\u00e1 U20",
-                            "round_id": 336645,
-                            "round_name": 9,
+                            "team_id": 6468,
+                            "team_name": "Ava\u00ed",
+                            "round_id": 335342,
+                            "round_name": 11,
                             "group_id": null,
                             "group_name": null,
                             "overall": {
-                                "games_played": 9,
-                                "won": 5,
-                                "draw": 1,
-                                "lost": 3,
-                                "goals_scored": 16,
-                                "goals_against": 14,
-                                "points": 16
+                                "games_played": 10,
+                                "won": 6,
+                                "draw": 2,
+                                "lost": 2,
+                                "goals_scored": 11,
+                                "goals_against": 7,
+                                "points": 20
                             },
                             "home": {
-                                "games_played": 4,
-                                "won": 2,
-                                "draw": 0,
-                                "lost": 2,
-                                "goals_scored": 8,
-                                "goals_against": 7,
-                                "points": 6
-                            },
-                            "away": {
-                                "games_played": 5,
-                                "won": 3,
+                                "games_played": 6,
+                                "won": 4,
                                 "draw": 1,
                                 "lost": 1,
                                 "goals_scored": 8,
-                                "goals_against": 7,
-                                "points": 10
+                                "goals_against": 5,
+                                "points": 13
+                            },
+                            "away": {
+                                "games_played": 4,
+                                "won": 2,
+                                "draw": 1,
+                                "lost": 1,
+                                "goals_scored": 3,
+                                "goals_against": 2,
+                                "points": 7
                             },
                             "total": {
-                                "goal_difference": "2",
-                                "points": 16
+                                "goal_difference": "4",
+                                "points": 20
                             },
-                            "result": "Quarter-finals",
-                            "points": 16,
-                            "recent_form": "WLWWW",
+                            "result": "Promotion",
+                            "points": 20,
+                            "recent_form": "WDWWW",
                             "status": null,
                             "team": {
                                 "data": {
-                                    "id": 146695,
-                                    "legacy_id": null,
-                                    "name": "Cear\u00e1 U20",
-                                    "short_code": null,
+                                    "id": 6468,
+                                    "legacy_id": 1200,
+                                    "name": "Ava\u00ed",
+                                    "short_code": "AVA",
                                     "twitter": null,
                                     "country_id": 5,
                                     "national_team": false,
-                                    "founded": null,
-                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/7\/146695.png",
-                                    "venue_id": 4769,
-                                    "current_season_id": 23363,
+                                    "founded": 1923,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/4\/6468.png",
+                                    "venue_id": 4190,
+                                    "current_season_id": 23291,
                                     "is_placeholder": false
                                 }
                             }
                         },
                         {
                             "position": 4,
-                            "team_id": 146679,
-                            "team_name": "Bahia U20",
-                            "round_id": 336645,
-                            "round_name": 9,
+                            "team_id": 9323,
+                            "team_name": "Goi\u00e1s",
+                            "round_id": 335342,
+                            "round_name": 11,
                             "group_id": null,
                             "group_name": null,
                             "overall": {
-                                "games_played": 9,
+                                "games_played": 10,
                                 "won": 5,
-                                "draw": 1,
-                                "lost": 3,
-                                "goals_scored": 13,
-                                "goals_against": 15,
-                                "points": 16
+                                "draw": 3,
+                                "lost": 2,
+                                "goals_scored": 17,
+                                "goals_against": 6,
+                                "points": 18
                             },
                             "home": {
                                 "games_played": 5,
-                                "won": 2,
-                                "draw": 0,
-                                "lost": 3,
-                                "goals_scored": 5,
-                                "goals_against": 11,
-                                "points": 6
-                            },
-                            "away": {
-                                "games_played": 4,
-                                "won": 3,
+                                "won": 4,
                                 "draw": 1,
                                 "lost": 0,
-                                "goals_scored": 8,
-                                "goals_against": 4,
-                                "points": 10
+                                "goals_scored": 13,
+                                "goals_against": 1,
+                                "points": 13
+                            },
+                            "away": {
+                                "games_played": 5,
+                                "won": 1,
+                                "draw": 2,
+                                "lost": 2,
+                                "goals_scored": 4,
+                                "goals_against": 5,
+                                "points": 5
                             },
                             "total": {
-                                "goal_difference": "-2",
-                                "points": 16
+                                "goal_difference": "11",
+                                "points": 18
                             },
-                            "result": "Quarter-finals",
-                            "points": 16,
-                            "recent_form": "WLDLW",
+                            "result": "Promotion",
+                            "points": 18,
+                            "recent_form": "DLWLW",
                             "status": null,
                             "team": {
                                 "data": {
-                                    "id": 146679,
-                                    "legacy_id": null,
-                                    "name": "Bahia U20",
-                                    "short_code": null,
+                                    "id": 9323,
+                                    "legacy_id": 1193,
+                                    "name": "Goi\u00e1s",
+                                    "short_code": "GOI",
                                     "twitter": null,
                                     "country_id": 5,
                                     "national_team": false,
-                                    "founded": null,
-                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/23\/146679.png",
-                                    "venue_id": 141262,
-                                    "current_season_id": 21929,
+                                    "founded": 1943,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/11\/9323.png",
+                                    "venue_id": 6073,
+                                    "current_season_id": 23291,
                                     "is_placeholder": false
                                 }
                             }
                         },
                         {
                             "position": 5,
-                            "team_id": 131606,
-                            "team_name": "Gremio U20",
-                            "round_id": 336645,
-                            "round_name": 9,
+                            "team_id": 2352,
+                            "team_name": "Sport Recife",
+                            "round_id": 335342,
+                            "round_name": 11,
                             "group_id": null,
                             "group_name": null,
                             "overall": {
-                                "games_played": 5,
-                                "won": 5,
+                                "games_played": 9,
+                                "won": 6,
                                 "draw": 0,
-                                "lost": 0,
-                                "goals_scored": 10,
-                                "goals_against": 2,
-                                "points": 15
+                                "lost": 3,
+                                "goals_scored": 13,
+                                "goals_against": 9,
+                                "points": 18
                             },
                             "home": {
-                                "games_played": 2,
-                                "won": 2,
+                                "games_played": 5,
+                                "won": 4,
                                 "draw": 0,
-                                "lost": 0,
-                                "goals_scored": 4,
-                                "goals_against": 1,
-                                "points": 6
+                                "lost": 1,
+                                "goals_scored": 9,
+                                "goals_against": 3,
+                                "points": 12
                             },
                             "away": {
-                                "games_played": 3,
-                                "won": 3,
+                                "games_played": 4,
+                                "won": 2,
                                 "draw": 0,
-                                "lost": 0,
-                                "goals_scored": 6,
-                                "goals_against": 1,
-                                "points": 9
+                                "lost": 2,
+                                "goals_scored": 4,
+                                "goals_against": 6,
+                                "points": 6
                             },
                             "total": {
-                                "goal_difference": "8",
-                                "points": 15
+                                "goal_difference": "4",
+                                "points": 18
                             },
                             "result": null,
-                            "points": 15,
-                            "recent_form": "WWWWW",
+                            "points": 18,
+                            "recent_form": "WWLLL",
                             "status": null,
                             "team": {
                                 "data": {
-                                    "id": 131606,
-                                    "legacy_id": null,
-                                    "name": "Gremio U20",
-                                    "short_code": null,
+                                    "id": 2352,
+                                    "legacy_id": 1232,
+                                    "name": "Sport Recife",
+                                    "short_code": "REC",
                                     "twitter": null,
                                     "country_id": 5,
                                     "national_team": false,
-                                    "founded": null,
-                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/22\/131606.png",
-                                    "venue_id": null,
-                                    "current_season_id": 21462,
+                                    "founded": 1905,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/16\/2352.png",
+                                    "venue_id": 1425,
+                                    "current_season_id": 23291,
                                     "is_placeholder": false
                                 }
                             }
                         },
                         {
                             "position": 6,
-                            "team_id": 131604,
-                            "team_name": "Atletico-PR U20",
-                            "round_id": 336645,
-                            "round_name": 9,
+                            "team_id": 11126,
+                            "team_name": "Mirassol",
+                            "round_id": 335342,
+                            "round_name": 11,
                             "group_id": null,
                             "group_name": null,
                             "overall": {
-                                "games_played": 8,
-                                "won": 4,
-                                "draw": 3,
-                                "lost": 1,
-                                "goals_scored": 18,
-                                "goals_against": 11,
-                                "points": 15
+                                "games_played": 10,
+                                "won": 5,
+                                "draw": 2,
+                                "lost": 3,
+                                "goals_scored": 12,
+                                "goals_against": 8,
+                                "points": 17
                             },
                             "home": {
                                 "games_played": 5,
-                                "won": 4,
-                                "draw": 1,
+                                "won": 5,
+                                "draw": 0,
                                 "lost": 0,
-                                "goals_scored": 13,
-                                "goals_against": 5,
-                                "points": 13
+                                "goals_scored": 11,
+                                "goals_against": 3,
+                                "points": 15
                             },
                             "away": {
-                                "games_played": 3,
+                                "games_played": 5,
                                 "won": 0,
                                 "draw": 2,
-                                "lost": 1,
-                                "goals_scored": 5,
-                                "goals_against": 6,
+                                "lost": 3,
+                                "goals_scored": 1,
+                                "goals_against": 5,
                                 "points": 2
                             },
                             "total": {
-                                "goal_difference": "7",
-                                "points": 15
+                                "goal_difference": "4",
+                                "points": 17
                             },
                             "result": null,
-                            "points": 15,
-                            "recent_form": "WDWWL",
+                            "points": 17,
+                            "recent_form": "LWWLW",
                             "status": null,
                             "team": {
                                 "data": {
-                                    "id": 131604,
-                                    "legacy_id": null,
-                                    "name": "Atletico-PR U20",
+                                    "id": 11126,
+                                    "legacy_id": 10346,
+                                    "name": "Mirassol",
                                     "short_code": null,
                                     "twitter": null,
                                     "country_id": 5,
                                     "national_team": false,
-                                    "founded": null,
-                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/20\/131604.png",
-                                    "venue_id": null,
-                                    "current_season_id": 23363,
+                                    "founded": 1925,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/22\/11126.png",
+                                    "venue_id": 7424,
+                                    "current_season_id": 23291,
                                     "is_placeholder": false
                                 }
                             }
                         },
                         {
                             "position": 7,
-                            "team_id": 130813,
-                            "team_name": "Santos U20",
-                            "round_id": 336645,
-                            "round_name": 9,
+                            "team_id": 3684,
+                            "team_name": "Santos",
+                            "round_id": 335342,
+                            "round_name": 11,
                             "group_id": null,
                             "group_name": null,
                             "overall": {
-                                "games_played": 8,
-                                "won": 4,
-                                "draw": 1,
-                                "lost": 3,
-                                "goals_scored": 16,
-                                "goals_against": 13,
-                                "points": 13
+                                "games_played": 10,
+                                "won": 5,
+                                "draw": 0,
+                                "lost": 5,
+                                "goals_scored": 17,
+                                "goals_against": 11,
+                                "points": 15
                             },
                             "home": {
                                 "games_played": 4,
+                                "won": 3,
+                                "draw": 0,
+                                "lost": 1,
+                                "goals_scored": 11,
+                                "goals_against": 3,
+                                "points": 9
+                            },
+                            "away": {
+                                "games_played": 6,
                                 "won": 2,
                                 "draw": 0,
-                                "lost": 2,
-                                "goals_scored": 10,
+                                "lost": 4,
+                                "goals_scored": 6,
                                 "goals_against": 8,
                                 "points": 6
                             },
-                            "away": {
-                                "games_played": 4,
-                                "won": 2,
-                                "draw": 1,
-                                "lost": 1,
-                                "goals_scored": 6,
-                                "goals_against": 5,
-                                "points": 7
-                            },
                             "total": {
-                                "goal_difference": "3",
-                                "points": 13
+                                "goal_difference": "6",
+                                "points": 15
                             },
                             "result": null,
-                            "points": 13,
-                            "recent_form": "LLWWL",
+                            "points": 15,
+                            "recent_form": "LLLLW",
                             "status": null,
                             "team": {
                                 "data": {
-                                    "id": 130813,
-                                    "legacy_id": null,
-                                    "name": "Santos U20",
-                                    "short_code": null,
+                                    "id": 3684,
+                                    "legacy_id": 479,
+                                    "name": "Santos",
+                                    "short_code": "STS",
                                     "twitter": null,
                                     "country_id": 5,
                                     "national_team": false,
-                                    "founded": null,
-                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/29\/130813.png",
-                                    "venue_id": 338631,
-                                    "current_season_id": 23358,
+                                    "founded": 1912,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/4\/3684.png",
+                                    "venue_id": 2156,
+                                    "current_season_id": 23291,
                                     "is_placeholder": false
                                 }
                             }
                         },
                         {
                             "position": 8,
-                            "team_id": 130811,
-                            "team_name": "Cruzeiro U20",
-                            "round_id": 336645,
-                            "round_name": 9,
+                            "team_id": 6285,
+                            "team_name": "Coritiba",
+                            "round_id": 335342,
+                            "round_name": 11,
                             "group_id": null,
                             "group_name": null,
                             "overall": {
-                                "games_played": 7,
+                                "games_played": 10,
                                 "won": 4,
-                                "draw": 1,
-                                "lost": 2,
-                                "goals_scored": 10,
+                                "draw": 3,
+                                "lost": 3,
+                                "goals_scored": 11,
                                 "goals_against": 7,
-                                "points": 13
+                                "points": 15
                             },
                             "home": {
-                                "games_played": 2,
-                                "won": 2,
+                                "games_played": 5,
+                                "won": 4,
                                 "draw": 0,
-                                "lost": 0,
-                                "goals_scored": 4,
-                                "goals_against": 1,
-                                "points": 6
+                                "lost": 1,
+                                "goals_scored": 9,
+                                "goals_against": 3,
+                                "points": 12
                             },
                             "away": {
                                 "games_played": 5,
-                                "won": 2,
-                                "draw": 1,
+                                "won": 0,
+                                "draw": 3,
                                 "lost": 2,
-                                "goals_scored": 6,
-                                "goals_against": 6,
-                                "points": 7
+                                "goals_scored": 2,
+                                "goals_against": 4,
+                                "points": 3
                             },
                             "total": {
-                                "goal_difference": "3",
-                                "points": 13
+                                "goal_difference": "4",
+                                "points": 15
                             },
                             "result": null,
-                            "points": 13,
-                            "recent_form": "WWLWL",
+                            "points": 15,
+                            "recent_form": "DWLWD",
                             "status": null,
                             "team": {
                                 "data": {
-                                    "id": 130811,
-                                    "legacy_id": null,
-                                    "name": "Cruzeiro U20",
-                                    "short_code": null,
+                                    "id": 6285,
+                                    "legacy_id": 1183,
+                                    "name": "Coritiba",
+                                    "short_code": "COR",
                                     "twitter": null,
                                     "country_id": 5,
                                     "national_team": false,
-                                    "founded": 0,
-                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/27\/130811.png",
-                                    "venue_id": 338680,
-                                    "current_season_id": 23440,
+                                    "founded": 1909,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/13\/6285.png",
+                                    "venue_id": 4072,
+                                    "current_season_id": 23291,
                                     "is_placeholder": false
                                 }
                             }
                         },
                         {
                             "position": 9,
-                            "team_id": 131609,
-                            "team_name": "Atletico-MG U20",
-                            "round_id": 336645,
-                            "round_name": 9,
+                            "team_id": 12220,
+                            "team_name": "Cear\u00e1",
+                            "round_id": 335342,
+                            "round_name": 11,
                             "group_id": null,
                             "group_name": null,
                             "overall": {
-                                "games_played": 9,
-                                "won": 3,
-                                "draw": 4,
-                                "lost": 2,
-                                "goals_scored": 19,
-                                "goals_against": 19,
-                                "points": 13
+                                "games_played": 10,
+                                "won": 4,
+                                "draw": 3,
+                                "lost": 3,
+                                "goals_scored": 15,
+                                "goals_against": 12,
+                                "points": 15
                             },
                             "home": {
                                 "games_played": 5,
-                                "won": 1,
-                                "draw": 2,
-                                "lost": 2,
-                                "goals_scored": 9,
-                                "goals_against": 11,
-                                "points": 5
-                            },
-                            "away": {
-                                "games_played": 4,
-                                "won": 2,
+                                "won": 3,
                                 "draw": 2,
                                 "lost": 0,
-                                "goals_scored": 10,
-                                "goals_against": 8,
-                                "points": 8
+                                "goals_scored": 8,
+                                "goals_against": 5,
+                                "points": 11
+                            },
+                            "away": {
+                                "games_played": 5,
+                                "won": 1,
+                                "draw": 1,
+                                "lost": 3,
+                                "goals_scored": 7,
+                                "goals_against": 7,
+                                "points": 4
                             },
                             "total": {
-                                "goal_difference": "0",
-                                "points": 13
+                                "goal_difference": "3",
+                                "points": 15
                             },
                             "result": null,
-                            "points": 13,
-                            "recent_form": "WWLDL",
+                            "points": 15,
+                            "recent_form": "LLWWD",
                             "status": null,
                             "team": {
                                 "data": {
-                                    "id": 131609,
-                                    "legacy_id": null,
-                                    "name": "Atletico-MG U20",
-                                    "short_code": null,
+                                    "id": 12220,
+                                    "legacy_id": 1170,
+                                    "name": "Cear\u00e1",
+                                    "short_code": "CEA",
                                     "twitter": null,
                                     "country_id": 5,
                                     "national_team": false,
-                                    "founded": null,
-                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/25\/131609.png",
-                                    "venue_id": 338680,
-                                    "current_season_id": 23440,
+                                    "founded": 1914,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/28\/12220.png",
+                                    "venue_id": 8332,
+                                    "current_season_id": 23291,
                                     "is_placeholder": false
                                 }
                             }
                         },
                         {
                             "position": 10,
-                            "team_id": 232347,
-                            "team_name": "Cuiab\u00e1 U20",
-                            "round_id": 336645,
-                            "round_name": 9,
+                            "team_id": 710,
+                            "team_name": "Chapecoense",
+                            "round_id": 335342,
+                            "round_name": 11,
                             "group_id": null,
                             "group_name": null,
                             "overall": {
-                                "games_played": 8,
+                                "games_played": 11,
                                 "won": 3,
-                                "draw": 3,
-                                "lost": 2,
-                                "goals_scored": 14,
-                                "goals_against": 10,
-                                "points": 12
+                                "draw": 5,
+                                "lost": 3,
+                                "goals_scored": 9,
+                                "goals_against": 9,
+                                "points": 14
                             },
                             "home": {
-                                "games_played": 4,
-                                "won": 2,
-                                "draw": 2,
-                                "lost": 0,
+                                "games_played": 5,
+                                "won": 1,
+                                "draw": 3,
+                                "lost": 1,
                                 "goals_scored": 6,
-                                "goals_against": 3,
-                                "points": 8
+                                "goals_against": 5,
+                                "points": 6
                             },
                             "away": {
-                                "games_played": 4,
-                                "won": 1,
-                                "draw": 1,
+                                "games_played": 6,
+                                "won": 2,
+                                "draw": 2,
                                 "lost": 2,
-                                "goals_scored": 8,
-                                "goals_against": 7,
-                                "points": 4
+                                "goals_scored": 3,
+                                "goals_against": 4,
+                                "points": 8
                             },
                             "total": {
-                                "goal_difference": "4",
-                                "points": 12
+                                "goal_difference": "0",
+                                "points": 14
                             },
                             "result": null,
-                            "points": 12,
-                            "recent_form": "DLWWW",
+                            "points": 14,
+                            "recent_form": "LWDDL",
                             "status": null,
                             "team": {
                                 "data": {
-                                    "id": 232347,
-                                    "legacy_id": null,
-                                    "name": "Cuiab\u00e1 U20",
-                                    "short_code": null,
+                                    "id": 710,
+                                    "legacy_id": 1202,
+                                    "name": "Chapecoense",
+                                    "short_code": "CHP",
                                     "twitter": null,
                                     "country_id": 5,
                                     "national_team": false,
-                                    "founded": null,
-                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/27\/232347.png",
-                                    "venue_id": null,
-                                    "current_season_id": 23363,
+                                    "founded": 1973,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/6\/710.png",
+                                    "venue_id": 194,
+                                    "current_season_id": 23291,
                                     "is_placeholder": false
                                 }
                             }
                         },
                         {
                             "position": 11,
-                            "team_id": 146682,
-                            "team_name": "Bragantino U20",
-                            "round_id": 336645,
-                            "round_name": 9,
+                            "team_id": 11941,
+                            "team_name": "Vila Nova",
+                            "round_id": 335342,
+                            "round_name": 11,
+                            "group_id": null,
+                            "group_name": null,
+                            "overall": {
+                                "games_played": 10,
+                                "won": 4,
+                                "draw": 2,
+                                "lost": 4,
+                                "goals_scored": 12,
+                                "goals_against": 13,
+                                "points": 14
+                            },
+                            "home": {
+                                "games_played": 5,
+                                "won": 4,
+                                "draw": 1,
+                                "lost": 0,
+                                "goals_scored": 10,
+                                "goals_against": 5,
+                                "points": 13
+                            },
+                            "away": {
+                                "games_played": 5,
+                                "won": 0,
+                                "draw": 1,
+                                "lost": 4,
+                                "goals_scored": 2,
+                                "goals_against": 8,
+                                "points": 1
+                            },
+                            "total": {
+                                "goal_difference": "-1",
+                                "points": 14
+                            },
+                            "result": null,
+                            "points": 14,
+                            "recent_form": "LWDDL",
+                            "status": null,
+                            "team": {
+                                "data": {
+                                    "id": 11941,
+                                    "legacy_id": 2150,
+                                    "name": "Vila Nova",
+                                    "short_code": "VNO",
+                                    "twitter": null,
+                                    "country_id": 5,
+                                    "national_team": false,
+                                    "founded": 1943,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/5\/11941.png",
+                                    "venue_id": 8090,
+                                    "current_season_id": 23291,
+                                    "is_placeholder": false
+                                }
+                            }
+                        },
+                        {
+                            "position": 12,
+                            "team_id": 6370,
+                            "team_name": "Novorizontino",
+                            "round_id": 335342,
+                            "round_name": 11,
+                            "group_id": null,
+                            "group_name": null,
+                            "overall": {
+                                "games_played": 10,
+                                "won": 4,
+                                "draw": 2,
+                                "lost": 4,
+                                "goals_scored": 10,
+                                "goals_against": 11,
+                                "points": 14
+                            },
+                            "home": {
+                                "games_played": 4,
+                                "won": 2,
+                                "draw": 1,
+                                "lost": 1,
+                                "goals_scored": 5,
+                                "goals_against": 5,
+                                "points": 7
+                            },
+                            "away": {
+                                "games_played": 6,
+                                "won": 2,
+                                "draw": 1,
+                                "lost": 3,
+                                "goals_scored": 5,
+                                "goals_against": 6,
+                                "points": 7
+                            },
+                            "total": {
+                                "goal_difference": "-1",
+                                "points": 14
+                            },
+                            "result": null,
+                            "points": 14,
+                            "recent_form": "LWDWD",
+                            "status": null,
+                            "team": {
+                                "data": {
+                                    "id": 6370,
+                                    "legacy_id": 6118,
+                                    "name": "Novorizontino",
+                                    "short_code": null,
+                                    "twitter": null,
+                                    "country_id": 5,
+                                    "national_team": false,
+                                    "founded": 1973,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/2\/6370.png",
+                                    "venue_id": 4116,
+                                    "current_season_id": 23291,
+                                    "is_placeholder": false
+                                }
+                            }
+                        },
+                        {
+                            "position": 13,
+                            "team_id": 3931,
+                            "team_name": "Ponte Preta",
+                            "round_id": 335342,
+                            "round_name": 11,
+                            "group_id": null,
+                            "group_name": null,
+                            "overall": {
+                                "games_played": 10,
+                                "won": 3,
+                                "draw": 3,
+                                "lost": 4,
+                                "goals_scored": 11,
+                                "goals_against": 13,
+                                "points": 12
+                            },
+                            "home": {
+                                "games_played": 5,
+                                "won": 3,
+                                "draw": 1,
+                                "lost": 1,
+                                "goals_scored": 10,
+                                "goals_against": 5,
+                                "points": 10
+                            },
+                            "away": {
+                                "games_played": 5,
+                                "won": 0,
+                                "draw": 2,
+                                "lost": 3,
+                                "goals_scored": 1,
+                                "goals_against": 8,
+                                "points": 2
+                            },
+                            "total": {
+                                "goal_difference": "-2",
+                                "points": 12
+                            },
+                            "result": null,
+                            "points": 12,
+                            "recent_form": "WLWLD",
+                            "status": null,
+                            "team": {
+                                "data": {
+                                    "id": 3931,
+                                    "legacy_id": 792,
+                                    "name": "Ponte Preta",
+                                    "short_code": "PRA",
+                                    "twitter": null,
+                                    "country_id": 5,
+                                    "national_team": false,
+                                    "founded": 1900,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/27\/3931.png",
+                                    "venue_id": 2302,
+                                    "current_season_id": 23291,
+                                    "is_placeholder": false
+                                }
+                            }
+                        },
+                        {
+                            "position": 14,
+                            "team_id": 3478,
+                            "team_name": "Paysandu",
+                            "round_id": 335342,
+                            "round_name": 11,
+                            "group_id": null,
+                            "group_name": null,
+                            "overall": {
+                                "games_played": 10,
+                                "won": 2,
+                                "draw": 5,
+                                "lost": 3,
+                                "goals_scored": 11,
+                                "goals_against": 11,
+                                "points": 11
+                            },
+                            "home": {
+                                "games_played": 4,
+                                "won": 1,
+                                "draw": 3,
+                                "lost": 0,
+                                "goals_scored": 4,
+                                "goals_against": 2,
+                                "points": 6
+                            },
+                            "away": {
+                                "games_played": 6,
+                                "won": 1,
+                                "draw": 2,
+                                "lost": 3,
+                                "goals_scored": 7,
+                                "goals_against": 9,
+                                "points": 5
+                            },
+                            "total": {
+                                "goal_difference": "0",
+                                "points": 11
+                            },
+                            "result": null,
+                            "points": 11,
+                            "recent_form": "WLWDD",
+                            "status": null,
+                            "team": {
+                                "data": {
+                                    "id": 3478,
+                                    "legacy_id": 1226,
+                                    "name": "Paysandu",
+                                    "short_code": null,
+                                    "twitter": null,
+                                    "country_id": 5,
+                                    "national_team": false,
+                                    "founded": 1914,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/22\/3478.png",
+                                    "venue_id": 2027,
+                                    "current_season_id": 23291,
+                                    "is_placeholder": false
+                                }
+                            }
+                        },
+                        {
+                            "position": 15,
+                            "team_id": 238918,
+                            "team_name": "Amazonas",
+                            "round_id": 335342,
+                            "round_name": 11,
+                            "group_id": null,
+                            "group_name": null,
+                            "overall": {
+                                "games_played": 10,
+                                "won": 3,
+                                "draw": 2,
+                                "lost": 5,
+                                "goals_scored": 8,
+                                "goals_against": 12,
+                                "points": 11
+                            },
+                            "home": {
+                                "games_played": 6,
+                                "won": 3,
+                                "draw": 1,
+                                "lost": 2,
+                                "goals_scored": 7,
+                                "goals_against": 6,
+                                "points": 10
+                            },
+                            "away": {
+                                "games_played": 4,
+                                "won": 0,
+                                "draw": 1,
+                                "lost": 3,
+                                "goals_scored": 1,
+                                "goals_against": 6,
+                                "points": 1
+                            },
+                            "total": {
+                                "goal_difference": "-4",
+                                "points": 11
+                            },
+                            "result": null,
+                            "points": 11,
+                            "recent_form": "LWLWD",
+                            "status": null,
+                            "team": {
+                                "data": {
+                                    "id": 238918,
+                                    "legacy_id": null,
+                                    "name": "Amazonas",
+                                    "short_code": null,
+                                    "twitter": null,
+                                    "country_id": 5,
+                                    "national_team": false,
+                                    "founded": null,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/6\/238918.png",
+                                    "venue_id": null,
+                                    "current_season_id": 23291,
+                                    "is_placeholder": false
+                                }
+                            }
+                        },
+                        {
+                            "position": 16,
+                            "team_id": 104,
+                            "team_name": "Botafogo SP",
+                            "round_id": 335342,
+                            "round_name": 11,
                             "group_id": null,
                             "group_name": null,
                             "overall": {
@@ -1087,8 +1725,8 @@
                                 "won": 2,
                                 "draw": 4,
                                 "lost": 3,
-                                "goals_scored": 13,
-                                "goals_against": 13,
+                                "goals_scored": 5,
+                                "goals_against": 10,
                                 "points": 10
                             },
                             "home": {
@@ -1096,8 +1734,8 @@
                                 "won": 1,
                                 "draw": 3,
                                 "lost": 1,
-                                "goals_scored": 10,
-                                "goals_against": 9,
+                                "goals_scored": 2,
+                                "goals_against": 2,
                                 "points": 6
                             },
                             "away": {
@@ -1106,570 +1744,270 @@
                                 "draw": 1,
                                 "lost": 2,
                                 "goals_scored": 3,
-                                "goals_against": 4,
+                                "goals_against": 8,
                                 "points": 4
                             },
                             "total": {
-                                "goal_difference": "0",
+                                "goal_difference": "-5",
                                 "points": 10
                             },
                             "result": null,
                             "points": 10,
-                            "recent_form": "DWWDL",
+                            "recent_form": "WWLLD",
                             "status": null,
                             "team": {
                                 "data": {
-                                    "id": 146682,
-                                    "legacy_id": null,
-                                    "name": "Bragantino U20",
-                                    "short_code": null,
+                                    "id": 104,
+                                    "legacy_id": 787,
+                                    "name": "Botafogo SP",
+                                    "short_code": "BOT",
                                     "twitter": null,
                                     "country_id": 5,
                                     "national_team": false,
-                                    "founded": null,
-                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/26\/146682.png",
-                                    "venue_id": 338627,
-                                    "current_season_id": 23358,
-                                    "is_placeholder": false
-                                }
-                            }
-                        },
-                        {
-                            "position": 12,
-                            "team_id": 146685,
-                            "team_name": "Am\u00e9rica Mineiro U20",
-                            "round_id": 336645,
-                            "round_name": 9,
-                            "group_id": null,
-                            "group_name": null,
-                            "overall": {
-                                "games_played": 9,
-                                "won": 2,
-                                "draw": 3,
-                                "lost": 4,
-                                "goals_scored": 11,
-                                "goals_against": 12,
-                                "points": 9
-                            },
-                            "home": {
-                                "games_played": 4,
-                                "won": 2,
-                                "draw": 1,
-                                "lost": 1,
-                                "goals_scored": 7,
-                                "goals_against": 5,
-                                "points": 7
-                            },
-                            "away": {
-                                "games_played": 5,
-                                "won": 0,
-                                "draw": 2,
-                                "lost": 3,
-                                "goals_scored": 4,
-                                "goals_against": 7,
-                                "points": 2
-                            },
-                            "total": {
-                                "goal_difference": "-1",
-                                "points": 9
-                            },
-                            "result": null,
-                            "points": 9,
-                            "recent_form": "LDWLD",
-                            "status": null,
-                            "team": {
-                                "data": {
-                                    "id": 146685,
-                                    "legacy_id": null,
-                                    "name": "Am\u00e9rica Mineiro U20",
-                                    "short_code": null,
-                                    "twitter": null,
-                                    "country_id": 5,
-                                    "national_team": false,
-                                    "founded": null,
-                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/29\/146685.png",
-                                    "venue_id": 338709,
-                                    "current_season_id": 23440,
-                                    "is_placeholder": false
-                                }
-                            }
-                        },
-                        {
-                            "position": 13,
-                            "team_id": 131607,
-                            "team_name": "Goias U20",
-                            "round_id": 336645,
-                            "round_name": 9,
-                            "group_id": null,
-                            "group_name": null,
-                            "overall": {
-                                "games_played": 8,
-                                "won": 2,
-                                "draw": 3,
-                                "lost": 3,
-                                "goals_scored": 12,
-                                "goals_against": 14,
-                                "points": 9
-                            },
-                            "home": {
-                                "games_played": 4,
-                                "won": 2,
-                                "draw": 1,
-                                "lost": 1,
-                                "goals_scored": 9,
-                                "goals_against": 9,
-                                "points": 7
-                            },
-                            "away": {
-                                "games_played": 4,
-                                "won": 0,
-                                "draw": 2,
-                                "lost": 2,
-                                "goals_scored": 3,
-                                "goals_against": 5,
-                                "points": 2
-                            },
-                            "total": {
-                                "goal_difference": "-2",
-                                "points": 9
-                            },
-                            "result": null,
-                            "points": 9,
-                            "recent_form": "LLDDW",
-                            "status": null,
-                            "team": {
-                                "data": {
-                                    "id": 131607,
-                                    "legacy_id": null,
-                                    "name": "Goias U20",
-                                    "short_code": null,
-                                    "twitter": null,
-                                    "country_id": 5,
-                                    "national_team": false,
-                                    "founded": null,
-                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/23\/131607.png",
-                                    "venue_id": null,
-                                    "current_season_id": 23207,
-                                    "is_placeholder": false
-                                }
-                            }
-                        },
-                        {
-                            "position": 14,
-                            "team_id": 146740,
-                            "team_name": "Fortaleza U20",
-                            "round_id": 336645,
-                            "round_name": 9,
-                            "group_id": null,
-                            "group_name": null,
-                            "overall": {
-                                "games_played": 7,
-                                "won": 2,
-                                "draw": 2,
-                                "lost": 3,
-                                "goals_scored": 5,
-                                "goals_against": 7,
-                                "points": 8
-                            },
-                            "home": {
-                                "games_played": 3,
-                                "won": 1,
-                                "draw": 1,
-                                "lost": 1,
-                                "goals_scored": 3,
-                                "goals_against": 4,
-                                "points": 4
-                            },
-                            "away": {
-                                "games_played": 4,
-                                "won": 1,
-                                "draw": 1,
-                                "lost": 2,
-                                "goals_scored": 2,
-                                "goals_against": 3,
-                                "points": 4
-                            },
-                            "total": {
-                                "goal_difference": "-2",
-                                "points": 8
-                            },
-                            "result": null,
-                            "points": 8,
-                            "recent_form": "DLLLW",
-                            "status": null,
-                            "team": {
-                                "data": {
-                                    "id": 146740,
-                                    "legacy_id": null,
-                                    "name": "Fortaleza U20",
-                                    "short_code": null,
-                                    "twitter": null,
-                                    "country_id": 5,
-                                    "national_team": false,
-                                    "founded": null,
-                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/20\/146740.png",
-                                    "venue_id": null,
-                                    "current_season_id": 23363,
-                                    "is_placeholder": false
-                                }
-                            }
-                        },
-                        {
-                            "position": 15,
-                            "team_id": 130313,
-                            "team_name": "Fluminense U20",
-                            "round_id": 336645,
-                            "round_name": 9,
-                            "group_id": null,
-                            "group_name": null,
-                            "overall": {
-                                "games_played": 8,
-                                "won": 2,
-                                "draw": 2,
-                                "lost": 4,
-                                "goals_scored": 8,
-                                "goals_against": 14,
-                                "points": 8
-                            },
-                            "home": {
-                                "games_played": 4,
-                                "won": 2,
-                                "draw": 1,
-                                "lost": 1,
-                                "goals_scored": 4,
-                                "goals_against": 3,
-                                "points": 7
-                            },
-                            "away": {
-                                "games_played": 4,
-                                "won": 0,
-                                "draw": 1,
-                                "lost": 3,
-                                "goals_scored": 4,
-                                "goals_against": 11,
-                                "points": 1
-                            },
-                            "total": {
-                                "goal_difference": "-6",
-                                "points": 8
-                            },
-                            "result": null,
-                            "points": 8,
-                            "recent_form": "LWDLD",
-                            "status": null,
-                            "team": {
-                                "data": {
-                                    "id": 130313,
-                                    "legacy_id": null,
-                                    "name": "Fluminense U20",
-                                    "short_code": null,
-                                    "twitter": null,
-                                    "country_id": 5,
-                                    "national_team": false,
-                                    "founded": null,
-                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/9\/130313.png",
-                                    "venue_id": null,
-                                    "current_season_id": 23359,
-                                    "is_placeholder": false
-                                }
-                            }
-                        },
-                        {
-                            "position": 16,
-                            "team_id": 131657,
-                            "team_name": "Corinthians U20",
-                            "round_id": 336645,
-                            "round_name": 9,
-                            "group_id": null,
-                            "group_name": null,
-                            "overall": {
-                                "games_played": 8,
-                                "won": 2,
-                                "draw": 2,
-                                "lost": 4,
-                                "goals_scored": 5,
-                                "goals_against": 12,
-                                "points": 8
-                            },
-                            "home": {
-                                "games_played": 5,
-                                "won": 2,
-                                "draw": 1,
-                                "lost": 2,
-                                "goals_scored": 4,
-                                "goals_against": 7,
-                                "points": 7
-                            },
-                            "away": {
-                                "games_played": 3,
-                                "won": 0,
-                                "draw": 1,
-                                "lost": 2,
-                                "goals_scored": 1,
-                                "goals_against": 5,
-                                "points": 1
-                            },
-                            "total": {
-                                "goal_difference": "-7",
-                                "points": 8
-                            },
-                            "result": null,
-                            "points": 8,
-                            "recent_form": "DWLDL",
-                            "status": null,
-                            "team": {
-                                "data": {
-                                    "id": 131657,
-                                    "legacy_id": null,
-                                    "name": "Corinthians U20",
-                                    "short_code": null,
-                                    "twitter": null,
-                                    "country_id": 5,
-                                    "national_team": false,
-                                    "founded": 0,
-                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/9\/131657.png",
-                                    "venue_id": null,
-                                    "current_season_id": 23358,
+                                    "founded": 1918,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/8\/104.png",
+                                    "venue_id": 10684,
+                                    "current_season_id": 23291,
                                     "is_placeholder": false
                                 }
                             }
                         },
                         {
                             "position": 17,
-                            "team_id": 130812,
-                            "team_name": "Botafogo U20",
-                            "round_id": 336645,
-                            "round_name": 9,
+                            "team_id": 6304,
+                            "team_name": "Brusque",
+                            "round_id": 335342,
+                            "round_name": 11,
                             "group_id": null,
                             "group_name": null,
                             "overall": {
-                                "games_played": 7,
-                                "won": 1,
+                                "games_played": 10,
+                                "won": 2,
                                 "draw": 3,
-                                "lost": 3,
-                                "goals_scored": 9,
-                                "goals_against": 10,
-                                "points": 6
+                                "lost": 5,
+                                "goals_scored": 8,
+                                "goals_against": 16,
+                                "points": 9
                             },
                             "home": {
-                                "games_played": 4,
-                                "won": 0,
+                                "games_played": 5,
+                                "won": 2,
                                 "draw": 2,
-                                "lost": 2,
+                                "lost": 1,
                                 "goals_scored": 4,
-                                "goals_against": 6,
-                                "points": 2
+                                "goals_against": 3,
+                                "points": 8
                             },
                             "away": {
-                                "games_played": 3,
-                                "won": 1,
+                                "games_played": 5,
+                                "won": 0,
                                 "draw": 1,
-                                "lost": 1,
-                                "goals_scored": 5,
-                                "goals_against": 4,
-                                "points": 4
+                                "lost": 4,
+                                "goals_scored": 4,
+                                "goals_against": 13,
+                                "points": 1
                             },
                             "total": {
-                                "goal_difference": "-1",
-                                "points": 6
+                                "goal_difference": "-8",
+                                "points": 9
                             },
-                            "result": null,
-                            "points": 6,
-                            "recent_form": "LDLDW",
+                            "result": "Relegation",
+                            "points": 9,
+                            "recent_form": "WLDDL",
                             "status": null,
                             "team": {
                                 "data": {
-                                    "id": 130812,
-                                    "legacy_id": null,
-                                    "name": "Botafogo U20",
-                                    "short_code": null,
+                                    "id": 6304,
+                                    "legacy_id": 6204,
+                                    "name": "Brusque",
+                                    "short_code": "BRU",
                                     "twitter": null,
                                     "country_id": 5,
                                     "national_team": false,
-                                    "founded": null,
-                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/28\/130812.png",
-                                    "venue_id": 268563,
-                                    "current_season_id": 23359,
+                                    "founded": 1987,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/0\/6304.png",
+                                    "venue_id": 4080,
+                                    "current_season_id": 23291,
                                     "is_placeholder": false
                                 }
                             }
                         },
                         {
                             "position": 18,
-                            "team_id": 146712,
-                            "team_name": "Atl\u00e9tico GO U20",
-                            "round_id": 336645,
-                            "round_name": 9,
+                            "team_id": 6188,
+                            "team_name": "CRB",
+                            "round_id": 335342,
+                            "round_name": 11,
                             "group_id": null,
                             "group_name": null,
                             "overall": {
-                                "games_played": 9,
-                                "won": 1,
-                                "draw": 3,
-                                "lost": 5,
-                                "goals_scored": 8,
-                                "goals_against": 18,
-                                "points": 6
+                                "games_played": 8,
+                                "won": 2,
+                                "draw": 2,
+                                "lost": 4,
+                                "goals_scored": 10,
+                                "goals_against": 12,
+                                "points": 8
                             },
                             "home": {
-                                "games_played": 4,
-                                "won": 0,
-                                "draw": 2,
-                                "lost": 2,
-                                "goals_scored": 2,
-                                "goals_against": 8,
-                                "points": 2
+                                "games_played": 3,
+                                "won": 2,
+                                "draw": 1,
+                                "lost": 0,
+                                "goals_scored": 3,
+                                "goals_against": 0,
+                                "points": 7
                             },
                             "away": {
                                 "games_played": 5,
-                                "won": 1,
+                                "won": 0,
                                 "draw": 1,
-                                "lost": 3,
-                                "goals_scored": 6,
-                                "goals_against": 10,
-                                "points": 4
+                                "lost": 4,
+                                "goals_scored": 7,
+                                "goals_against": 12,
+                                "points": 1
                             },
                             "total": {
-                                "goal_difference": "-10",
-                                "points": 6
+                                "goal_difference": "-2",
+                                "points": 8
                             },
-                            "result": null,
-                            "points": 6,
-                            "recent_form": "LLDDL",
+                            "result": "Relegation",
+                            "points": 8,
+                            "recent_form": "LLWLW",
                             "status": null,
                             "team": {
                                 "data": {
-                                    "id": 146712,
-                                    "legacy_id": null,
-                                    "name": "Atl\u00e9tico GO U20",
-                                    "short_code": null,
+                                    "id": 6188,
+                                    "legacy_id": 1238,
+                                    "name": "CRB",
+                                    "short_code": "CRB",
                                     "twitter": null,
                                     "country_id": 5,
                                     "national_team": false,
-                                    "founded": null,
-                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/24\/146712.png",
-                                    "venue_id": null,
-                                    "current_season_id": 23207,
+                                    "founded": 1912,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/12\/6188.png",
+                                    "venue_id": 2256,
+                                    "current_season_id": 23291,
                                     "is_placeholder": false
                                 }
                             }
                         },
                         {
                             "position": 19,
-                            "team_id": 128611,
-                            "team_name": "Sao Paulo U20",
-                            "round_id": 336645,
-                            "round_name": 9,
+                            "team_id": 13292,
+                            "team_name": "Ituano",
+                            "round_id": 335342,
+                            "round_name": 11,
                             "group_id": null,
                             "group_name": null,
                             "overall": {
-                                "games_played": 9,
-                                "won": 0,
-                                "draw": 1,
+                                "games_played": 10,
+                                "won": 2,
+                                "draw": 0,
                                 "lost": 8,
-                                "goals_scored": 19,
-                                "goals_against": 33,
-                                "points": 1
+                                "goals_scored": 10,
+                                "goals_against": 22,
+                                "points": 6
                             },
                             "home": {
-                                "games_played": 4,
-                                "won": 0,
-                                "draw": 1,
-                                "lost": 3,
+                                "games_played": 6,
+                                "won": 2,
+                                "draw": 0,
+                                "lost": 4,
                                 "goals_scored": 7,
-                                "goals_against": 14,
-                                "points": 1
+                                "goals_against": 11,
+                                "points": 6
                             },
                             "away": {
-                                "games_played": 5,
+                                "games_played": 4,
                                 "won": 0,
                                 "draw": 0,
-                                "lost": 5,
-                                "goals_scored": 12,
-                                "goals_against": 19,
+                                "lost": 4,
+                                "goals_scored": 3,
+                                "goals_against": 11,
                                 "points": 0
                             },
                             "total": {
-                                "goal_difference": "-14",
-                                "points": 1
+                                "goal_difference": "-12",
+                                "points": 6
                             },
-                            "result": null,
-                            "points": 1,
-                            "recent_form": "LLLLL",
+                            "result": "Relegation",
+                            "points": 6,
+                            "recent_form": "LLLWL",
                             "status": null,
                             "team": {
                                 "data": {
-                                    "id": 128611,
-                                    "legacy_id": null,
-                                    "name": "Sao Paulo U20",
+                                    "id": 13292,
+                                    "legacy_id": 788,
+                                    "name": "Ituano",
                                     "short_code": null,
                                     "twitter": null,
                                     "country_id": 5,
                                     "national_team": false,
-                                    "founded": 0,
-                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/3\/128611.png",
-                                    "venue_id": null,
-                                    "current_season_id": 23358,
+                                    "founded": 1947,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/12\/13292.png",
+                                    "venue_id": 9202,
+                                    "current_season_id": 23291,
                                     "is_placeholder": false
                                 }
                             }
                         },
                         {
                             "position": 20,
-                            "team_id": 131610,
-                            "team_name": "Internacional U20",
-                            "round_id": 336645,
-                            "round_name": 9,
+                            "team_id": 3672,
+                            "team_name": "Guarani",
+                            "round_id": 335342,
+                            "round_name": 11,
                             "group_id": null,
                             "group_name": null,
                             "overall": {
-                                "games_played": 4,
-                                "won": 0,
-                                "draw": 0,
-                                "lost": 4,
-                                "goals_scored": 5,
-                                "goals_against": 12,
-                                "points": 0
+                                "games_played": 10,
+                                "won": 1,
+                                "draw": 1,
+                                "lost": 8,
+                                "goals_scored": 6,
+                                "goals_against": 17,
+                                "points": 4
                             },
                             "home": {
-                                "games_played": 2,
-                                "won": 0,
-                                "draw": 0,
-                                "lost": 2,
+                                "games_played": 5,
+                                "won": 1,
+                                "draw": 1,
+                                "lost": 3,
                                 "goals_scored": 3,
-                                "goals_against": 6,
-                                "points": 0
+                                "goals_against": 4,
+                                "points": 4
                             },
                             "away": {
-                                "games_played": 2,
+                                "games_played": 5,
                                 "won": 0,
                                 "draw": 0,
-                                "lost": 2,
-                                "goals_scored": 2,
-                                "goals_against": 6,
+                                "lost": 5,
+                                "goals_scored": 3,
+                                "goals_against": 13,
                                 "points": 0
                             },
                             "total": {
-                                "goal_difference": "-7",
-                                "points": 0
+                                "goal_difference": "-11",
+                                "points": 4
                             },
-                            "result": null,
-                            "points": 0,
-                            "recent_form": "LLLL",
+                            "result": "Relegation",
+                            "points": 4,
+                            "recent_form": "LLLDL",
                             "status": null,
                             "team": {
                                 "data": {
-                                    "id": 131610,
-                                    "legacy_id": null,
-                                    "name": "Internacional U20",
-                                    "short_code": null,
+                                    "id": 3672,
+                                    "legacy_id": 1654,
+                                    "name": "Guarani",
+                                    "short_code": "GUA",
                                     "twitter": null,
                                     "country_id": 5,
                                     "national_team": false,
-                                    "founded": 0,
-                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/26\/131610.png",
-                                    "venue_id": null,
-                                    "current_season_id": 21462,
+                                    "founded": 1911,
+                                    "logo_path": "https:\/\/cdn.sportmonks.com\/images\/soccer\/teams\/24\/3672.png",
+                                    "venue_id": 2150,
+                                    "current_season_id": 23291,
                                     "is_placeholder": false
                                 }
                             }
@@ -1679,21 +2017,34 @@
             }
         ],
         "corner": "9",
-        "btts": "60",
-        "home_win": "-1",
-        "away_win": "-1",
-        "over05": "-1",
-        "over15": "-1",
-        "over25": "-1",
-        "colors": null,
+        "btts": "-1",
+        "home_win": "35",
+        "away_win": "45",
+        "over05": "80",
+        "over15": "60",
+        "over25": "20",
+        "colors": [
+            {
+                "min": 1,
+                "max": 4,
+                "color": "#004682",
+                "desc": "Promotion - Serie A"
+            },
+            {
+                "min": 17,
+                "max": 20,
+                "color": "#BD0000",
+                "desc": "Relegation - Serie C"
+            }
+        ],
         "prediction": {
             "corner": "9",
-            "btts": "-1",
-            "home_win": "-1",
-            "away_win": "-1",
-            "over05": "-1",
-            "over15": "-1",
-            "over25": "-1"
+            "btts": "20",
+            "home_win": "35",
+            "away_win": "45",
+            "over05": "80",
+            "over15": "60",
+            "over25": "20"
         }
     }
 }

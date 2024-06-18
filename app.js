@@ -78,7 +78,7 @@ bot.command('token', async (ctx) => {
 bot.command('salvarOdds', async (ctx) => {
     if (ctx.chat.id == id_master && ctx.from.id == id_master) {
         ctx.reply('O bot esta salvando as odds das partidas ')
-        let url = `https://api.sokkerpro.net/eventApi/2024-06-18/-180/web_${createStringRandom(16)}`
+        let url = `https://api.sokkerpro.net/eventApi/2024-06-18/-1000/web_${createStringRandom(16)}`
 
         let options = {
 
@@ -107,7 +107,7 @@ bot.command('salvarOdds', async (ctx) => {
 
         let count = 0
         if (data?.data !== null || data?.data !== undefined) {
-            
+
             data.data.forEach(async (game) => {
                 url = `https://api.sokkerpro.net/fixture/${game.id}/web_${createStringRandom(16)}`
 
@@ -125,7 +125,15 @@ bot.command('salvarOdds', async (ctx) => {
                     })
 
                 if (fixture?.data?.odds !== null && fixture?.data?.odds !== undefined) {
-                    url = `https://horizonte-rp.online/odd`
+                    url = `https://horizonte-rp.online/prematch`
+
+                    let home_standing = fixture.data?.standing[0]?.standings?.data?.filter((i)=>{
+                        return i.team_name == game.localTeam.name
+                    })
+
+                    let away_standing = fixture.data?.standing[0]?.standings?.data?.filter((i)=>{
+                        return i.team_name == game.visitorTeam.name
+                    })
 
                     options = {
 
@@ -133,11 +141,13 @@ bot.command('salvarOdds', async (ctx) => {
                         headers: {
                             'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:120.0) Gecko/20100101 Firefox/120.0',
                             'Content-Type': 'application/json',
-                            'Accept':"*/*"
+                            'Accept': "*/*"
                         },
                         body: JSON.stringify({
                             id_game: game.id,
-                            odds: JSON.stringify(fixture.data.odds)
+                            odds: JSON.stringify(fixture.data.odds),
+                            standing :  JSON.stringify({home_standing,away_standing})
+                            
                         })
 
                     }
@@ -154,16 +164,14 @@ bot.command('salvarOdds', async (ctx) => {
                         }).catch((Error) => {
                             console.log(Error)
                         })
-                    
-                        
-                    
                 }
+               
 
             })
 
             await ctx.reply(` ${count} matches were added with odds added or updated database.`)
 
-        }else{
+        } else {
             await ctx.reply(` Games not found ! `)
         }
     }
@@ -175,20 +183,7 @@ bot.command('startbots', async (ctx) => {
         await ctx.telegram.sendMessage(id_master, `Todos bots foram ativado  !`)
 
         setInterval(async () => {
-
-            /* GET /eventApi/2024-06-17/-180/web_2cr7xbxpeth8nkef HTTP/2
- Host: api.sokkerpro.net
- User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:120.0) Gecko/20100101 Firefox/120.0
- 
- 
- Connection: keep-alivez
- Sec-Fetch-Dest: empty
- Sec-Fetch-Mode: cors
- Sec-Fetch-Site: cross-site
- TE: trailers*/
-
-
-
+            
             const options = {
 
                 method: 'GET',
